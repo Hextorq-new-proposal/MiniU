@@ -30,6 +30,9 @@ export default function Header({ onOpenCounselling }) {
 
           {/* Desktop Navigation Menu */}
           <nav className="d-none d-lg-flex align-items-center gap-2">
+            <Link to="/" className="miniu-nav-link">
+              Home
+            </Link>
             <Link to="/courses" className="miniu-nav-link">
               Courses
             </Link>
