@@ -45,11 +45,11 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        {/* 5-Step Process Grid */}
-        <div className="row g-4 justify-content-center reveal-stagger-group">
+        {/* 5-Step Process Grid with Sequential Left-to-Right Reveal */}
+        <div className="row g-4 justify-content-center reveal-stagger-left">
           {STEPS.map((item, idx) => (
-            <div key={idx} className="col-lg-4 col-md-6 reveal-card">
-              <div className="p-4 rounded-4 miniu-bg-slate border h-100 position-relative transition-all hover-translate-y">
+            <div key={idx} className="col-lg-4 col-md-6 reveal-slide-left">
+              <div className="p-4 rounded-4 miniu-bg-slate border h-100 position-relative transition-all hover-translate-y shadow-xs">
                 <div className="d-flex align-items-center justify-content-between mb-3">
                   <div className="miniu-step-number">
                     {item.step}

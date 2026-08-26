@@ -152,7 +152,8 @@ export default function CareerFinder({ onOpenCounselling }) {
               <div key={cat.id} className="col-md-4 col-sm-6 reveal-card">
                 <div
                   onClick={() => setSelectedCategory(cat)}
-                  className={`miniu-category-card ${isSelected ? "active" : ""}`}
+                  onMouseEnter={() => setSelectedCategory(cat)}
+                  className={`miniu-category-card ${isSelected ? "active" : ""} cursor-pointer`}
                 >
                   <div className="d-flex align-items-center gap-3">
                     <div
@@ -173,7 +174,7 @@ export default function CareerFinder({ onOpenCounselling }) {
           })}
         </div>
 
-        {/* Dynamic Recommendations Box */}
+        {/* Dynamic Recommendations Box (Updates on Hover & Click) */}
         <div className="p-4 rounded-4 miniu-bg-slate border mb-5">
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-3">
             <div>
@@ -188,16 +189,16 @@ export default function CareerFinder({ onOpenCounselling }) {
           <div className="row g-3">
             {selectedCategory.recommended.map((item, idx) => (
               <div key={idx} className="col-md-4">
-                <div className="p-3 bg-white rounded-3 border h-100 d-flex flex-column justify-content-between">
+                <div className="p-3 bg-white rounded-3 border h-100 d-flex flex-column justify-content-between shadow-2xs">
                   <div>
-                    <span className="badge bg-light text-danger border px-2 py-1 fs-11 fw-semibold mb-2">
+                    <span className="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 fs-11 fw-semibold mb-2">
                       {item.tag}
                     </span>
                     <h5 className="fs-14 fw-bold miniu-text-dark mb-2">{item.name}</h5>
                   </div>
                   <Link
                     to={item.path}
-                    className="text-danger fw-semibold fs-13 text-decoration-none d-inline-flex align-items-center gap-1 mt-2"
+                    className="text-danger fw-semibold fs-13 text-decoration-none d-inline-flex align-items-center gap-1 mt-2 hover-text-danger"
                   >
                     <span>View Program</span>
                     <i className="fa-regular fa-arrow-right-long" />
@@ -209,158 +210,173 @@ export default function CareerFinder({ onOpenCounselling }) {
         </div>
 
         {/* =========================================================================
-            30-Second Minimalist Career Matchmaker (Compact & Streamlined Grid)
+            30-Second Minimalist Career Matchmaker (2-Column Balanced Layout)
             ========================================================================= */}
-        <div className="bg-white border border-light-subtle rounded-4 p-3.5 p-md-4 shadow-xs mx-auto" style={{ maxWidth: "840px" }}>
-          {/* Header */}
-          <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2 pb-3 mb-3 border-bottom">
-            <div>
-              <span className="badge bg-success bg-opacity-10 text-success rounded-pill px-2.5 py-0.5 fs-11 fw-bold mb-1">
-                30-Second Matchmaker
-              </span>
-              <h3 className="fs-18 fw-bold miniu-text-dark mb-0.5">Find Your Ideal Career Track</h3>
-              <p className="miniu-text-muted fs-13 mb-0">
-                Select your current background and target goals for instant tailored matching.
-              </p>
-            </div>
-            <div className="d-none d-md-flex align-items-center gap-1.5 text-muted fs-11 bg-light px-2.5 py-1 rounded-pill border">
-              <i className="fa-regular fa-shield-check text-success" />
-              <span>Free &amp; instant recommendation</span>
-            </div>
-          </div>
-
-          {/* Interactive Steps Form */}
-          <div className="d-flex flex-column gap-3 mb-3 pb-1">
-            {/* Step 1: Background */}
-            <div>
-              <div className="d-flex align-items-center gap-1.5 mb-1.5">
-                <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
-                  1
-                </span>
-                <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
-                  What describes your current background?
-                </span>
+        <div className="row g-4 g-lg-5 align-items-center">
+          {/* Left Column: Context & Trust */}
+          <div className="col-lg-4">
+            <span className="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 fs-12 fw-bold mb-2.5 d-inline-block">
+              Smart Matchmaker
+            </span>
+            <h3 className="fs-24 fw-bold miniu-text-dark miniu-font-display mb-3">
+              Find Your Ideal Career Track in 30 Seconds
+            </h3>
+            <p className="miniu-text-muted fs-14 mb-4 line-height-relaxed">
+              Select your current background and target goals for an instant tailored curriculum and counselor recommendation.
+            </p>
+            <div className="d-flex flex-column gap-2.5 text-dark fs-13 fw-semibold">
+              <div className="d-flex align-items-center gap-2">
+                <i className="fa-solid fa-circle-check text-success fs-14" />
+                <span>100% Free &amp; Instant Recommendation</span>
               </div>
-              <div className="row g-2">
-                {[
-                  { label: "College Student", val: "Student" },
-                  { label: "Recent Graduate", val: "Graduate" },
-                  { label: "Working Pro", val: "Working Professional" },
-                  { label: "Career Switcher", val: "Career Switcher" }
-                ].map((opt) => (
-                  <div key={opt.val} className="col-6 col-md-3">
-                    <button
-                      type="button"
-                      onClick={() => setQ1(opt.val)}
-                      className={`btn btn-sm w-100 rounded-2 py-1.5 px-1.5 fs-11 fw-semibold transition-all text-center ${
-                        q1 === opt.val
-                          ? "btn-dark text-white shadow-xs border-dark"
-                          : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
-                      }`}
-                    >
-                      {opt.label}
-                    </button>
-                  </div>
-                ))}
+              <div className="d-flex align-items-center gap-2">
+                <i className="fa-solid fa-circle-check text-success fs-14" />
+                <span>Tailored for Freshers &amp; Switchers</span>
               </div>
-            </div>
-
-            {/* Step 2: Domain */}
-            <div>
-              <div className="d-flex align-items-center gap-1.5 mb-1.5">
-                <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
-                  2
-                </span>
-                <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
-                  Which domain are you passionate about?
-                </span>
-              </div>
-              <div className="row g-2">
-                {[
-                  { label: "Enterprise (SAP)", val: "Enterprise ERP" },
-                  { label: "Data Analytics", val: "Data & Analytics" },
-                  { label: "Full Stack Web", val: "Coding & Web" },
-                  { label: "UI/UX Design", val: "Design & Creativity" }
-                ].map((opt) => (
-                  <div key={opt.val} className="col-6 col-md-3">
-                    <button
-                      type="button"
-                      onClick={() => setQ2(opt.val)}
-                      className={`btn btn-sm w-100 rounded-2 py-1.5 px-1.5 fs-11 fw-semibold transition-all text-center ${
-                        q2 === opt.val
-                          ? "btn-dark text-white shadow-xs border-dark"
-                          : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
-                      }`}
-                    >
-                      {opt.label}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Step 3: Objective */}
-            <div>
-              <div className="d-flex align-items-center gap-1.5 mb-1.5">
-                <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
-                  3
-                </span>
-                <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
-                  What is your primary objective?
-                </span>
-              </div>
-              <div className="row g-2">
-                {[
-                  { label: "Job Placement", val: "Job Placement" },
-                  { label: "Upskilling", val: "Upgrade Skills" },
-                  { label: "Domain Switch", val: "Switch Career" },
-                  { label: "Freelance", val: "Freelance" }
-                ].map((opt) => (
-                  <div key={opt.val} className="col-6 col-md-3">
-                    <button
-                      type="button"
-                      onClick={() => setQ3(opt.val)}
-                      className={`btn btn-sm w-100 rounded-2 py-1.5 px-1.5 fs-11 fw-semibold transition-all text-center ${
-                        q3 === opt.val
-                          ? "btn-dark text-white shadow-xs border-dark"
-                          : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
-                      }`}
-                    >
-                      {opt.label}
-                    </button>
-                  </div>
-                ))}
+              <div className="d-flex align-items-center gap-2">
+                <i className="fa-solid fa-circle-check text-success fs-14" />
+                <span>Direct Counselor &amp; Syllabus Match</span>
               </div>
             </div>
           </div>
 
-          {/* Minimalist Output Result Card */}
-          <div className="p-3 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-2.5 shadow-2xs">
-            <div>
-              <div className="d-flex align-items-center gap-1.5 mb-0.5">
-                <span className="badge bg-danger text-white rounded-pill px-2 py-0.5 fs-10 fw-bold">
-                  BEST MATCH FOR YOU
-                </span>
-                <span className="fs-11 text-muted">Based on your selection</span>
-              </div>
-              <h4 className="fs-15 fw-bold miniu-text-dark mb-0.5">{recommendation.title}</h4>
-              <p className="fs-12 text-secondary mb-0">{recommendation.desc}</p>
-            </div>
+          {/* Right Column: Compact Questionnaire Box */}
+          <div className="col-lg-8">
+            <div className="bg-white border border-light-subtle rounded-4 p-3.5 p-md-4 shadow-sm">
+              {/* Interactive Steps Form */}
+              <div className="d-flex flex-column gap-3 mb-3 pb-1">
+                {/* Step 1: Background */}
+                <div>
+                  <div className="d-flex align-items-center gap-1.5 mb-1.5">
+                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
+                      1
+                    </span>
+                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
+                      What describes your current background?
+                    </span>
+                  </div>
+                  <div className="row g-2">
+                    {[
+                      { label: "College Student", val: "Student" },
+                      { label: "Recent Graduate", val: "Graduate" },
+                      { label: "Working Pro", val: "Working Professional" },
+                      { label: "Career Switcher", val: "Career Switcher" }
+                    ].map((opt) => (
+                      <div key={opt.val} className="col-6 col-sm-3">
+                        <button
+                          type="button"
+                          onClick={() => setQ1(opt.val)}
+                          className={`btn btn-sm w-100 rounded-2 py-1.5 px-1 fs-11 fw-semibold transition-all text-center ${
+                            q1 === opt.val
+                              ? "btn-dark text-white shadow-xs border-dark"
+                              : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-            <div className="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
-              <Link
-                to={recommendation.path}
-                className="btn btn-sm btn-danger text-white rounded-pill px-3 py-1.5 fw-bold fs-12 shadow-xs text-decoration-none"
-              >
-                <span>Explore Program →</span>
-              </Link>
-              <button
-                type="button"
-                onClick={onOpenCounselling}
-                className="btn btn-sm btn-outline-dark bg-white rounded-pill px-3 py-1.5 fw-bold fs-12"
-              >
-                Ask Advisor
-              </button>
+                {/* Step 2: Domain */}
+                <div>
+                  <div className="d-flex align-items-center gap-1.5 mb-1.5">
+                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
+                      2
+                    </span>
+                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
+                      Which domain are you passionate about?
+                    </span>
+                  </div>
+                  <div className="row g-2">
+                    {[
+                      { label: "Enterprise (SAP)", val: "Enterprise ERP" },
+                      { label: "Data Analytics", val: "Data & Analytics" },
+                      { label: "Full Stack Web", val: "Coding & Web" },
+                      { label: "UI/UX Design", val: "Design & Creativity" }
+                    ].map((opt) => (
+                      <div key={opt.val} className="col-6 col-sm-3">
+                        <button
+                          type="button"
+                          onClick={() => setQ2(opt.val)}
+                          className={`btn btn-sm w-100 rounded-2 py-1.5 px-1 fs-11 fw-semibold transition-all text-center ${
+                            q2 === opt.val
+                              ? "btn-dark text-white shadow-xs border-dark"
+                              : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Step 3: Objective */}
+                <div>
+                  <div className="d-flex align-items-center gap-1.5 mb-1.5">
+                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
+                      3
+                    </span>
+                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
+                      What is your primary objective?
+                    </span>
+                  </div>
+                  <div className="row g-2">
+                    {[
+                      { label: "Job Placement", val: "Job Placement" },
+                      { label: "Upskilling", val: "Upgrade Skills" },
+                      { label: "Domain Switch", val: "Switch Career" },
+                      { label: "Freelance", val: "Freelance" }
+                    ].map((opt) => (
+                      <div key={opt.val} className="col-6 col-sm-3">
+                        <button
+                          type="button"
+                          onClick={() => setQ3(opt.val)}
+                          className={`btn btn-sm w-100 rounded-2 py-1.5 px-1 fs-11 fw-semibold transition-all text-center ${
+                            q3 === opt.val
+                              ? "btn-dark text-white shadow-xs border-dark"
+                              : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Minimalist Output Result Card */}
+              <div className="p-3 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2.5 shadow-2xs">
+                <div>
+                  <div className="d-flex align-items-center gap-1.5 mb-0.5">
+                    <span className="badge bg-danger text-white rounded-pill px-2 py-0.5 fs-10 fw-bold">
+                      BEST MATCH
+                    </span>
+                    <span className="fs-11 text-muted">Based on your selection</span>
+                  </div>
+                  <h4 className="fs-14 fw-bold miniu-text-dark mb-0.5">{recommendation.title}</h4>
+                  <p className="fs-11 text-secondary mb-0">{recommendation.desc}</p>
+                </div>
+
+                <div className="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+                  <Link
+                    to={recommendation.path}
+                    className="btn btn-sm btn-danger text-white rounded-pill px-3 py-1.5 fw-bold fs-12 shadow-xs text-decoration-none"
+                  >
+                    <span>Explore →</span>
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={onOpenCounselling}
+                    className="btn btn-sm btn-outline-dark text-dark bg-white rounded-pill px-3 py-1.5 fw-bold fs-12 shadow-2xs"
+                  >
+                    <span>Ask Advisor</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -52,13 +52,13 @@ export default function HomeFAQ() {
       <div className="container py-3 max-w-900 mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-4 reveal-fade-up">
-          <span className="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
+          <span className="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
             Got Questions?
           </span>
           <h2 className="display-6 fw-bold miniu-text-dark miniu-font-display mb-2">
             Frequently Asked Questions
           </h2>
-          <p className="fs-16 miniu-text-muted mb-0">
+          <p className="fs-16 miniu-text-dark mb-0 fw-medium">
             Clear answers to common questions about courses, placement, and training formats.
           </p>
         </div>
@@ -73,10 +73,10 @@ export default function HomeFAQ() {
                 setActiveCategory(cat)
                 setOpenIndex(0)
               }}
-              className={`btn btn-sm rounded-pill px-3 py-1 fs-13 fw-semibold transition-all ${
+              className={`btn btn-sm rounded-pill px-3 py-1 fs-13 fw-bold transition-all ${
                 activeCategory === cat
                   ? "btn-danger text-white shadow-xs"
-                  : "btn-outline-secondary bg-white text-dark"
+                  : "btn-outline-dark bg-white text-dark"
               }`}
             >
               {cat}
@@ -89,15 +89,15 @@ export default function HomeFAQ() {
           {filtered.map((item, idx) => {
             const isOpen = openIndex === idx
             return (
-              <div key={idx} className={`miniu-faq-item ${isOpen ? "open" : ""}`}>
+              <div key={idx} className={`miniu-faq-item ${isOpen ? "open shadow-sm" : ""}`}>
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="miniu-faq-btn"
+                  className="miniu-faq-btn py-3 px-4"
                 >
-                  <span>{item.q}</span>
+                  <span className="fw-bold fs-16 text-black" style={{ color: "#000000" }}>{item.q}</span>
                   <span
-                    className="text-danger fs-14 fw-bold transition-transform"
+                    className="text-danger fs-13 fw-bold transition-transform flex-shrink-0"
                     style={{
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                       transition: "transform 0.25s ease"
@@ -107,8 +107,10 @@ export default function HomeFAQ() {
                   </span>
                 </button>
                 {isOpen && (
-                  <div className="miniu-faq-content">
-                    <p className="mb-0">{item.a}</p>
+                  <div className="miniu-faq-content px-4 pb-3 pt-0">
+                    <p className="mb-0 text-dark fw-medium fs-15 line-height-relaxed" style={{ color: "#0f172a" }}>
+                      {item.a}
+                    </p>
                   </div>
                 )}
               </div>

@@ -38,15 +38,14 @@ export default function Hero({ onOpenCounselling }) {
 
             {/* Admissions Open - Plain Text below paragraph */}
             <div className="d-flex flex-wrap align-items-center gap-2 mb-4 fs-13 fs-sm-14 fw-bold text-dark">
-              <span className="live-pulse-dot flex-shrink-0" />
               <span>Admissions Open: Classroom (Coimbatore) &amp; Live Online</span>
               <button
                 type="button"
                 onClick={onOpenCounselling}
-                className="p-0 border-0 bg-transparent text-danger fw-bold fs-13 fs-sm-14 ms-1 d-inline-flex align-items-center cursor-pointer text-decoration-none"
-                style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none" }}
+                className="p-0 border-0 bg-transparent fw-bold fs-13 fs-sm-14 ms-1 d-inline-flex align-items-center cursor-pointer text-decoration-none"
+                style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none", color: "#ff0135" }}
               >
-                <span>View Batches →</span>
+                <span style={{ color: "#ff0135" }}>View Batches →</span>
               </button>
             </div>
 
@@ -65,17 +64,13 @@ export default function Hero({ onOpenCounselling }) {
               </button>
             </div>
 
-            {/* 3 Core Trust Checklist (Deep Dark Black) */}
-            <div className="d-flex flex-wrap align-items-center gap-3 gap-sm-4 hero-dark-checklist fs-13 fs-sm-14 pt-1 pt-sm-2">
-              <span className="d-flex align-items-center gap-1.5">
-                <span className="text-success fw-bold fs-16">✓</span> Live Mentor Training
-              </span>
-              <span className="d-flex align-items-center gap-1.5">
-                <span className="text-success fw-bold fs-16">✓</span> Practical Projects
-              </span>
-              <span className="d-flex align-items-center gap-1.5">
-                <span className="text-success fw-bold fs-16">✓</span> Placement Support
-              </span>
+            {/* 3 Core Highlights (Deep Black, No Ticks) */}
+            <div className="d-flex flex-wrap align-items-center gap-2 gap-sm-3 fs-13 fs-sm-14 pt-1 pt-sm-2 fw-bold text-black" style={{ color: "#000000" }}>
+              <span className="text-black fw-bold" style={{ color: "#000000" }}>Live Mentor Training</span>
+              <span className="text-muted fw-bold">•</span>
+              <span className="text-black fw-bold" style={{ color: "#000000" }}>Practical Projects</span>
+              <span className="text-muted fw-bold">•</span>
+              <span className="text-black fw-bold" style={{ color: "#000000" }}>Placement Support</span>
             </div>
           </div>
         </div>

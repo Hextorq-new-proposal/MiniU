@@ -1,4 +1,5 @@
 import React from "react"
+import { CompanyLogo } from "../common/CompanyLogos"
 
 const STORIES = [
   {
@@ -47,44 +48,47 @@ export default function PlacementStories({ onOpenCounselling }) {
         {/* 3 Transformation Story Cards */}
         <div className="row g-4 mb-4 reveal-stagger-group">
           {STORIES.map((story, idx) => (
-            <div key={idx} className="col-lg-4 reveal-card">
-              <div className="miniu-card p-4 justify-content-between">
+            <div key={idx} className="col-lg-4 reveal-card d-flex">
+              <div className="miniu-card p-4 justify-content-between w-100 bg-white border border-light-subtle rounded-4 shadow-sm hover-shadow-lg transition-all d-flex flex-column">
                 <div>
-                  {/* Top Bar: Name & Course Pill */}
+                  {/* Top Bar: Name & Company Logo Pill */}
                   <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
                     <div>
                       <h4 className="fs-16 fw-bold miniu-text-dark mb-0">{story.name}</h4>
                       <span className="fs-12 text-muted">{story.course}</span>
                     </div>
-                    <span className="badge bg-light text-danger border px-2 py-1 fs-11 fw-semibold">
-                      Placed @ {story.company}
-                    </span>
+                    <div className="bg-light border border-light-subtle rounded-pill px-2.5 py-1 d-flex align-items-center gap-1.5">
+                      <span className="fs-10 text-muted fw-bold text-uppercase">Placed @</span>
+                      <CompanyLogo name={story.company} height={18} />
+                    </div>
                   </div>
 
                   {/* Before / After Flow */}
-                  <div className="p-3 bg-light rounded-3 mb-3 border border-light-subtle">
+                  <div className="p-3 bg-light bg-opacity-75 rounded-3 mb-3 border border-light-subtle">
                     <div className="d-flex align-items-start gap-2 mb-2 fs-13">
-                      <span className="badge bg-secondary-subtle text-secondary px-2 py-1 fs-11">Before</span>
-                      <span className="text-muted">{story.beforeRole}</span>
+                      <span className="badge bg-secondary-subtle text-secondary px-2 py-0.5 fs-10 fw-bold">Before</span>
+                      <span className="text-muted fs-12">{story.beforeRole}</span>
                     </div>
                     <div className="d-flex align-items-start gap-2 fs-13">
-                      <span className="badge bg-success text-white px-2 py-1 fs-11">After</span>
-                      <strong className="miniu-text-dark">{story.afterRole}</strong>
+                      <span className="badge bg-success text-white px-2 py-0.5 fs-10 fw-bold">After</span>
+                      <strong className="miniu-text-dark fs-13">{story.afterRole}</strong>
                     </div>
                   </div>
 
                   {/* Student Quote */}
-                  <p className="text-secondary fs-13 fst-italic mb-0 line-height-relaxed">
+                  <p className="text-secondary fs-13 fst-italic mb-3 line-height-relaxed" style={{ minHeight: "64px" }}>
                     “{story.quote}”
                   </p>
                 </div>
 
-                <div className="pt-3 border-top mt-3 d-flex align-items-center justify-content-between">
-                  <span className="fs-12 text-muted">
-                    <i className="fa-solid fa-badge-check text-success me-1" />
-                    Verified Placement
+                <div className="pt-3 border-top mt-2 d-flex align-items-center justify-content-between">
+                  <span className="fs-12 text-muted d-inline-flex align-items-center gap-1">
+                    <i className="fa-solid fa-circle-check text-success fs-12" />
+                    <span>Verified Placement</span>
                   </span>
-                  <span className="fs-12 fw-bold text-dark">{story.company}</span>
+                  <div className="d-flex align-items-center">
+                    <CompanyLogo name={story.company} height={20} />
+                  </div>
                 </div>
               </div>
             </div>

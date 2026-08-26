@@ -60,7 +60,7 @@ export default function useSmoothScroll() {
         })
       })
 
-      // Staggered cards reveal
+      // Staggered cards reveal (Default fade-up)
       gsap.utils.toArray(".reveal-stagger-group").forEach((group) => {
         const cards = group.querySelectorAll(".reveal-card")
         if (cards.length > 0) {
@@ -69,6 +69,25 @@ export default function useSmoothScroll() {
             y: 25,
             duration: 0.6,
             stagger: 0.08,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: group,
+              start: "top 88%",
+              once: true,
+            },
+          })
+        }
+      })
+
+      // Staggered cards sliding in from the left side one by one (Sequential Left-to-Right)
+      gsap.utils.toArray(".reveal-stagger-left").forEach((group) => {
+        const cards = group.querySelectorAll(".reveal-slide-left")
+        if (cards.length > 0) {
+          gsap.from(cards, {
+            opacity: 0,
+            x: -45,
+            duration: 0.7,
+            stagger: 0.15,
             ease: "power2.out",
             scrollTrigger: {
               trigger: group,

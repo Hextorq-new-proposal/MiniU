@@ -1,4 +1,5 @@
 import React from "react"
+import { CompanyLogo } from "../common/CompanyLogos"
 
 const TRUSTED_COMPANIES = [
   "TCS",
@@ -21,10 +22,14 @@ export default function TrustStrip() {
             </span>
           </div>
           <div className="col-lg-9">
-            <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between gap-3 gap-md-4">
+            <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between gap-4 gap-md-5">
               {TRUSTED_COMPANIES.map((company, index) => (
-                <div key={index} className="partner-logo-item">
-                  <span>{company}</span>
+                <div
+                  key={index}
+                  className="partner-logo-item d-flex align-items-center justify-content-center grayscale-hover transition-all"
+                  style={{ opacity: 0.85 }}
+                >
+                  <CompanyLogo name={company} height={26} />
                 </div>
               ))}
             </div>

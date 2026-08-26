@@ -40,11 +40,11 @@ export default function WhyMiniU() {
           </p>
         </div>
 
-        {/* 4 Pillars Grid */}
-        <div className="row g-4 reveal-stagger-group">
+        {/* 4 Pillars Grid with Sequential Left-to-Right Reveal */}
+        <div className="row g-4 reveal-stagger-left">
           {WHY_POINTS.map((point, idx) => (
-            <div key={idx} className="col-lg-3 col-sm-6 reveal-card">
-              <div className="p-4 rounded-4 miniu-bg-slate border h-100 transition-all hover-translate-y">
+            <div key={idx} className="col-lg-3 col-sm-6 reveal-slide-left">
+              <div className="p-4 rounded-4 miniu-bg-slate border h-100 transition-all hover-translate-y shadow-xs">
                 <div
                   className="bg-white text-danger rounded-3 d-flex align-items-center justify-content-center mb-4 border shadow-xs"
                   style={{ width: "50px", height: "50px" }}

@@ -76,9 +76,10 @@ export default function CareerPreviewSection({ onOpenCounselling }) {
               <button
                 type="button"
                 onClick={onOpenCounselling}
-                className="btn bg-white border border-secondary-subtle text-dark fw-bold rounded-pill px-4 py-2.5 shadow-xs d-inline-flex align-items-center gap-2 transition-all hover-translate-y fs-14"
+                className="btn bg-white border border-danger-subtle fw-bold rounded-pill px-4 py-2.5 shadow-xs d-inline-flex align-items-center gap-2 transition-all hover-translate-y fs-14"
+                style={{ color: "#ff0135" }}
               >
-                <span>Request Custom Syllabus</span>
+                <span style={{ color: "#ff0135" }}>Request Custom Syllabus</span>
                 <i className="fa-regular fa-arrow-right-long text-danger" />
               </button>
             </div>

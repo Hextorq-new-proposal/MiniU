@@ -9,24 +9,39 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="col-lg-4 col-md-6">
             <Link to="/" className="d-inline-block mb-3">
-              <img src="/assets/logo/miniu-logo.svg" alt="MiniU EdTech" style={{ height: "46px", width: "auto" }} />
+              <img
+                src="/assets/logo/miniu-logo.svg"
+                alt="MiniU EdTech"
+                style={{ height: "58px", width: "auto", maxHeight: "58px" }}
+              />
             </Link>
             <p className="miniu-text-muted fs-14 mb-3 max-w-350">
               MiniU is a job-oriented professional training institute in Coimbatore offering practical programs in SAP, Business Analytics, Full Stack Web Development, and UI/UX Design.
             </p>
-            <div className="d-flex flex-column gap-2 fs-13 text-secondary">
-              <div>
-                <i className="fa-regular fa-location-dot text-danger me-2" />
-                Vayaluran Towers, RS Puram, Coimbatore, Tamil Nadu 641002
-              </div>
-              <div>
-                <i className="fa-regular fa-envelope text-danger me-2" />
-                info@miniu.info
-              </div>
-              <div>
-                <i className="fa-regular fa-phone text-danger me-2" />
-                +91 99440 55555
-              </div>
+            <div className="d-flex flex-column gap-2.5 fs-13 text-secondary">
+              <a
+                href="https://maps.google.com/?q=Vayaluran+Towers+RS+Puram+Coimbatore"
+                target="_blank"
+                rel="noreferrer"
+                className="text-secondary text-decoration-none hover-text-danger d-flex align-items-start gap-2 transition-all"
+              >
+                <i className="fa-regular fa-location-dot text-danger mt-1 flex-shrink-0" />
+                <span>Vayaluran Towers, RS Puram, Coimbatore, Tamil Nadu 641002</span>
+              </a>
+              <a
+                href="mailto:info@miniu.info"
+                className="text-secondary text-decoration-none hover-text-danger d-flex align-items-center gap-2 transition-all"
+              >
+                <i className="fa-regular fa-envelope text-danger flex-shrink-0" />
+                <span>info@miniu.info</span>
+              </a>
+              <a
+                href="tel:+919944055555"
+                className="text-secondary text-decoration-none hover-text-danger d-flex align-items-center gap-2 transition-all"
+              >
+                <i className="fa-regular fa-phone text-danger flex-shrink-0" />
+                <span>+91 99440 55555</span>
+              </a>
             </div>
           </div>
 

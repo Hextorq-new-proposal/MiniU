@@ -9,7 +9,6 @@ import CareerFinder from "../components/home/CareerFinder"
 import CareerPaths from "../components/home/CareerPaths"
 import CareerPreviewSection from "../components/home/CareerPreviewSection"
 import WhyMiniU from "../components/home/WhyMiniU"
-import ProjectShowcase from "../components/home/ProjectShowcase"
 import PlacementStories from "../components/home/PlacementStories"
 import Stats from "../components/home/Stats"
 import HowItWorks from "../components/home/HowItWorks"
@@ -90,9 +89,6 @@ export default function Home() {
 
         {/* 8. Why MiniU */}
         <WhyMiniU />
-
-        {/* 8. Learn By Doing (3 real capstone projects) */}
-        <ProjectShowcase />
 
         {/* 9. Placement Proof (Verified student career transitions) */}
         <PlacementStories onOpenCounselling={() => handleOpenCounselling(null)} />

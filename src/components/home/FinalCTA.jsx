@@ -32,8 +32,8 @@ export default function FinalCTA({ onOpenCounselling }) {
               Talk to a MiniU course advisor, review the detailed syllabus, and find the right path tailored for your degree and career goals.
             </p>
 
-            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3 mb-3">
-              {/* Short & compact pill button with pure white text */}
+            <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3">
+              {/* Short & compact primary counselling button */}
               <button
                 type="button"
                 onClick={onOpenCounselling}
@@ -42,24 +42,21 @@ export default function FinalCTA({ onOpenCounselling }) {
                 <span className="text-white">Book Free Counselling</span>
                 <i className="fa-regular fa-arrow-right-long text-white fs-12" />
               </button>
-            </div>
 
-            {/* Interactive WhatsApp Pill Button with Micro-Interaction */}
-            <div className="pt-2">
+              {/* Short & Vibrant WhatsApp Green Button */}
               <button
                 type="button"
                 onClick={handleWhatsApp}
-                className="btn d-inline-flex align-items-center gap-2.5 px-4 py-2 rounded-pill bg-white border border-success-subtle shadow-xs text-success fw-bold fs-13 transition-all hover-translate-y"
-                style={{ transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)" }}
+                className="btn d-inline-flex align-items-center gap-2 px-3.5 py-2 rounded-pill text-white fw-bold fs-13 shadow-xs border-0 transition-all hover-translate-y"
+                style={{
+                  backgroundColor: "#25D366",
+                  color: "#ffffff",
+                  transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)"
+                }}
               >
-                <span
-                  className="d-flex align-items-center justify-content-center bg-success text-white rounded-circle shadow-xs"
-                  style={{ width: "24px", height: "24px" }}
-                >
-                  <i className="fa-brands fa-whatsapp fs-13" />
-                </span>
-                <span>Chat directly with an Advisor on WhatsApp</span>
-                <span className="fs-12 text-success opacity-75">→</span>
+                <i className="fa-brands fa-whatsapp fs-16 text-white" />
+                <span className="text-white" style={{ color: "#ffffff" }}>Chat on WhatsApp</span>
+                <i className="fa-regular fa-arrow-right-long fs-12 text-white" />
               </button>
             </div>
           </div>

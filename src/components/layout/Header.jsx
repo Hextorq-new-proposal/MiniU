@@ -21,7 +21,7 @@ export default function Header({ onOpenCounselling }) {
               src="/assets/logo/miniu-logo.svg"
               alt="MiniU EdTech"
               className="miniu-header-logo d-inline-block align-middle"
-              style={{ height: "38px", width: "auto", maxHeight: "38px" }}
+              style={{ height: "46px", width: "auto", maxHeight: "46px" }}
               onError={(e) => {
                 e.target.style.display = "none"
               }}
@@ -36,9 +36,6 @@ export default function Header({ onOpenCounselling }) {
             <Link to="/courses" className="miniu-nav-link">
               Courses
             </Link>
-            <a href="/#career-discovery" className="miniu-nav-link">
-              Career Paths
-            </a>
             <a href="/#placement-proof" className="miniu-nav-link">
               Placements
             </a>
@@ -92,7 +89,7 @@ export default function Header({ onOpenCounselling }) {
                   src="/assets/logo/miniu-logo.svg"
                   alt="MiniU"
                   className="miniu-header-logo"
-                  style={{ height: "32px", width: "auto", maxHeight: "32px" }}
+                  style={{ height: "36px", width: "auto", maxHeight: "36px" }}
                 />
                 <button
                   type="button"
@@ -118,13 +115,6 @@ export default function Header({ onOpenCounselling }) {
                 >
                   Courses
                 </Link>
-                <a
-                  href="/#career-discovery"
-                  className="miniu-nav-link py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Career Paths
-                </a>
                 <a
                   href="/#placement-proof"
                   className="miniu-nav-link py-2"
