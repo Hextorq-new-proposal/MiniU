@@ -104,13 +104,60 @@ html.lenis, html.lenis body {
   }
 }
 
-/* Droid / Modern Geometric Display Typography for Hero Headline */
-.miniu-hero-title {
-  font-family: "Droid Sans", "Plus Jakarta Sans", "Space Grotesk", sans-serif;
+/* Droid Logo Font (Iconic Android Brand Typeface from fontmeme) */
+@font-face {
+  font-family: "Droid Logo";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/assets/fonts/droid-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Droid Logo";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/droid-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Droid Logo";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/droid-heavy.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Droid Logo";
+  font-style: normal;
   font-weight: 800;
+  font-display: swap;
+  src: url("/assets/fonts/droid-heavy.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Droid Logo";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/assets/fonts/droid-heavy.woff") format("woff");
+}
+
+/* Droid Logo Typography exclusively for Hero Headline */
+.droid-logo-text {
+  font-family: "Droid Logo", "Droid", sans-serif !important;
+  letter-spacing: -0.015em;
+  font-weight: 900;
+  text-transform: none;
+}
+
+/* Hero Headline Container */
+.miniu-hero-title {
   font-size: clamp(2.4rem, 5.2vw, 4.2rem);
-  line-height: 1.06;
-  letter-spacing: -0.035em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: #0f172a;
 }
 
