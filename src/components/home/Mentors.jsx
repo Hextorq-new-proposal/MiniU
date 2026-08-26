@@ -75,22 +75,22 @@ export default function Mentors() {
                 />
 
                 <div>
-                  {/* Centered Large Profile Photo */}
-                  <div className="d-flex justify-content-center mb-3 mt-1">
+                  {/* Centered Large Profile Photo (96px) */}
+                  <div className="d-flex justify-content-center mb-3 mt-2">
                     <div className="position-relative">
                       {m.avatar ? (
                         <img
                           src={m.avatar}
                           alt={m.name}
                           className="rounded-circle object-fit-cover shadow-sm border border-3 border-white"
-                          style={{ width: "72px", height: "72px" }}
+                          style={{ width: "96px", height: "96px" }}
                         />
                       ) : (
                         <div
-                          className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-18 shadow-sm border border-3 border-white"
+                          className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-24 shadow-sm border border-3 border-white"
                           style={{
-                            width: "72px",
-                            height: "72px",
+                            width: "96px",
+                            height: "96px",
                             background: "linear-gradient(135deg, #0f172a 0%, #334155 100%)"
                           }}
                         >
@@ -100,33 +100,33 @@ export default function Mentors() {
                       {/* Active Status Dot */}
                       <span
                         className="position-absolute border border-2 border-white rounded-circle bg-success"
-                        style={{ width: "13px", height: "13px", bottom: "2px", right: "2px" }}
+                        style={{ width: "16px", height: "16px", bottom: "4px", right: "4px" }}
                         title="Active Faculty Mentor"
                       />
                     </div>
                   </div>
 
                   {/* Name & Role */}
-                  <div className="text-center mb-2">
-                    <div className="d-flex align-items-center justify-content-center gap-1.5 mb-0.5">
-                      <h4 className="fs-16 fw-bold miniu-text-dark mb-0">{m.name}</h4>
-                      <i className="fa-solid fa-circle-check text-primary fs-12" title="Verified Corporate Mentor" />
+                  <div className="text-center mb-3">
+                    <div className="d-flex align-items-center justify-content-center gap-1.5 mb-1">
+                      <h4 className="fs-17 fw-bold miniu-text-dark mb-0">{m.name}</h4>
+                      <i className="fa-solid fa-circle-check text-primary fs-13" title="Verified Corporate Mentor" />
                     </div>
-                    <span className="fs-12 text-danger fw-bold d-block mb-1">{m.role}</span>
-                    <span className="badge bg-light text-secondary border border-light-subtle px-2.5 py-0.5 fs-10 fw-semibold rounded-pill">
-                      <i className="fa-regular fa-briefcase text-muted me-1" />
+                    <span className="fs-13 text-danger fw-bold d-block mb-1.5">{m.role}</span>
+                    <span className="badge bg-light text-secondary border border-light-subtle px-3 py-1 fs-11 fw-semibold rounded-pill">
+                      <i className="fa-regular fa-briefcase text-muted me-1.5" />
                       {m.experience}
                     </span>
                   </div>
 
                   {/* Highlights Strip */}
-                  <div className="d-flex align-items-center justify-content-center gap-3 p-2 bg-light bg-opacity-75 rounded-3 mb-3 border border-light-subtle w-100">
-                    <div className="d-flex align-items-center gap-1.5 fs-11 fw-bold text-dark">
-                      <i className="fa-solid fa-graduation-cap text-danger fs-12" />
+                  <div className="d-flex align-items-center justify-content-center gap-4 p-2 bg-light bg-opacity-75 rounded-3 mb-3 border border-light-subtle w-100">
+                    <div className="d-flex align-items-center gap-1.5 fs-12 fw-bold text-dark">
+                      <i className="fa-solid fa-graduation-cap text-danger fs-13" />
                       <span>{m.studentsMentored}</span>
                     </div>
-                    <div className="d-flex align-items-center gap-1 fs-11 fw-bold text-dark">
-                      <i className="fa-solid fa-star text-warning fs-11" />
+                    <div className="d-flex align-items-center gap-1 fs-12 fw-bold text-dark">
+                      <i className="fa-solid fa-star text-warning fs-12" />
                       <span>{m.rating} Rating</span>
                     </div>
                   </div>
@@ -141,7 +141,7 @@ export default function Mentors() {
                     <span className="d-block fs-10 fw-bold text-uppercase text-muted letter-spacing-1 mb-1.5">
                       Hands-On Tech Stack:
                     </span>
-                    <div className="d-flex flex-wrap gap-1">
+                    <div className="d-flex flex-wrap gap-1.5">
                       {m.expertise.map((exp, eIdx) => (
                         <span
                           key={eIdx}
