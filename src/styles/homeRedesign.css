@@ -87,6 +87,22 @@ html.lenis, html.lenis body {
   }
 }
 
+/* Spacious Hero Section with Animated Shader */
+.miniu-hero-section {
+  min-height: 80vh;
+  background-color: #f8fafc;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .miniu-hero-section {
+    min-height: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+}
+
 .miniu-nav-link {
   color: var(--miniu-secondary);
   font-weight: 500;
