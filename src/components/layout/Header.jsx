@@ -16,11 +16,11 @@ export default function Header({ onOpenCounselling }) {
       <header className="miniu-header d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
           {/* Logo */}
-          <Link to="/" className="d-flex align-items-center text-decoration-none">
+          <Link to="/" className="d-flex align-items-center text-decoration-none me-4 me-xl-5">
             <img
               src="/assets/images/miniu/logo.png"
               alt="MiniU EdTech"
-              className="miniu-header-logo d-inline-block align-text-top"
+              className="miniu-header-logo d-inline-block align-middle"
               style={{ height: "38px", width: "auto", maxHeight: "38px" }}
               onError={(e) => {
                 e.target.style.display = "none"
@@ -29,7 +29,7 @@ export default function Header({ onOpenCounselling }) {
           </Link>
 
           {/* Desktop Navigation Menu */}
-          <nav className="d-none d-lg-flex align-items-center gap-2">
+          <nav className="d-none d-lg-flex align-items-center gap-1 gap-xl-2">
             <Link to="/" className="miniu-nav-link">
               Home
             </Link>
