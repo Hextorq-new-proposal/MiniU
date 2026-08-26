@@ -6,25 +6,34 @@ export default function Hero({ onOpenCounselling }) {
 
   const previewData = {
     sap: {
-      role: "SAP FICO / ABAP Consultant",
-      progress: 88,
-      project: "Enterprise Financial Workflow & RICEF",
-      skills: ["SAP S/4 HANA", "FI/CO Config", "Taxation & GST"],
-      status: "Ready for MNC Placement"
+      domain: "Enterprise ERP",
+      title: "SAP FICO Program",
+      subtitle: "Finance / Non-Tech → SAP Consultant",
+      modulesCount: "5 Core Modules",
+      topics: ["Financial Accounting (FI)", "Controlling (CO)", "S/4 HANA Finance", "GST & TDS Configuration"],
+      project: "Enterprise Financial & Tax Workflow",
+      format: "Classroom (Coimbatore) or Live Online",
+      slug: "/courses/sap-fico"
     },
     data: {
-      role: "Business & Data Analyst",
-      progress: 92,
-      project: "Retail E-Commerce Power BI Dashboard",
-      skills: ["SQL Querying", "Power BI / DAX", "Python Analytics"],
-      status: "Interview Scheduled"
+      domain: "Data & BI",
+      title: "Business Analytics Program",
+      subtitle: "Analyst Track → BI / Data Specialist",
+      modulesCount: "6 Core Modules",
+      topics: ["Power BI Dashboards", "SQL & Database Queries", "Advanced Excel & DAX", "Python for Analytics"],
+      project: "Retail E-Commerce Performance Dashboard",
+      format: "Classroom (Coimbatore) or Live Online",
+      slug: "/courses/business-analytics"
     },
     fullstack: {
-      role: "Full Stack Web Engineer",
-      progress: 85,
-      project: "EdTech Learning Platform (MERN)",
-      skills: ["React 19", "Node.js & Express", "MongoDB & REST"],
-      status: "Portfolio Verified"
+      domain: "Web Engineering",
+      title: "Full Stack Web Development",
+      subtitle: "Frontend & Backend → Software Engineer",
+      modulesCount: "7 Core Modules",
+      topics: ["React 19 & JavaScript", "Node.js & Express APIs", "MongoDB Database", "Full Stack Deployment"],
+      project: "Full-Featured Web Platform with Auth & Payments",
+      format: "Classroom (Coimbatore) or Live Online",
+      slug: "/courses/full-stack-web-development"
     }
   }
 
@@ -36,19 +45,29 @@ export default function Hero({ onOpenCounselling }) {
         <div className="row g-5 align-items-center">
           {/* Left Column: Headline & Value Proposition */}
           <div className="col-lg-7">
-            {/* Live Indicator Pill */}
-            <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-light border border-light-subtle mb-4">
+            {/* Interactive Admissions Open Pill */}
+            <button
+              type="button"
+              onClick={onOpenCounselling}
+              className="btn btn-sm d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-light border border-light-subtle mb-3 text-decoration-none shadow-none"
+            >
               <span className="live-pulse-dot" />
               <span className="fs-13 fw-semibold miniu-text-dark">
                 Admissions Open: Classroom (Coimbatore) & Live Online
               </span>
-            </div>
+              <span className="fs-12 text-danger fw-bold ms-1">View Batches →</span>
+            </button>
 
             {/* Main Headline */}
             <h1 className="display-4 fw-extrabold miniu-text-dark miniu-font-display mb-3 line-height-tight">
               Build the skills. <br className="d-none d-sm-inline" />
               <span className="miniu-text-red">Build the career.</span>
             </h1>
+
+            {/* Domain Specificity Subtitle */}
+            <div className="fs-13 fw-bold text-danger mb-3 text-uppercase letter-spacing-1">
+              SAP • Business &amp; Data • Development • Finance • Design
+            </div>
 
             {/* Supporting Text */}
             <p className="fs-18 miniu-text-muted mb-4 max-w-600 line-height-relaxed">
@@ -66,11 +85,11 @@ export default function Hero({ onOpenCounselling }) {
                 onClick={onOpenCounselling}
                 className="btn-miniu-outline fs-15 py-3 px-4"
               >
-                Book Free Counselling
+                Talk to a Course Advisor
               </button>
             </div>
 
-            {/* Value checklist */}
+            {/* 3 Core Value checklist */}
             <div className="d-flex flex-wrap gap-x-4 gap-y-2 text-secondary fs-14 fw-medium pt-2">
               <span className="d-flex align-items-center gap-2 me-3">
                 <span className="text-success fw-bold">✓</span> Live Mentor Training
@@ -78,110 +97,97 @@ export default function Hero({ onOpenCounselling }) {
               <span className="d-flex align-items-center gap-2 me-3">
                 <span className="text-success fw-bold">✓</span> Practical Projects
               </span>
-              <span className="d-flex align-items-center gap-2 me-3">
-                <span className="text-success fw-bold">✓</span> Placement Support
-              </span>
               <span className="d-flex align-items-center gap-2">
-                <span className="text-success fw-bold">✓</span> Industry Certificate
+                <span className="text-success fw-bold">✓</span> Placement Support
               </span>
             </div>
           </div>
 
-          {/* Right Column: Clean Light Interactive UI Dashboard Mockup */}
+          {/* Right Column: Truthful Career Path Preview Card */}
           <div className="col-lg-5">
             <div className="hero-mockup-card">
               {/* Mockup Header */}
               <div className="d-flex align-items-center justify-content-between pb-3 border-bottom mb-3">
                 <div className="d-flex align-items-center gap-2">
                   <div className="bg-danger bg-opacity-10 text-danger rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: "32px", height: "32px" }}>
-                    <i className="fa-regular fa-graduation-cap fs-14" />
+                    <i className="fa-regular fa-compass fs-14" />
                   </div>
                   <div>
-                    <h6 className="fs-14 fw-bold miniu-text-dark mb-0">Career Milestone Hub</h6>
-                    <span className="fs-11 text-muted">MiniU Learning Dashboard</span>
+                    <h6 className="fs-14 fw-bold miniu-text-dark mb-0">Career Path Preview</h6>
+                    <span className="fs-11 text-muted">MiniU Curriculum Snapshot</span>
                   </div>
                 </div>
-                <span className="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2 py-1 fs-11 fw-semibold">
-                  ● {current.status}
+                <span className="badge bg-light text-dark border rounded-pill px-2 py-1 fs-11 fw-semibold">
+                  {current.domain}
                 </span>
               </div>
 
-              {/* Interactive Role Switcher Tabs */}
-              <div className="d-flex gap-1 p-1 bg-light rounded-pill mb-3">
+              {/* Interactive Track Switcher Tabs */}
+              <div className="d-flex gap-1 p-1 bg-light rounded-pill mb-3 border border-light-subtle">
                 <button
                   type="button"
                   onClick={() => setActiveTab("sap")}
-                  className={`btn btn-sm flex-grow-1 rounded-pill fs-12 fw-semibold border-0 py-1 transition-all ${
-                    activeTab === "sap" ? "bg-white shadow-xs text-dark" : "text-muted"
-                  }`}
+                  className={`hero-tab-btn flex-grow-1 ${activeTab === "sap" ? "active" : ""}`}
                 >
                   SAP Track
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTab("data")}
-                  className={`btn btn-sm flex-grow-1 rounded-pill fs-12 fw-semibold border-0 py-1 transition-all ${
-                    activeTab === "data" ? "bg-white shadow-xs text-dark" : "text-muted"
-                  }`}
+                  className={`hero-tab-btn flex-grow-1 ${activeTab === "data" ? "active" : ""}`}
                 >
                   Data Analytics
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTab("fullstack")}
-                  className={`btn btn-sm flex-grow-1 rounded-pill fs-12 fw-semibold border-0 py-1 transition-all ${
-                    activeTab === "fullstack" ? "bg-white shadow-xs text-dark" : "text-muted"
-                  }`}
+                  className={`hero-tab-btn flex-grow-1 ${activeTab === "fullstack" ? "active" : ""}`}
                 >
                   Full Stack
                 </button>
               </div>
 
-              {/* Progress Box */}
+              {/* Course Title & Modules summary */}
               <div className="p-3 bg-light rounded-3 mb-3 border border-light-subtle">
-                <div className="d-flex align-items-center justify-content-between mb-2">
-                  <span className="fs-13 fw-semibold miniu-text-dark">{current.role}</span>
-                  <span className="fs-13 fw-bold miniu-text-red">{current.progress}% Ready</span>
+                <div className="d-flex align-items-center justify-content-between mb-1">
+                  <span className="fs-14 fw-bold miniu-text-dark">{current.title}</span>
+                  <span className="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle px-2 py-1 fs-11 fw-bold">
+                    {current.modulesCount}
+                  </span>
                 </div>
-                <div className="hero-progress-bar">
-                  <div
-                    className="hero-progress-fill"
-                    style={{ width: `${current.progress}%` }}
-                  />
+                <span className="fs-12 text-muted d-block">{current.subtitle}</span>
+              </div>
+
+              {/* What you'll learn bullets */}
+              <div className="mb-3">
+                <span className="fs-12 fw-bold text-dark d-block mb-2">Key Skills Covered:</span>
+                <div className="d-flex flex-wrap gap-1">
+                  {current.topics.map((topic, tIdx) => (
+                    <span key={tIdx} className="badge bg-white text-secondary border px-2 py-1 fs-11">
+                      ✓ {topic}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Real Project Verification Item */}
-              <div className="d-flex align-items-start gap-3 p-3 bg-white rounded-3 border border-light-subtle mb-3">
-                <div className="bg-success text-white rounded-circle d-flex align-items-center justify-content-center mt-1" style={{ width: "22px", height: "22px", minWidth: "22px", fontSize: "11px" }}>
-                  ✓
-                </div>
-                <div>
-                  <span className="d-block fs-11 text-uppercase text-muted fw-semibold">Verified Capstone Project</span>
-                  <strong className="fs-13 miniu-text-dark d-block mb-1">{current.project}</strong>
-                  <div className="d-flex flex-wrap gap-1">
-                    {current.skills.map((skill, sIdx) => (
-                      <span key={sIdx} className="badge bg-light text-secondary border px-2 py-1 fs-11">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {/* Capstone Project Spec */}
+              <div className="p-2 px-3 bg-white rounded-3 border border-light-subtle mb-3">
+                <span className="fs-11 text-uppercase text-muted fw-bold d-block">Capstone Project</span>
+                <strong className="fs-12 miniu-text-dark">{current.project}</strong>
               </div>
 
-              {/* Bottom Quick Trigger */}
-              <div className="d-flex align-items-center justify-content-between pt-2">
-                <span className="fs-12 text-muted">
-                  <i className="fa-regular fa-shield-check text-success me-1" />
-                  1-on-1 Mentor Evaluation
+              {/* Bottom Actions */}
+              <div className="d-flex align-items-center justify-content-between pt-2 border-top">
+                <span className="fs-11 text-muted">
+                  <i className="fa-regular fa-location-dot text-danger me-1" />
+                  {current.format}
                 </span>
-                <button
-                  type="button"
-                  onClick={onOpenCounselling}
-                  className="btn btn-link text-danger fs-12 fw-bold text-decoration-none p-0"
+                <Link
+                  to={current.slug}
+                  className="btn btn-sm btn-outline-danger rounded-pill px-3 py-1 fs-12 fw-bold text-decoration-none"
                 >
-                  Schedule Demo →
-                </button>
+                  Explore Program →
+                </Link>
               </div>
             </div>
           </div>

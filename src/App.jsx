@@ -1,55 +1,32 @@
 import { useEffect } from "react"
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom"
-import About from "./pages/About"
-import Aws from "./pages/Aws"
-import BlogDetails from "./pages/BlogDetails"
-import Blog from "./pages/Blog"
-import Business from "./pages/Business"
-import BusinessAnalytics from "./pages/BusinessAnalytics"
-import Contact from "./pages/Contact"
-import CorporateFinance from "./pages/CorporateFinance"
-import Course from "./pages/Course1"
-import Course1 from "./pages/Course1"
-import Course2 from "./pages/Course2"
-import DataScience from "./pages/DataScience"
-import Designing from "./pages/Designing"
-import Dev from "./pages/Dev"
-import Devops from "./pages/Devops"
-import DigitalMarketing from "./pages/DigitalMarketing"
-import Finance from "./pages/Finance"
-import FinanceAr from "./pages/FinanceAr"
-import FullStack from "./pages/FullStack"
-import GraphicDesign from "./pages/GraphicDesign"
+import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom"
 import Home from "./pages/Home"
+import Course from "./pages/Course"
+import CourseDetails from "./pages/CourseDetails"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+import Blog from "./pages/Blog"
+import BlogDetails from "./pages/BlogDetails"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
-import QaTest from "./pages/QaTest"
-import Sap from "./pages/Sap"
-import Sap1 from "./pages/Sap1"
-import SapAbap from "./pages/SapAbap"
-import SapBasis from "./pages/SapBasis"
-import SapEwm from "./pages/SapEwm"
-import SapFico from "./pages/SapFico"
-import SapHana from "./pages/SapHana"
-import SapHcm from "./pages/SapHcm"
-import SapMm from "./pages/SapMm"
-import SapPp from "./pages/SapPp"
-import SapQm from "./pages/SapQm"
-import SapSd from "./pages/SapSd"
-import TallyErp from "./pages/TallyErp"
-import Tax from "./pages/Tax"
 import Terms from "./pages/Terms"
-import Uiux from "./pages/Uiux"
-import WebDev from "./pages/WebDev"
 import useInitScripts from "./hooks/useInitScripts"
-import { PAGES } from "./data/manifest"
 
 function ScrollAndTitle() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
+
   useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash)
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" })
+        }, 100)
+        return
+      }
+    }
     window.scrollTo(0, 0)
-    const p = PAGES[pathname]
-    if (p && p.title) document.title = p.title
-  }, [pathname])
+  }, [pathname, hash])
+
   return null
 }
 
@@ -61,14 +38,30 @@ function SpaLinks() {
       const a = e.target.closest && e.target.closest("a")
       if (!a) return
       const href = a.getAttribute("href")
-      if (!href || /^(https?:|mailto:|tel:|javascript:|#)/i.test(href)) return
-      if (href.endsWith(".html")) {
+      if (!href || /^(https?:|mailto:|tel:|javascript:)/i.test(href)) return
+
+      // Anchor hash navigation on same or root page
+      if (href.startsWith("#")) {
         e.preventDefault()
-        const clean = href.replace(/^\.\//, "")
-        nav(clean === "index.html" ? "/" : "/" + clean)
-      } else if (href.startsWith("/")) {
+        const el = document.querySelector(href)
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" })
+        } else {
+          nav("/" + href)
+        }
+        return
+      }
+
+      if (href.startsWith("/#")) {
         e.preventDefault()
         nav(href)
+        return
+      }
+
+      if (href.endsWith(".html") || href.startsWith("/")) {
+        e.preventDefault()
+        const clean = href.replace(/^\.\//, "").replace(/^\//, "")
+        nav(clean === "index.html" || clean === "" ? "/" : "/" + clean)
       }
     }
     document.addEventListener("click", h)
@@ -79,15 +72,18 @@ function SpaLinks() {
 
 export default function App() {
   useInitScripts()
+
   return (
     <>
       <ScrollAndTitle />
       <SpaLinks />
       <Routes>
-        {/* Core Home & Clean URLs */}
+        {/* =========================================
+            CANONICAL RESTFUL ROUTES (Single Source of Truth)
+            ========================================= */}
         <Route path="/" element={<Home />} />
-        <Route path="/index.html" element={<Home />} />
-        <Route path="/courses" element={<Course1 />} />
+        <Route path="/courses" element={<Course />} />
+        <Route path="/courses/:slug" element={<CourseDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
@@ -95,49 +91,63 @@ export default function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
 
-        {/* All Dedicated Internal Pages (Direct 1:1 Mapping) */}
-        <Route path="/about.html" element={<About />} />
-        <Route path="/aws.html" element={<Aws />} />
-        <Route path="/blog-details.html" element={<BlogDetails />} />
-        <Route path="/blog.html" element={<Blog />} />
-        <Route path="/business.html" element={<Business />} />
-        <Route path="/business_analytics.html" element={<BusinessAnalytics />} />
-        <Route path="/contact.html" element={<Contact />} />
-        <Route path="/corporate_finance.html" element={<CorporateFinance />} />
-        <Route path="/course.html" element={<Course1 />} />
-        <Route path="/course1.html" element={<Course1 />} />
-        <Route path="/course2.html" element={<Course2 />} />
-        <Route path="/data_science.html" element={<DataScience />} />
-        <Route path="/designing.html" element={<Designing />} />
-        <Route path="/dev.html" element={<Dev />} />
-        <Route path="/devops.html" element={<Devops />} />
-        <Route path="/digital_marketing.html" element={<DigitalMarketing />} />
-        <Route path="/finance.html" element={<Finance />} />
-        <Route path="/finance_ar.html" element={<FinanceAr />} />
-        <Route path="/full_stack.html" element={<FullStack />} />
-        <Route path="/graphic_design.html" element={<GraphicDesign />} />
-        <Route path="/privacy_policy.html" element={<PrivacyPolicy />} />
-        <Route path="/qa_test.html" element={<QaTest />} />
-        <Route path="/sap.html" element={<Sap />} />
-        <Route path="/sap1.html" element={<Sap1 />} />
-        <Route path="/sap_abap.html" element={<SapAbap />} />
-        <Route path="/sap_basis.html" element={<SapBasis />} />
-        <Route path="/sap_ewm.html" element={<SapEwm />} />
-        <Route path="/sap_fico.html" element={<SapFico />} />
-        <Route path="/sap_hana.html" element={<SapHana />} />
-        <Route path="/sap_hcm.html" element={<SapHcm />} />
-        <Route path="/sap_mm.html" element={<SapMm />} />
-        <Route path="/sap_pp.html" element={<SapPp />} />
-        <Route path="/sap_qm.html" element={<SapQm />} />
-        <Route path="/sap_sd.html" element={<SapSd />} />
-        <Route path="/tally_erp.html" element={<TallyErp />} />
-        <Route path="/tax.html" element={<Tax />} />
-        <Route path="/terms.html" element={<Terms />} />
-        <Route path="/uiux.html" element={<Uiux />} />
-        <Route path="/web_dev.html" element={<WebDev />} />
+        {/* =========================================
+            LEGACY .HTML 301-STYLE REDIRECTS
+            (Preserves all backlinks & old URLs cleanly)
+            ========================================= */}
+        <Route path="/index.html" element={<Navigate to="/" replace />} />
+        <Route path="/about.html" element={<Navigate to="/about" replace />} />
+        <Route path="/contact.html" element={<Navigate to="/contact" replace />} />
+        <Route path="/course.html" element={<Navigate to="/courses" replace />} />
+        <Route path="/course1.html" element={<Navigate to="/courses" replace />} />
+        <Route path="/course2.html" element={<Navigate to="/courses" replace />} />
+        <Route path="/blog.html" element={<Navigate to="/blog" replace />} />
+        <Route path="/blog-details.html" element={<Navigate to="/blog-details" replace />} />
+        <Route path="/privacy_policy.html" element={<Navigate to="/privacy-policy" replace />} />
+        <Route path="/terms.html" element={<Navigate to="/terms" replace />} />
 
-        {/* Fallback */}
-        <Route path="*" element={<Home />} />
+        {/* SAP Module Redirects */}
+        <Route path="/sap_abap.html" element={<Navigate to="/courses/sap-abap" replace />} />
+        <Route path="/sap_fico.html" element={<Navigate to="/courses/sap-fico" replace />} />
+        <Route path="/sap_mm.html" element={<Navigate to="/courses/sap-mm" replace />} />
+        <Route path="/sap_sd.html" element={<Navigate to="/courses/sap-sd" replace />} />
+        <Route path="/sap_hana.html" element={<Navigate to="/courses/sap-s4-hana" replace />} />
+        <Route path="/sap_basis.html" element={<Navigate to="/courses/sap-basis" replace />} />
+        <Route path="/sap_ewm.html" element={<Navigate to="/courses/sap-ewm" replace />} />
+        <Route path="/sap_hcm.html" element={<Navigate to="/courses/sap-hcm" replace />} />
+        <Route path="/sap_pp.html" element={<Navigate to="/courses/sap-pp" replace />} />
+        <Route path="/sap_qm.html" element={<Navigate to="/courses/sap-qm" replace />} />
+        <Route path="/sap.html" element={<Navigate to="/courses" replace />} />
+        <Route path="/sap1.html" element={<Navigate to="/courses" replace />} />
+
+        {/* Business, Analytics & Data Redirects */}
+        <Route path="/business_analytics.html" element={<Navigate to="/courses/business-analytics" replace />} />
+        <Route path="/data_science.html" element={<Navigate to="/courses/data-science" replace />} />
+        <Route path="/digital_marketing.html" element={<Navigate to="/courses/digital-marketing" replace />} />
+        <Route path="/business.html" element={<Navigate to="/courses" replace />} />
+
+        {/* Tech, Development, Cloud & QA Redirects */}
+        <Route path="/full_stack.html" element={<Navigate to="/courses/full-stack-web-development" replace />} />
+        <Route path="/devops.html" element={<Navigate to="/courses/devops" replace />} />
+        <Route path="/web_dev.html" element={<Navigate to="/courses/full-stack-web-development" replace />} />
+        <Route path="/qa_test.html" element={<Navigate to="/courses/qa-software-testing" replace />} />
+        <Route path="/aws.html" element={<Navigate to="/courses/aws-cloud-practitioner" replace />} />
+        <Route path="/dev.html" element={<Navigate to="/courses" replace />} />
+
+        {/* Design Redirects */}
+        <Route path="/uiux.html" element={<Navigate to="/courses/uiux-design" replace />} />
+        <Route path="/graphic_design.html" element={<Navigate to="/courses/graphic-design" replace />} />
+        <Route path="/designing.html" element={<Navigate to="/courses" replace />} />
+
+        {/* Finance & Taxation Redirects */}
+        <Route path="/corporate_finance.html" element={<Navigate to="/courses/corporate-finance" replace />} />
+        <Route path="/tally_erp.html" element={<Navigate to="/courses/tally-prime-gst" replace />} />
+        <Route path="/tax.html" element={<Navigate to="/courses/taxation-gst" replace />} />
+        <Route path="/finance.html" element={<Navigate to="/courses" replace />} />
+        <Route path="/finance_ar.html" element={<Navigate to="/courses" replace />} />
+
+        {/* 404 Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   )

@@ -7,60 +7,60 @@ const FEATURED_PROGRAMS = [
     categoryIcon: "fa-regular fa-coins",
     title: "SAP FICO",
     subtitle: "Financial Accounting, Controlling & S/4 HANA Integration",
-    duration: "8 Weeks",
+    duration: "80 Hours",
     level: "Beginner Friendly",
     skills: "SAP FI • CO • GST • Asset Accounting",
-    path: "/sap_fico.html"
+    path: "/courses/sap-fico"
   },
   {
     category: "SAP Module",
     categoryIcon: "fa-regular fa-code",
     title: "SAP ABAP",
     subtitle: "Advanced SAP Programming, RICEF & S/4 HANA Migration",
-    duration: "10 Weeks",
+    duration: "80 Hours",
     level: "Beginner to Advanced",
     skills: "RICEF • OOPS ABAP • BAPI • OData",
-    path: "/sap_abap.html"
+    path: "/courses/sap-abap"
   },
   {
     category: "Data & BI",
     categoryIcon: "fa-regular fa-chart-mixed",
     title: "Business Analytics",
     subtitle: "Transform raw data into dashboards & strategic insights",
-    duration: "8-10 Weeks",
+    duration: "70 Hours",
     level: "Beginner Friendly",
     skills: "Power BI • SQL • Advanced Excel • Tableau",
-    path: "/business_analytics.html"
+    path: "/courses/business-analytics"
   },
   {
     category: "AI & Tech",
     categoryIcon: "fa-regular fa-brain",
     title: "Data Science & Machine Learning",
     subtitle: "Statistical modeling, predictive algorithms & Python AI",
-    duration: "10-12 Weeks",
+    duration: "90 Hours",
     level: "Comprehensive",
     skills: "Python • Scikit-Learn • EDA • ML Models",
-    path: "/data_science.html"
+    path: "/courses/data-science"
   },
   {
     category: "Web Engineering",
     categoryIcon: "fa-regular fa-laptop-code",
     title: "Full Stack Web Development",
     subtitle: "Build modern, responsive full-stack apps with MERN stack",
-    duration: "10 Weeks",
+    duration: "90 Hours",
     level: "Job-Oriented",
     skills: "React 19 • Node.js • Express • MongoDB",
-    path: "/full_stack.html"
+    path: "/courses/full-stack-web-development"
   },
   {
     category: "Design",
     categoryIcon: "fa-regular fa-pen-nib",
     title: "UI/UX Design Masterclass",
     subtitle: "User research, wireframing, and Figma product prototyping",
-    duration: "8 Weeks",
+    duration: "60 Hours",
     level: "Beginner Friendly",
     skills: "Figma • Auto-Layout • Design Systems • Wireframes",
-    path: "/uiux.html"
+    path: "/courses/uiux-design"
   }
 ]
 
@@ -83,7 +83,7 @@ export default function CareerPaths() {
           </div>
 
           <Link
-            to="/course.html"
+            to="/courses"
             className="btn-miniu-outline align-self-start align-self-md-auto"
           >
             <span>View All Courses</span>

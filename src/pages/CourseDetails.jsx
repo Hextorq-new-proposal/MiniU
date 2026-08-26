@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import Header from "../components/layout/Header"
+import Footer from "../components/layout/Footer"
 import SEOHead from "../components/common/SEOHead"
 import SyllabusAccordion from "../components/courses/SyllabusAccordion"
 import LeadModal from "../components/modals/LeadModal"
@@ -64,19 +64,18 @@ export default function CourseDetails({ specificSlug = null }) {
     }
   }
 
+  const safeImage = course.imageLarge?.startsWith("/") ? course.imageLarge : `/${course.imageLarge || "assets/images/miniu/logo.png"}`
+
   return (
     <>
-      {/* Full-Stack SEO Manager */}
       <SEOHead
-        title={course.seo.title}
-        description={course.seo.metaDesc}
-        keywords={course.seo.keywords}
+        title={`${course.title} | MiniU EdTech Coimbatore`}
+        description={course.shortDesc}
         canonicalUrl={`https://miniu.info/courses/${course.slug}`}
-        ogImage={`https://miniu.info/${course.imageLarge}`}
         schema={courseSchema}
       />
 
-      <Header />
+      <Header onOpenCounselling={() => handleOpenModal("demo")} />
 
       <main className="bg-light pb-5">
         {/* Course Hero Banner */}
@@ -143,15 +142,8 @@ export default function CourseDetails({ specificSlug = null }) {
                   <div className="d-flex align-items-center gap-2">
                     <i className="fa-regular fa-briefcase text-danger fs-18" />
                     <div>
-                      <span className="d-block text-muted fs-11 text-uppercase">Placement</span>
-                      <strong className="fs-14 text-success">100% Guaranteed</strong>
-                    </div>
-                  </div>
-                  <div className="d-flex align-items-center gap-2">
-                    <i className="fa-regular fa-indian-rupee-sign text-danger fs-18" />
-                    <div>
-                      <span className="d-block text-muted fs-11 text-uppercase">Salary Range</span>
-                      <strong className="fs-14">{course.salaryRange}</strong>
+                      <span className="d-block text-muted fs-11 text-uppercase">Placement Support</span>
+                      <strong className="fs-14 text-success">Included</strong>
                     </div>
                   </div>
                 </div>
@@ -161,53 +153,52 @@ export default function CourseDetails({ specificSlug = null }) {
                   <button
                     type="button"
                     onClick={() => handleOpenModal("demo")}
-                    className="btn btn-danger btn-lg rounded-pill px-4 py-3 fw-bold shadow-sm fs-15 d-flex align-items-center gap-2"
+                    className="btn btn-danger btn-lg rounded-pill px-4 fs-15 fw-semibold shadow-sm"
                   >
-                    <span>Book a Free 1-on-1 Demo Class</span>
-                    <i className="fa-regular fa-arrow-right-long" />
+                    🚀 Book Free Demo Session
                   </button>
                   <button
                     type="button"
                     onClick={() => handleOpenModal("syllabus")}
-                    className="btn btn-outline-dark btn-lg rounded-pill px-4 py-3 fw-semibold fs-15 d-flex align-items-center gap-2"
+                    className="btn btn-outline-dark btn-lg rounded-pill px-4 fs-15 fw-semibold"
                   >
-                    <i className="fa-solid fa-file-pdf text-danger" />
-                    <span>Download Syllabus (PDF)</span>
+                    <i className="fa-regular fa-file-pdf text-danger me-2" />
+                    Download Syllabus
                   </button>
                 </div>
               </div>
 
-              {/* Course Right Image Card */}
               <div className="col-lg-4">
-                <div className="bg-white p-3 rounded-4 border shadow-sm">
+                <div className="card border rounded-4 shadow-sm overflow-hidden bg-white">
                   <img
-                    src={course.imageLarge}
+                    src={safeImage}
                     alt={course.title}
-                    className="w-100 rounded-3 object-fit-cover mb-3"
-                    style={{ maxHeight: "240px" }}
+                    className="w-100 object-fit-cover"
+                    style={{ height: "200px" }}
                     onError={(e) => {
-                      e.target.src = "assets/images/courses/courses-two-image1.png"
+                      e.target.src = "/assets/images/miniu/logo.png"
                     }}
                   />
-                  <div className="p-2">
-                    <h5 className="fs-16 fw-bold text-dark mb-2">Training Inclusions:</h5>
-                    <ul className="list-unstyled mb-0 d-flex flex-column gap-2 fs-13 text-secondary">
-                      <li className="d-flex align-items-center gap-2">
-                        <span className="text-success">✓</span> 24/7 Dedicated Server Access
-                      </li>
-                      <li className="d-flex align-items-center gap-2">
-                        <span className="text-success">✓</span> Live Real-World Capstone Projects
-                      </li>
-                      <li className="d-flex align-items-center gap-2">
-                        <span className="text-success">✓</span> Global Certification Prep & Exam Voucher
-                      </li>
-                      <li className="d-flex align-items-center gap-2">
-                        <span className="text-success">✓</span> 5+ Mock Technical Interviews
-                      </li>
-                      <li className="d-flex align-items-center gap-2">
-                        <span className="text-success">✓</span> Flexible Weekday & Weekend Batches
-                      </li>
+                  <div className="card-body p-4">
+                    <h5 className="fw-bold text-dark fs-16 mb-3">Course Key Highlights:</h5>
+                    <ul className="list-unstyled d-flex flex-column gap-2 fs-13 text-secondary mb-4">
+                      {course.keyHighlights?.slice(0, 5).map((hl, hIdx) => (
+                        <li key={hIdx} className="d-flex align-items-start gap-2">
+                          <i className="fa-solid fa-check text-success mt-1" />
+                          <span>{hl}</span>
+                        </li>
+                      ))}
                     </ul>
+
+                    <div className="d-grid gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handleOpenModal("demo")}
+                        className="btn btn-danger rounded-pill fw-semibold py-2"
+                      >
+                        Enroll / Enquire Now
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -215,132 +206,123 @@ export default function CourseDetails({ specificSlug = null }) {
           </div>
         </section>
 
-        {/* Content Section */}
-        <section className="py-5">
-          <div className="container">
-            <div className="row g-4">
-              <div className="col-lg-8">
-                {/* Course Overview */}
-                <div className="bg-white rounded-4 border p-4 p-md-5 shadow-sm mb-4">
-                  <h3 className="fs-22 fw-bold text-dark mb-3">About This Program</h3>
-                  <p className="text-muted fs-15 mb-4 line-height-lg">
-                    {course.longDesc}
-                  </p>
+        {/* Detailed Course Content Sections */}
+        <div className="container py-5">
+          <div className="row g-4">
+            {/* Left Content Column */}
+            <div className="col-lg-8">
+              {/* Overview Card */}
+              <div className="card border rounded-4 p-4 p-md-5 bg-white mb-4 shadow-xs">
+                <h2 className="fs-22 fw-bold text-dark mb-3">Course Overview</h2>
+                <p className="text-secondary fs-15 line-height-lg mb-4">
+                  {course.longDesc}
+                </p>
 
-                  <h4 className="fs-18 fw-bold text-dark mb-3">Key Highlights of the Training</h4>
-                  <div className="row g-3">
-                    {course.keyHighlights.map((highlight, idx) => (
-                      <div key={idx} className="col-sm-6">
-                        <div className="d-flex align-items-start gap-2 p-3 rounded-3 bg-light border h-100">
-                          <span className="text-danger fw-bold mt-1">✓</span>
-                          <span className="fs-14 fw-semibold text-dark">{highlight}</span>
-                        </div>
+                <h3 className="fs-18 fw-bold text-dark mb-3">Target Career Roles</h3>
+                <div className="d-flex flex-wrap gap-2 mb-4">
+                  {course.targetRoles?.map((role, rIdx) => (
+                    <span key={rIdx} className="badge bg-light text-dark border px-3 py-2 fs-13">
+                      💼 {role}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="fs-18 fw-bold text-dark mb-2">Prerequisites</h3>
+                <p className="text-muted fs-14 mb-0">
+                  {course.prerequisites}
+                </p>
+              </div>
+
+              {/* Interactive Syllabus Module Accordion */}
+              <div className="card border rounded-4 p-4 p-md-5 bg-white mb-4 shadow-xs">
+                <SyllabusAccordion
+                  syllabus={course.syllabus}
+                  onDownloadClick={() => handleOpenModal("syllabus")}
+                />
+              </div>
+
+              {/* Course Specific FAQs */}
+              {course.faqs && course.faqs.length > 0 && (
+                <div className="card border rounded-4 p-4 p-md-5 bg-white shadow-xs">
+                  <h2 className="fs-22 fw-bold text-dark mb-4">Frequently Asked Questions</h2>
+                  <div className="d-flex flex-column gap-3">
+                    {course.faqs.map((faq, fIdx) => (
+                      <div key={fIdx} className="p-3 bg-light rounded-3 border">
+                        <h4 className="fs-15 fw-bold text-dark mb-2">
+                          Q: {faq.q}
+                        </h4>
+                        <p className="fs-14 text-secondary mb-0">
+                          {faq.a}
+                        </p>
                       </div>
                     ))}
                   </div>
                 </div>
+              )}
+            </div>
 
-                {/* Target Career Roles */}
-                <div className="bg-white rounded-4 border p-4 p-md-5 shadow-sm mb-4">
-                  <h3 className="fs-20 fw-bold text-dark mb-2">Target Job Profiles</h3>
-                  <p className="text-muted fs-14 mb-3">
-                    Upon successful graduation from MiniU, students are qualified for the following industry positions:
-                  </p>
-                  <div className="d-flex flex-wrap gap-2">
-                    {course.targetRoles.map((role, rIdx) => (
-                      <span key={rIdx} className="badge bg-light text-dark border px-3 py-2 rounded-pill fs-13 fw-semibold">
-                        💼 {role}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Interactive Syllabus Accordion */}
-                <SyllabusAccordion
-                  syllabus={course.syllabus}
-                  courseTitle={course.shortTitle}
-                  onDownloadSyllabus={() => handleOpenModal("syllabus")}
-                />
-
-                {/* Course FAQs */}
-                {course.faqs && course.faqs.length > 0 && (
-                  <div className="bg-white rounded-4 border p-4 p-md-5 shadow-sm mt-4">
-                    <h3 className="fs-22 fw-bold text-dark mb-3">Frequently Asked Questions</h3>
-                    <div className="d-flex flex-column gap-3">
-                      {course.faqs.map((faq, fIdx) => (
-                        <div key={fIdx} className="p-3 bg-light rounded-3 border">
-                          <h5 className="fs-15 fw-bold text-dark mb-2">Q: {faq.question}</h5>
-                          <p className="text-muted fs-14 mb-0">A: {faq.answer}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Sidebar */}
-              <div className="col-lg-4">
-                <div className="sticky-top" style={{ top: "100px", zIndex: 10 }}>
-                  {/* Lead Capture Box */}
-                  <div className="bg-white rounded-4 border p-4 shadow-sm mb-4">
-                    <span className="badge bg-danger-subtle text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
-                      Admissions Open
+            {/* Right Sticky Sidebar */}
+            <div className="col-lg-4">
+              <div className="sticky-top" style={{ top: "90px", zIndex: 10 }}>
+                {/* Free Demo Card */}
+                <div className="card border-0 rounded-4 p-4 bg-white shadow-sm mb-4 border border-danger-subtle">
+                  <div className="text-center mb-3">
+                    <span className="badge bg-danger text-white rounded-pill px-3 py-1 fs-12 fw-semibold mb-2">
+                      Free Live Trial
                     </span>
-                    <h4 className="fs-18 fw-bold text-dark mb-2">Next Batch Starting Soon!</h4>
-                    <p className="text-muted fs-13 mb-4">
-                      Limited seats per batch for personalized mentoring at our RS Puram campus.
+                    <h3 className="fs-18 fw-bold text-dark">Attend a Free Demo Class</h3>
+                    <p className="text-muted fs-13 mb-0">
+                      Experience our hands-on teaching methodology, meet the mentors, and discuss batch timings.
                     </p>
+                  </div>
 
+                  <div className="d-grid gap-2">
                     <button
                       type="button"
                       onClick={() => handleOpenModal("demo")}
-                      className="btn btn-danger w-100 rounded-pill py-3 fw-bold shadow-sm fs-14 mb-2"
+                      className="btn btn-danger btn-lg rounded-pill fw-semibold fs-14"
                     >
-                      Book Free Demo Class
+                      Book 1-on-1 Demo Session
                     </button>
-
-                    <button
-                      type="button"
-                      onClick={() => handleOpenModal("syllabus")}
-                      className="btn btn-outline-secondary w-100 rounded-pill py-2 fs-14 fw-semibold mb-3"
+                    <a
+                      href="https://wa.me/919944055555"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-outline-success rounded-pill fw-semibold fs-14 d-flex align-items-center justify-content-center gap-2"
                     >
-                      Download Syllabus PDF
-                    </button>
-
-                    <div className="border-top pt-3 text-center">
-                      <p className="text-muted fs-12 mb-1">Need immediate counseling?</p>
-                      <a
-                        href="tel:+919944055555"
-                        className="text-danger fw-bold text-decoration-none fs-14"
-                      >
-                        📞 Call Us: +91 99440 55555
-                      </a>
-                    </div>
+                      <i className="fa-brands fa-whatsapp fs-18" />
+                      <span>Chat on WhatsApp</span>
+                    </a>
                   </div>
+                </div>
 
-                  {/* Prerequisites Card */}
-                  <div className="bg-white rounded-4 border p-4 shadow-sm">
-                    <h5 className="fs-15 fw-bold text-dark mb-2">Eligibility / Prerequisites</h5>
-                    <p className="text-muted fs-13 mb-0">
-                      {course.prerequisites}
-                    </p>
-                  </div>
+                {/* Training Location Snapshot */}
+                <div className="card border rounded-4 p-4 bg-white shadow-xs">
+                  <h4 className="fs-16 fw-bold text-dark mb-2">Campus Location:</h4>
+                  <p className="text-secondary fs-13 mb-3">
+                    <i className="fa-solid fa-location-dot text-danger me-2" />
+                    MiniU Campus, Vayaluran Towers, RS Puram, Coimbatore, Tamil Nadu 641002
+                  </p>
+                  <p className="text-muted fs-12 mb-0">
+                    <i className="fa-solid fa-clock text-danger me-2" />
+                    Batches available: Weekday Mornings / Evenings &amp; Weekend Fast-Track.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </main>
 
       <Footer />
 
-      {/* Sticky Mobile Action Bar */}
+      {/* Sticky Mobile Conversion Bar */}
       <StickyActionBar
-        courseTitle={course.shortTitle}
-        onOpenDemoModal={() => handleOpenModal("demo")}
+        onDemoClick={() => handleOpenModal("demo")}
+        onSyllabusClick={() => handleOpenModal("syllabus")}
       />
 
-      {/* Lead Capture Modal */}
+      {/* Interactive Lead / Counselling Modal */}
       <LeadModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

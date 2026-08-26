@@ -18,7 +18,7 @@ export default function Header({ onOpenCounselling }) {
           {/* Logo */}
           <Link to="/" className="d-flex align-items-center text-decoration-none">
             <img
-              src="assets/images/miniu/logo.png"
+              src="/assets/images/miniu/logo.png"
               alt="MiniU EdTech"
               height="38"
               className="d-inline-block align-text-top"
@@ -33,10 +33,10 @@ export default function Header({ onOpenCounselling }) {
             <Link to="/courses" className="miniu-nav-link">
               Courses
             </Link>
-            <a href="#career-discovery" className="miniu-nav-link">
+            <a href="/#career-discovery" className="miniu-nav-link">
               Career Paths
             </a>
-            <a href="#placement-proof" className="miniu-nav-link">
+            <a href="/#placement-proof" className="miniu-nav-link">
               Placements
             </a>
             <Link to="/about" className="miniu-nav-link">
@@ -85,7 +85,7 @@ export default function Header({ onOpenCounselling }) {
           >
             <div>
               <div className="d-flex align-items-center justify-content-between pb-3 border-bottom mb-3">
-                <img src="assets/images/miniu/logo.png" alt="MiniU" height="32" />
+                <img src="/assets/images/miniu/logo.png" alt="MiniU" height="32" />
                 <button
                   type="button"
                   className="btn btn-sm btn-light rounded-circle"
@@ -111,14 +111,14 @@ export default function Header({ onOpenCounselling }) {
                   Courses
                 </Link>
                 <a
-                  href="#career-discovery"
+                  href="/#career-discovery"
                   className="miniu-nav-link py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Career Paths
                 </a>
                 <a
-                  href="#placement-proof"
+                  href="/#placement-proof"
                   className="miniu-nav-link py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >

@@ -8,9 +8,9 @@ const CATEGORY_DISCOVERY = [
     desc: "Enterprise ERP systems & functional consultant roles",
     icon: "fa-regular fa-database",
     recommended: [
-      { name: "SAP FICO (Finance & Controlling)", path: "/sap_fico.html", tag: "Most Hired" },
-      { name: "SAP ABAP (Advanced Programming)", path: "/sap_abap.html", tag: "High Tech Demand" },
-      { name: "SAP MM (Materials Management & SCM)", path: "/sap_mm.html", tag: "Supply Chain" }
+      { name: "SAP FICO (Finance & Controlling)", path: "/courses/sap-fico", tag: "Most In-Demand" },
+      { name: "SAP ABAP (Advanced Programming)", path: "/courses/sap-abap", tag: "High Tech Demand" },
+      { name: "SAP MM (Materials Management & SCM)", path: "/courses/sap-mm", tag: "Supply Chain" }
     ]
   },
   {
@@ -19,8 +19,8 @@ const CATEGORY_DISCOVERY = [
     desc: "Transform raw numbers into strategic business insights",
     icon: "fa-regular fa-chart-mixed",
     recommended: [
-      { name: "Business Analytics (Power BI & SQL)", path: "/business_analytics.html", tag: "Fast Track" },
-      { name: "Data Science & Machine Learning", path: "/data_science.html", tag: "AI Era" }
+      { name: "Business Analytics (Power BI & SQL)", path: "/courses/business-analytics", tag: "Top Rated" },
+      { name: "Data Science & Machine Learning", path: "/courses/data-science", tag: "AI & ML" }
     ]
   },
   {
@@ -29,7 +29,7 @@ const CATEGORY_DISCOVERY = [
     desc: "Build modern web platforms, APIs, and scalable apps",
     icon: "fa-regular fa-code",
     recommended: [
-      { name: "Full Stack Web Development (MERN)", path: "/full_stack.html", tag: "High Demand" }
+      { name: "Full Stack Web Development (MERN)", path: "/courses/full-stack-web-development", tag: "Job-Ready Track" }
     ]
   },
   {
@@ -38,7 +38,7 @@ const CATEGORY_DISCOVERY = [
     desc: "Practical corporate accounting, taxation, and financial reporting",
     icon: "fa-regular fa-coins",
     recommended: [
-      { name: "SAP FICO Financial Accounting", path: "/sap_fico.html", tag: "Top Choice" }
+      { name: "SAP FICO Financial Accounting", path: "/courses/sap-fico", tag: "Finance Pro" }
     ]
   },
   {
@@ -47,7 +47,7 @@ const CATEGORY_DISCOVERY = [
     desc: "User research, wireframing, and Figma product prototyping",
     icon: "fa-regular fa-pen-nib",
     recommended: [
-      { name: "UI/UX Design Masterclass (Figma)", path: "/uiux.html", tag: "Creative Track" }
+      { name: "UI/UX Design Masterclass (Figma)", path: "/courses/uiux-design", tag: "Creative Track" }
     ]
   },
   {
@@ -56,16 +56,16 @@ const CATEGORY_DISCOVERY = [
     desc: "Automate infrastructure, CI/CD pipelines, and cloud containers",
     icon: "fa-regular fa-cloud",
     recommended: [
-      { name: "DevOps & Cloud Automation (Docker, K8s)", path: "/devops.html", tag: "Tech Essential" }
+      { name: "DevOps & Cloud Automation (Docker, K8s)", path: "/courses/devops", tag: "Cloud Essential" }
     ]
   }
 ]
 
 export const CAREER_QUIZ_MAPPINGS = {
-  "Enterprise ERP": { title: "SAP FICO / ABAP Consultant", path: "/sap_fico.html" },
-  "Data & Analytics": { title: "Business & Data Analyst", path: "/business_analytics.html" },
-  "Coding & Web": { title: "Full Stack Web Developer", path: "/full_stack.html" },
-  "Design & Creativity": { title: "UI/UX Product Designer", path: "/uiux.html" }
+  "Enterprise ERP": { title: "SAP FICO / ABAP Consultant", path: "/courses/sap-fico" },
+  "Data & Analytics": { title: "Business & Data Analyst", path: "/courses/business-analytics" },
+  "Coding & Web": { title: "Full Stack Web Developer", path: "/courses/full-stack-web-development" },
+  "Design & Creativity": { title: "UI/UX Product Designer", path: "/courses/uiux-design" }
 }
 
 export default function CareerFinder({ onOpenCounselling }) {
@@ -132,7 +132,7 @@ export default function CareerFinder({ onOpenCounselling }) {
               <span className="fs-12 text-uppercase fw-bold text-danger">Recommended for you in</span>
               <h4 className="fs-18 fw-bold miniu-text-dark mb-0">{selectedCategory.title}</h4>
             </div>
-            <Link to="/course.html" className="btn btn-sm btn-outline-dark rounded-pill px-3 py-1 fs-13 fw-semibold">
+            <Link to="/courses" className="btn btn-sm btn-outline-dark rounded-pill px-3 py-1 fs-13 fw-semibold">
               View all programs in catalog →
             </Link>
           </div>

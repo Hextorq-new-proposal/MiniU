@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 export default function CourseCard({ course, onEnquire }) {
   const targetUrl = `/courses/${course.slug}`
+  const imgSrc = course.imageSmall?.startsWith("/") ? course.imageSmall : `/${course.imageSmall || "assets/images/miniu/logo.png"}`
 
   return (
     <div className="miniu-course-card bg-white rounded-4 border border-light-subtle shadow-sm overflow-hidden h-100 d-flex flex-column transition-all">
@@ -10,12 +11,12 @@ export default function CourseCard({ course, onEnquire }) {
       <div className="position-relative overflow-hidden" style={{ height: "200px" }}>
         <Link to={targetUrl} className="d-block w-100 h-100">
           <img
-            src={course.imageSmall}
+            src={imgSrc}
             alt={course.title}
             className="w-100 h-100 object-fit-cover transition-transform"
             loading="lazy"
             onError={(e) => {
-              e.target.src = "assets/images/courses/courses-two-image1.png"
+              e.target.src = "/assets/images/miniu/logo.png"
             }}
           />
         </Link>

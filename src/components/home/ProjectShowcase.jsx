@@ -9,7 +9,7 @@ const PROJECTS = [
     skills: ["React 19", "Node.js", "Express", "MongoDB", "REST APIs"],
     duration: "3 Weeks Capstone",
     outcome: "Production-ready web platform with authentication, cart management, and payment gateway integration.",
-    path: "/full_stack.html"
+    path: "/courses/full-stack-web-development"
   },
   {
     number: "02",
@@ -18,7 +18,7 @@ const PROJECTS = [
     skills: ["Power BI", "SQL", "DAX Formulas", "Data Modeling", "Excel"],
     duration: "2.5 Weeks Capstone",
     outcome: "Interactive real-time KPI dashboard analyzing revenue, churn rate, and inventory performance for 50,000+ records.",
-    path: "/business_analytics.html"
+    path: "/courses/business-analytics"
   },
   {
     number: "03",
@@ -27,7 +27,7 @@ const PROJECTS = [
     skills: ["SAP S/4 HANA", "FI/CO Config", "GST / TDS", "RICEF Reports"],
     duration: "3 Weeks Capstone",
     outcome: "Configured multi-company enterprise structure with automatic account determination (OBYC/VKOA) and balance sheet outputs.",
-    path: "/sap_fico.html"
+    path: "/courses/sap-fico"
   }
 ]
 

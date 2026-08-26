@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import Header from "../components/layout/Header"
+import Footer from "../components/layout/Footer"
 import SEOHead from "../components/common/SEOHead"
 import CourseCatalog from "../components/courses/CourseCatalog"
-import SalaryCalculator from "../components/interactive/SalaryCalculator"
 import LeadModal from "../components/modals/LeadModal"
 import StickyActionBar from "../components/common/StickyActionBar"
 
@@ -13,7 +12,7 @@ export default function Course({ initialCategory = "all" }) {
   const [modalType, setModalType] = useState("demo")
   const [activeCourse, setActiveCourse] = useState(null)
 
-  const handleEnquire = (course) => {
+  const handleEnquire = (course = null) => {
     setActiveCourse(course)
     setModalType("demo")
     setModalOpen(true)
@@ -56,14 +55,13 @@ export default function Course({ initialCategory = "all" }) {
   return (
     <>
       <SEOHead
-        title="Job Oriented Courses in Coimbatore with 100% Placement | MiniU EdTech"
+        title="Job Oriented Courses in Coimbatore with Placement Support | MiniU EdTech"
         description="Explore top SAP modules (ABAP, FICO, MM, SD, HANA), Business Analytics, Data Science, Full Stack Web Development, and DevOps courses in Coimbatore at MiniU."
-        keywords="sap courses coimbatore, it training courses coimbatore, full stack development rs puram, data science institute coimbatore, placement guaranteed courses"
         canonicalUrl="https://miniu.info/courses"
         schema={catalogSchema}
       />
 
-      <Header />
+      <Header onOpenCounselling={() => handleEnquire(null)} />
 
       <main className="bg-light pb-5">
         {/* Banner Section */}
@@ -87,7 +85,7 @@ export default function Course({ initialCategory = "all" }) {
               Explore Job-Oriented Training Programs
             </h1>
             <p className="text-muted fs-16 mb-0">
-              Master in-demand skills from certified corporate trainers. Access 24/7 dedicated servers, complete real-time capstone projects, and get 100% placement support in top MNCs.
+              Master in-demand skills from certified corporate trainers. Access 24/7 dedicated servers, complete real-time capstone projects, and get placement support in top companies.
             </p>
           </div>
         </section>
@@ -98,13 +96,6 @@ export default function Course({ initialCategory = "all" }) {
             initialCategory={initialCategory}
             onEnquire={handleEnquire}
           />
-        </section>
-
-        {/* Interactive Salary & Career ROI Calculator */}
-        <section className="py-5">
-          <div className="container">
-            <SalaryCalculator onOpenDemoModal={handleEnquire} />
-          </div>
         </section>
       </main>
 
