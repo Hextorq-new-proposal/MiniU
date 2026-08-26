@@ -11,6 +11,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy"
 import Terms from "./pages/Terms"
 import useInitScripts from "./hooks/useInitScripts"
 import useSmoothScroll from "./hooks/useSmoothScroll"
+import "./styles/droidLogoFont.css"
 
 function ScrollAndTitle() {
   const { pathname, hash } = useLocation()
