@@ -45,6 +45,9 @@ export default function Header({ onOpenCounselling }) {
             <Link to="/blog" className="miniu-nav-link">
               Resources
             </Link>
+            <Link to="/contact" className="miniu-nav-link">
+              Contact Us
+            </Link>
           </nav>
 
           {/* Right Action */}

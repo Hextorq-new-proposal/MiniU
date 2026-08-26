@@ -675,3 +675,136 @@ img {
     max-width: 1320px;
   }
 }
+
+/* ==========================================================================
+   Modern Contact Page Styles
+   ========================================================================== */
+
+.miniu-contact-banner {
+  background: linear-gradient(180deg, #faf9f6 0%, #f1f5f9 100%);
+  padding: 60px 0 50px 0;
+  border-bottom: 1px solid var(--miniu-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.miniu-contact-card {
+  background: #ffffff;
+  border: 1px solid var(--miniu-border);
+  border-radius: 18px;
+  padding: 32px 24px;
+  box-shadow: var(--miniu-card-shadow);
+  transition: var(--miniu-transition);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.miniu-contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #ff0135 0%, #ff0179 100%);
+  opacity: 0;
+  transition: var(--miniu-transition);
+}
+
+.miniu-contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--miniu-card-hover-shadow);
+  border-color: #cbd5e1;
+}
+
+.miniu-contact-card:hover::before {
+  opacity: 1;
+}
+
+.miniu-contact-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 1, 53, 0.08) 0%, rgba(255, 1, 121, 0.08) 100%);
+  border: 1px solid rgba(255, 1, 53, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--miniu-red);
+  font-size: 22px;
+  transition: var(--miniu-transition);
+  margin-bottom: 20px;
+}
+
+.miniu-contact-card:hover .miniu-contact-icon {
+  background: linear-gradient(135deg, #ff0135 0%, #ff0179 100%);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.miniu-contact-form-card {
+  background: #ffffff;
+  border: 1px solid var(--miniu-border);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
+  position: relative;
+}
+
+@media (max-width: 767.98px) {
+  .miniu-contact-form-card {
+    padding: 24px 18px;
+  }
+}
+
+.miniu-form-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.miniu-form-input,
+.miniu-form-textarea {
+  width: 100%;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  color: #0f172a;
+  outline: none;
+  transition: var(--miniu-transition);
+  font-family: inherit;
+}
+
+.miniu-form-input:focus,
+.miniu-form-textarea:focus {
+  background: #ffffff;
+  border-color: #ff0135;
+  box-shadow: 0 0 0 3.5px rgba(255, 1, 53, 0.12);
+}
+
+.miniu-form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.miniu-header-shape {
+  position: relative;
+  display: inline-block;
+}
+
+.miniu-header-shape::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' fill='none'%3E%3Cpath d='M2 9C35 2 85 2 118 9' stroke='%23ff0135' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+  background-size: 100% 100%;
+}
+
