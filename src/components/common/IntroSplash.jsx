@@ -43,73 +43,73 @@ export default function IntroSplash({ onComplete }) {
       gsap.set(badgeRef.current, { opacity: 0, scale: 0.96 })
       gsap.set(logoWrapperRef.current, { y: 0, scale: 1 })
 
-      // Timeline sequence (~2.0 seconds total):
+      // Timeline sequence (~4.0 seconds total):
       
-      // 2. Extremely subtle ambient crimson glow (3-5% opacity) (0.0s - 0.5s)
+      // 2. Extremely subtle ambient crimson glow (3-5% opacity) (0.1s - 1.2s)
       tl.to(glowRef.current, {
         opacity: 0.045,
         scale: 1,
-        duration: 0.5,
+        duration: 1.1,
         ease: "power2.out"
-      }, 0.05)
-
-      // 3 & 4. Reveal MiniU Logo Mark smoothly (0.1s - 0.65s)
-      tl.to(logoMarkRef.current, {
-        opacity: 1,
-        duration: 0.2
       }, 0.1)
 
-      // Stagger logo ribbon arches
+      // 3 & 4. Reveal MiniU Logo Mark smoothly (0.2s - 1.8s)
+      tl.to(logoMarkRef.current, {
+        opacity: 1,
+        duration: 0.4
+      }, 0.2)
+
+      // Stagger logo ribbon arches with generous smooth flow
       tl.to(".logo-mark-char", {
         opacity: 1,
         y: 0,
-        duration: 0.45,
-        stagger: 0.03,
-        ease: "power2.out"
-      }, 0.12)
+        duration: 0.9,
+        stagger: 0.05,
+        ease: "power3.out"
+      }, 0.3)
 
-      // 5. Reveal individual wordmark elements (0.4s - 0.85s, small 4-6px movement, NO flying)
+      // 5. Reveal individual wordmark elements (1.2s - 2.5s, smooth 4-6px movement)
       tl.to(".wordmark-char", {
         opacity: 1,
         y: 0,
-        duration: 0.4,
-        stagger: 0.02,
+        duration: 0.8,
+        stagger: 0.035,
         ease: "power2.out"
-      }, 0.4)
+      }, 1.2)
 
-      // 6. Reveal "A Unit Of Prajai" badge after main wordmark (0.7s - 1.1s, scale 0.96 -> 1)
+      // 6. Reveal "A Unit Of Prajai" badge after main wordmark (2.2s - 3.1s, scale 0.95 -> 1)
       tl.to(badgeRef.current, {
         opacity: 1,
         scale: 1,
-        duration: 0.4,
+        duration: 0.85,
         ease: "power2.out"
-      }, 0.7)
+      }, 2.2)
 
-      // 7. Very small final settle: scale 1.008 -> 1 (1.1s - 1.45s)
+      // 7. Cinematic settle: subtle breath scale 1.008 -> 1 (2.9s - 3.45s)
       tl.to(logoWrapperRef.current, {
-        scale: 1.006,
-        duration: 0.22,
+        scale: 1.008,
+        duration: 0.3,
         ease: "sine.out"
-      }, 1.1)
+      }, 2.9)
       tl.to(logoWrapperRef.current, {
         scale: 1.0,
-        duration: 0.22,
+        duration: 0.3,
         ease: "sine.inOut"
-      }, 1.32)
+      }, 3.2)
 
-      // 8. Transition upward by ~12px while splash container fades smoothly into homepage (1.6s - 2.0s)
+      // 8. Transition upward by ~16px while splash container fades smoothly into homepage (3.45s - 4.0s)
       tl.to(logoWrapperRef.current, {
-        y: -14,
+        y: -16,
         opacity: 0,
-        duration: 0.38,
+        duration: 0.55,
         ease: "power2.inOut"
-      }, 1.6)
+      }, 3.45)
 
       tl.to(containerRef.current, {
         opacity: 0,
-        duration: 0.38,
+        duration: 0.55,
         ease: "power2.inOut"
-      }, 1.62)
+      }, 3.48)
 
     }, containerRef)
 
