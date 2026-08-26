@@ -354,3 +354,11 @@
   align-items: center;
   gap: 10px;
 }
+
+/* Clean breadcrumb divider override */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "/" !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  color: #94a3b8 !important;
+}

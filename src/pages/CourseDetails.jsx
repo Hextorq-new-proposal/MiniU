@@ -82,22 +82,15 @@ export default function CourseDetails({ specificSlug = null }) {
         <section className="bg-white border-bottom py-5">
           <div className="container">
             {/* Breadcrumbs */}
-            <nav className="mb-3">
-              <ol className="breadcrumb fs-13 mb-0">
-                <li className="breadcrumb-item">
-                  <Link to="/" className="text-muted text-decoration-none">Home</Link>
-                </li>
-                <li className="breadcrumb-item">
-                  <Link to="/courses" className="text-muted text-decoration-none">Courses</Link>
-                </li>
-                <li className="breadcrumb-item">
-                  <span className="text-muted">{course.category}</span>
-                </li>
-                <li className="breadcrumb-item active text-danger fw-semibold" aria-current="page">
-                  {course.shortTitle}
-                </li>
-              </ol>
-            </nav>
+            <div className="d-flex align-items-center gap-2 fs-13 mb-3 text-muted flex-wrap">
+              <Link to="/" className="text-muted text-decoration-none hover-text-danger">Home</Link>
+              <span className="text-secondary opacity-50">/</span>
+              <Link to="/courses" className="text-muted text-decoration-none hover-text-danger">Courses</Link>
+              <span className="text-secondary opacity-50">/</span>
+              <span className="text-muted">{course.category}</span>
+              <span className="text-secondary opacity-50">/</span>
+              <span className="text-danger fw-semibold">{course.shortTitle || course.title}</span>
+            </div>
 
             <div className="row g-4 align-items-center">
               <div className="col-lg-8">

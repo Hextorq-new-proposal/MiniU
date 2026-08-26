@@ -67,16 +67,11 @@ export default function Course({ initialCategory = "all" }) {
         {/* Banner Section */}
         <section className="bg-white border-bottom py-5">
           <div className="container text-center max-w-800 mx-auto">
-            <nav className="d-flex justify-content-center mb-3">
-              <ol className="breadcrumb fs-13 mb-0">
-                <li className="breadcrumb-item">
-                  <Link to="/" className="text-muted text-decoration-none">Home</Link>
-                </li>
-                <li className="breadcrumb-item active text-danger fw-semibold" aria-current="page">
-                  Courses
-                </li>
-              </ol>
-            </nav>
+            <div className="d-flex align-items-center justify-content-center gap-2 fs-13 mb-3 text-muted">
+              <Link to="/" className="text-muted text-decoration-none hover-text-danger">Home</Link>
+              <span className="text-secondary opacity-50">/</span>
+              <span className="text-danger fw-semibold">Courses</span>
+            </div>
 
             <span className="badge bg-danger-subtle text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
               Career-Focused Industry Curriculum
