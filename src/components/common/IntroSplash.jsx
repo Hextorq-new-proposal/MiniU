@@ -10,11 +10,32 @@ export default function IntroSplash({ onComplete }) {
   const badgeRef = useRef(null)
   const subtitleRef = useRef(null)
 
-  // Only run on homepage initial visit or refresh on homepage
+  // Track global scroll position continuously so refresh state is always accurate
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0
+      sessionStorage.setItem("miniu_scroll_y", String(scrollY))
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Only run if:
+  // 1. On the homepage ('/' or '/index.html')
+  // 2. At the top / first section of the screen (scrollY < 120 & savedScroll < 120)
+  // 3. Not jumping to a specific anchor hash (e.g. #clients, #placement-proof)
+  // 4. Reduced motion is not requested
   const isHomePage = typeof window !== "undefined" && (window.location.pathname === "/" || window.location.pathname === "/index.html")
+  const hasSectionHash = typeof window !== "undefined" && Boolean(window.location.hash && window.location.hash !== "#" && window.location.hash !== "#top")
   const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-  const [isVisible, setIsVisible] = useState(() => isHomePage && !prefersReducedMotion)
+  const currentScroll = typeof window !== "undefined" ? (window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0) : 0
+  const savedScroll = typeof window !== "undefined" ? parseFloat(sessionStorage.getItem("miniu_scroll_y") || "0") : 0
+  const isAtFirstSection = currentScroll < 120 && savedScroll < 120 && !hasSectionHash
+
+  const shouldRun = isHomePage && isAtFirstSection && !prefersReducedMotion
+
+  const [isVisible, setIsVisible] = useState(() => shouldRun)
 
   useEffect(() => {
     if (!isVisible) {
