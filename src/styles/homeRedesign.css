@@ -89,18 +89,37 @@ html.lenis, html.lenis body {
 
 /* Spacious Hero Section with Animated Shader */
 .miniu-hero-section {
-  min-height: 80vh;
-  background-color: #f8fafc;
-  padding-top: 30px;
-  padding-bottom: 60px;
+  min-height: 85vh;
+  background-color: #EFEFEF;
+  padding-top: 50px;
+  padding-bottom: 70px;
+  position: relative;
 }
 
 @media (max-width: 768px) {
   .miniu-hero-section {
     min-height: auto;
-    padding-top: 20px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 50px;
   }
+}
+
+/* Droid / Modern Geometric Display Typography for Hero Headline */
+.miniu-hero-title {
+  font-family: "Droid Sans", "Plus Jakarta Sans", "Space Grotesk", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  color: #0f172a;
+}
+
+.miniu-hero-title .highlight-line {
+  color: #ff0135;
+  background: linear-gradient(135deg, #ff0135 0%, #ff5f03 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
 }
 
 .miniu-nav-link {
