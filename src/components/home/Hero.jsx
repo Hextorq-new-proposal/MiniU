@@ -8,7 +8,7 @@ export default function Hero({ onOpenCounselling }) {
     <section className="position-relative overflow-hidden miniu-hero-section d-flex align-items-center bg-[#EFEFEF]">
       {/* Exact WebGL Hero Shader Stack from D:/bg/ani-bg (Async Lazy Load) */}
       <Suspense fallback={null}>
-        <ShaderBackground color="#ff0135" />
+        <ShaderBackground color="#ff5f03" />
       </Suspense>
 
       {/* Hero Content Container */}

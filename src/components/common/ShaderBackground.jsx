@@ -8,7 +8,7 @@ import {
 } from "shaders/react"
 
 export function ShaderBackground({
-  color = "#ff0135", // MiniU Crimson / Brand tone
+  color = "#ff5f03", // Exact vibrant glowing radiant amber/orange from Hirael template
   style = {}
 }) {
   const [mounted, setMounted] = useState(false)
@@ -24,7 +24,7 @@ export function ShaderBackground({
   return (
     <div
       className="position-absolute top-0 start-0 w-100 h-100 pointer-events-none overflow-hidden"
-      style={{ zIndex: 0, ...style }}
+      style={{ zIndex: 1, ...style }}
     >
       <Suspense fallback={null}>
         <Shader style={{ width: "100%", height: "100%" }}>
