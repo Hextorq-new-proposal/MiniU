@@ -9,6 +9,7 @@ import CareerFinder from "../components/home/CareerFinder"
 import CareerPaths from "../components/home/CareerPaths"
 import CareerPreviewSection from "../components/home/CareerPreviewSection"
 import WhyMiniU from "../components/home/WhyMiniU"
+import PlacementPartners from "../components/home/PlacementPartners"
 import PlacementStories from "../components/home/PlacementStories"
 import Stats from "../components/home/Stats"
 import HowItWorks from "../components/home/HowItWorks"
@@ -89,6 +90,9 @@ export default function Home() {
 
         {/* 8. Why MiniU */}
         <WhyMiniU />
+
+        {/* 8.5. Placement Partners (Continuous Infinite Marquee Scrolling Rows) */}
+        <PlacementPartners />
 
         {/* 9. Placement Proof (Verified student career transitions) */}
         <PlacementStories onOpenCounselling={() => handleOpenCounselling(null)} />
