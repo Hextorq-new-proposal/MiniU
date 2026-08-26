@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { Routes, Route, useLocation, useNavigate, Navigate } from "react-router-dom"
+import { Agentation } from "agentation"
 import Home from "./pages/Home"
 import Course from "./pages/Course"
 import CourseDetails from "./pages/CourseDetails"
@@ -152,6 +153,7 @@ export default function App() {
         {/* 404 Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      <Agentation />
     </>
   )
 }
