@@ -33,14 +33,14 @@ export default function FinalCTA({ onOpenCounselling }) {
             </p>
 
             <div className="d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3 mb-3">
-              {/* Compact size button with pure white text */}
+              {/* Short & compact pill button with pure white text */}
               <button
                 type="button"
                 onClick={onOpenCounselling}
-                className="btn-miniu-primary fs-14 py-2.5 px-4 w-100 w-sm-auto justify-content-center text-white"
+                className="btn-miniu-primary fs-13 py-2 px-3.5 d-inline-flex align-items-center gap-2 rounded-pill shadow-xs text-white"
               >
                 <span className="text-white">Book Free Counselling</span>
-                <i className="fa-regular fa-arrow-right-long text-white" />
+                <i className="fa-regular fa-arrow-right-long text-white fs-12" />
               </button>
             </div>
 

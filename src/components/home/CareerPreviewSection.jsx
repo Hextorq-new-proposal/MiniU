@@ -125,11 +125,11 @@ export default function CareerPreviewSection({ onOpenCounselling }) {
               </div>
 
               {/* Key Skills Chip Grid */}
-              <div className="mb-3">
-                <span className="fs-11 text-uppercase text-muted fw-bold d-block mb-1.5">Core Competencies:</span>
-                <div className="d-flex flex-wrap gap-1.5">
+              <div className="mb-3.5">
+                <span className="fs-11 text-uppercase text-muted fw-bold d-block mb-2">Core Competencies:</span>
+                <div className="d-flex flex-wrap gap-2">
                   {current.topics.map((topic, tIdx) => (
-                    <span key={tIdx} className="badge bg-white text-dark border border-light-subtle px-2 py-1 fs-11 fw-medium shadow-2xs">
+                    <span key={tIdx} className="badge bg-white text-dark border border-light-subtle px-2.5 py-1.5 fs-11 fw-medium shadow-2xs">
                       ✓ {topic}
                     </span>
                   ))}
@@ -137,22 +137,22 @@ export default function CareerPreviewSection({ onOpenCounselling }) {
               </div>
 
               {/* Capstone Project Card */}
-              <div className="p-2.5 px-3 bg-white rounded-3 border border-danger-subtle mb-3.5 bg-danger-subtle bg-opacity-25">
-                <span className="fs-10 text-uppercase text-danger fw-bold d-block">Production Capstone</span>
-                <strong className="fs-12 miniu-text-dark">{current.project}</strong>
+              <div className="p-3 bg-white rounded-3 border border-danger-subtle mb-3.5 bg-danger-subtle bg-opacity-20 shadow-2xs">
+                <span className="fs-10 text-uppercase text-danger fw-bold d-block mb-1">Production Capstone Project</span>
+                <strong className="fs-13 miniu-text-dark d-block">{current.project}</strong>
               </div>
 
               {/* Bottom Actions */}
-              <div className="d-flex align-items-center justify-content-between pt-2.5 border-top">
+              <div className="d-flex align-items-center justify-content-between pt-3 border-top">
                 <span className="fs-11 text-muted fw-medium">
                   <i className="fa-regular fa-location-dot text-danger me-1" />
                   {current.format}
                 </span>
                 <Link
                   to={current.slug}
-                  className="btn btn-sm btn-danger text-white rounded-pill px-3 py-1.5 fs-12 fw-bold text-decoration-none shadow-xs"
+                  className="btn btn-sm btn-danger text-white rounded-pill px-3.5 py-1.5 fs-12 fw-bold text-decoration-none shadow-xs"
                 >
-                  <span>Explore Track →</span>
+                  <span className="text-white" style={{ color: "#ffffff" }}>Explore Track →</span>
                 </Link>
               </div>
             </div>

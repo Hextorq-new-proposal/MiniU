@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="col-lg-4 col-md-6">
             <Link to="/" className="d-inline-block mb-3">
-              <img src="/assets/logo/miniu-logo.svg" alt="MiniU EdTech" height="36" style={{ height: "36px", width: "auto" }} />
+              <img src="/assets/logo/miniu-logo.svg" alt="MiniU EdTech" style={{ height: "46px", width: "auto" }} />
             </Link>
             <p className="miniu-text-muted fs-14 mb-3 max-w-350">
               MiniU is a job-oriented professional training institute in Coimbatore offering practical programs in SAP, Business Analytics, Full Stack Web Development, and UI/UX Design.
@@ -81,14 +81,35 @@ export default function Footer() {
               Follow our official channels for student updates, batch announcements, and career guidance.
             </p>
             <div className="d-flex align-items-center gap-2 mb-4">
-              <a href="https://www.linkedin.com/company/miniuniversity/" target="_blank" rel="noreferrer" className="btn btn-sm btn-light border rounded-circle" style={{ width: "36px", height: "36px" }}>
-                <i className="fa-brands fa-linkedin text-dark fs-14" />
+              <a
+                href="https://www.linkedin.com/company/miniuniversity/"
+                target="_blank"
+                rel="noreferrer"
+                className="d-inline-flex align-items-center justify-content-center bg-white border rounded-circle text-dark text-decoration-none shadow-2xs hover-bg-light"
+                style={{ width: "38px", height: "38px", minWidth: "38px" }}
+                aria-label="LinkedIn"
+              >
+                <i className="fa-brands fa-linkedin text-dark fs-15" />
               </a>
-              <a href="https://www.instagram.com/miniuniversity_p" target="_blank" rel="noreferrer" className="btn btn-sm btn-light border rounded-circle" style={{ width: "36px", height: "36px" }}>
-                <i className="fa-brands fa-instagram text-dark fs-14" />
+              <a
+                href="https://www.instagram.com/miniuniversity_p"
+                target="_blank"
+                rel="noreferrer"
+                className="d-inline-flex align-items-center justify-content-center bg-white border rounded-circle text-dark text-decoration-none shadow-2xs hover-bg-light"
+                style={{ width: "38px", height: "38px", minWidth: "38px" }}
+                aria-label="Instagram"
+              >
+                <i className="fa-brands fa-instagram text-dark fs-15" />
               </a>
-              <a href="https://www.facebook.com/people/MiniU/61566454693166/" target="_blank" rel="noreferrer" className="btn btn-sm btn-light border rounded-circle" style={{ width: "36px", height: "36px" }}>
-                <i className="fa-brands fa-facebook text-dark fs-14" />
+              <a
+                href="https://www.facebook.com/people/MiniU/61566454693166/"
+                target="_blank"
+                rel="noreferrer"
+                className="d-inline-flex align-items-center justify-content-center bg-white border rounded-circle text-dark text-decoration-none shadow-2xs hover-bg-light"
+                style={{ width: "38px", height: "38px", minWidth: "38px" }}
+                aria-label="Facebook"
+              >
+                <i className="fa-brands fa-facebook text-dark fs-15" />
               </a>
             </div>
           </div>

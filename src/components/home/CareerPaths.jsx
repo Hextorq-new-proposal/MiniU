@@ -92,10 +92,10 @@ export default function CareerPaths() {
         </div>
 
         {/* Minimal Course Cards Grid */}
-        <div className="row g-4 reveal-stagger-group">
+        <div className="row g-4 reveal-stagger-group align-items-stretch">
           {FEATURED_PROGRAMS.map((program, idx) => (
-            <div key={idx} className="col-lg-4 col-md-6 reveal-card">
-              <div className="miniu-card p-4 justify-content-between h-100">
+            <div key={idx} className="col-lg-4 col-md-6 d-flex reveal-card">
+              <div className="miniu-card p-4 d-flex flex-column justify-content-between w-100 h-100 bg-white rounded-4 border shadow-2xs">
                 <div>
                   {/* Category icon & label */}
                   <div className="d-flex align-items-center justify-content-between mb-3 pb-1">
@@ -108,18 +108,18 @@ export default function CareerPaths() {
                     </span>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="fs-20 fw-bold miniu-text-dark mb-2 line-height-tight">
+                  {/* Title (Height Locked so all cards align perfectly) */}
+                  <h3 className="fs-19 fw-bold miniu-text-dark mb-2 line-height-tight d-flex align-items-center" style={{ minHeight: "52px" }}>
                     <Link
                       to={program.path}
-                      className="miniu-text-dark text-decoration-none"
+                      className="miniu-text-dark text-decoration-none hover-text-danger"
                     >
                       {program.title}
                     </Link>
                   </h3>
 
-                  {/* Subtitle */}
-                  <p className="miniu-text-muted fs-14 mb-3 line-height-relaxed" style={{ minHeight: "42px" }}>
+                  {/* Subtitle (Height Locked) */}
+                  <p className="miniu-text-muted fs-13 mb-3 line-height-relaxed" style={{ minHeight: "42px" }}>
                     {program.subtitle}
                   </p>
 
@@ -134,21 +134,21 @@ export default function CareerPaths() {
                     </span>
                   </div>
 
-                  {/* Skills preview */}
-                  <div className="fs-12 text-muted mb-4">
+                  {/* Skills preview (Height Locked) */}
+                  <div className="fs-12 text-muted mb-4" style={{ minHeight: "36px" }}>
                     <span className="fw-bold text-dark">Key Focus: </span>
                     <span className="text-secondary">{program.skills}</span>
                   </div>
                 </div>
 
                 {/* Footer Link - Pure White Text with Red Button */}
-                <div>
+                <div className="mt-auto pt-2">
                   <Link
                     to={program.path}
                     className="btn btn-sm btn-danger text-white w-100 rounded-pill py-2.5 fw-bold fs-13 d-flex align-items-center justify-content-center gap-2 shadow-xs text-decoration-none"
                     style={{ transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)" }}
                   >
-                    <span className="text-white">View Program</span>
+                    <span className="text-white" style={{ color: "#ffffff" }}>View Program</span>
                     <i className="fa-regular fa-arrow-right-long text-white" />
                   </Link>
                 </div>
