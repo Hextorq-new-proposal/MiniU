@@ -100,7 +100,9 @@ export default function CareerPaths() {
                   {/* Category icon & label */}
                   <div className="d-flex align-items-center justify-content-between mb-3 pb-1">
                     <span className="d-inline-flex align-items-center gap-2 fs-12 text-muted fw-bold text-uppercase">
-                      <i className={`${program.categoryIcon} text-danger fs-14`} />
+                      <span className="d-flex align-items-center justify-content-center" style={{ width: "16px" }}>
+                        <i className={`${program.categoryIcon} text-danger fs-14`} />
+                      </span>
                       {program.category}
                     </span>
                     <span className="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fs-11 fw-bold">
@@ -109,7 +111,7 @@ export default function CareerPaths() {
                   </div>
 
                   {/* Title (Height Locked so all cards align perfectly) */}
-                  <h3 className="fs-19 fw-bold miniu-text-dark mb-2 line-height-tight d-flex align-items-center" style={{ minHeight: "52px" }}>
+                  <h3 className="fs-19 fw-bold miniu-text-dark mb-2 line-height-tight d-flex align-items-center" style={{ minHeight: "48px" }}>
                     <Link
                       to={program.path}
                       className="miniu-text-dark text-decoration-none hover-text-danger"
@@ -119,24 +121,26 @@ export default function CareerPaths() {
                   </h3>
 
                   {/* Subtitle (Height Locked) */}
-                  <p className="miniu-text-muted fs-13 mb-3 line-height-relaxed" style={{ minHeight: "42px" }}>
+                  <p className="miniu-text-muted fs-13 mb-3 line-height-relaxed" style={{ minHeight: "40px" }}>
                     {program.subtitle}
                   </p>
 
                   {/* Meta Specs */}
-                  <div className="d-flex align-items-center gap-2 fs-13 text-secondary mb-3 pb-3 border-bottom">
-                    <span className="d-flex align-items-center gap-1.5 fw-semibold text-dark">
-                      <i className="fa-regular fa-clock text-danger" /> {program.duration}
+                  <div className="d-flex align-items-center gap-3 fs-13 text-secondary mb-3 pb-3 border-bottom">
+                    <span className="d-flex align-items-center fw-semibold text-dark">
+                      <i className="fa-regular fa-clock text-danger" style={{ marginRight: "6px" }} />
+                      <span>{program.duration}</span>
                     </span>
                     <span className="text-muted">•</span>
-                    <span className="d-flex align-items-center gap-1.5 fw-semibold text-dark">
-                      <i className="fa-regular fa-graduation-cap text-danger" /> {program.level}
+                    <span className="d-flex align-items-center fw-semibold text-dark">
+                      <i className="fa-regular fa-graduation-cap text-danger" style={{ marginRight: "6px" }} />
+                      <span>{program.level}</span>
                     </span>
                   </div>
 
                   {/* Skills preview (Height Locked) */}
-                  <div className="fs-12 text-muted mb-4" style={{ minHeight: "36px" }}>
-                    <span className="fw-bold text-dark">Key Focus: </span>
+                  <div className="fs-12 text-muted mb-4 d-flex align-items-baseline" style={{ minHeight: "32px" }}>
+                    <span className="fw-bold text-dark flex-shrink-0" style={{ marginRight: "6px" }}>Key Focus:</span>
                     <span className="text-secondary">{program.skills}</span>
                   </div>
                 </div>

@@ -231,8 +231,8 @@ html.lenis, html.lenis body {
   background: transparent !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1.5px solid #ff0135 !important;
-  color: #ff0135 !important;
+  border: 1.5px solid #0f172a !important;
+  color: #0f172a !important;
   font-weight: 700;
   font-size: 14px;
   padding: 9px 22px;
@@ -243,7 +243,7 @@ html.lenis, html.lenis body {
   transition: var(--miniu-transition);
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 2px 10px rgba(255, 1, 53, 0.1);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.1);
 }
 
 .btn-miniu-transparent-red:hover {
@@ -407,17 +407,17 @@ html.lenis, html.lenis body {
 
 .miniu-category-card:hover,
 .miniu-category-card.active {
-  border-color: var(--miniu-red);
-  background-color: var(--miniu-red-subtle);
-  transform: translateY(-3px);
-  box-shadow: var(--miniu-card-shadow);
+  border-color: var(--miniu-dark);
+  background-color: #fafafa;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
 }
 
 .miniu-category-card .arrow-icon {
   opacity: 0;
   transform: translateX(-6px);
   transition: var(--miniu-transition);
-  color: var(--miniu-red);
+  color: var(--miniu-dark);
 }
 
 .miniu-category-card:hover .arrow-icon,

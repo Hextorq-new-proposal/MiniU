@@ -178,10 +178,10 @@ export default function CareerFinder({ onOpenCounselling }) {
         <div className="p-4 rounded-4 miniu-bg-slate border mb-5">
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-3">
             <div>
-              <span className="fs-12 text-uppercase fw-bold text-danger">Recommended for you in</span>
+              <span className="fs-12 text-uppercase fw-bold text-danger letter-spacing-1">Recommended for you in</span>
               <h4 className="fs-18 fw-bold miniu-text-dark mb-0">{selectedCategory.title}</h4>
             </div>
-            <Link to="/courses" className="btn btn-sm btn-outline-dark rounded-pill px-3 py-1 fs-13 fw-semibold">
+            <Link to="/courses" className="btn btn-sm btn-outline-dark rounded-pill px-3 py-1.5 fs-13 fw-semibold">
               View all programs in catalog →
             </Link>
           </div>
@@ -189,16 +189,16 @@ export default function CareerFinder({ onOpenCounselling }) {
           <div className="row g-3">
             {selectedCategory.recommended.map((item, idx) => (
               <div key={idx} className="col-md-4">
-                <div className="p-3 bg-white rounded-3 border h-100 d-flex flex-column justify-content-between shadow-2xs">
+                <div className="p-3.5 bg-white rounded-3 border h-100 d-flex flex-column justify-content-between shadow-2xs">
                   <div>
-                    <span className="badge bg-danger-subtle text-danger border border-danger-subtle px-2 py-1 fs-11 fw-semibold mb-2">
+                    <span className="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-2.5 py-1 fs-11 fw-semibold mb-2.5 d-inline-block">
                       {item.tag}
                     </span>
                     <h5 className="fs-14 fw-bold miniu-text-dark mb-2">{item.name}</h5>
                   </div>
                   <Link
                     to={item.path}
-                    className="text-danger fw-semibold fs-13 text-decoration-none d-inline-flex align-items-center gap-1 mt-2 hover-text-danger"
+                    className="text-danger fw-semibold fs-13 text-decoration-none d-inline-flex align-items-center gap-1.5 mt-2 hover-text-danger"
                   >
                     <span>View Program</span>
                     <i className="fa-regular fa-arrow-right-long" />
@@ -242,13 +242,13 @@ export default function CareerFinder({ onOpenCounselling }) {
 
           {/* Right Column: Compact Questionnaire Box */}
           <div className="col-lg-8">
-            <div className="bg-white border border-light-subtle rounded-4 p-3.5 p-md-4 shadow-sm">
+            <div className="bg-white border border-light-subtle rounded-4 p-4 shadow-sm">
               {/* Interactive Steps Form */}
-              <div className="d-flex flex-column gap-3 mb-3 pb-1">
+              <div className="d-flex flex-column gap-3.5 mb-3 pb-1">
                 {/* Step 1: Background */}
                 <div>
-                  <div className="d-flex align-items-center gap-1.5 mb-1.5">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
+                  <div className="d-flex align-items-center gap-2 mb-2">
+                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
                       1
                     </span>
                     <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
@@ -266,10 +266,10 @@ export default function CareerFinder({ onOpenCounselling }) {
                         <button
                           type="button"
                           onClick={() => setQ1(opt.val)}
-                          className={`btn btn-sm w-100 rounded-2 py-1.5 px-1 fs-11 fw-semibold transition-all text-center ${
+                          className={`btn btn-sm w-100 rounded-3 py-2 px-1 fs-12 fw-semibold transition-all text-center ${
                             q1 === opt.val
-                              ? "btn-dark text-white shadow-xs border-dark"
-                              : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
+                              ? "bg-dark text-white border-dark shadow-xs"
+                              : "bg-light bg-opacity-50 text-secondary border border-light-subtle hover-bg-light"
                           }`}
                         >
                           {opt.label}
@@ -281,8 +281,8 @@ export default function CareerFinder({ onOpenCounselling }) {
 
                 {/* Step 2: Domain */}
                 <div>
-                  <div className="d-flex align-items-center gap-1.5 mb-1.5">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
+                  <div className="d-flex align-items-center gap-2 mb-2">
+                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
                       2
                     </span>
                     <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
@@ -300,10 +300,10 @@ export default function CareerFinder({ onOpenCounselling }) {
                         <button
                           type="button"
                           onClick={() => setQ2(opt.val)}
-                          className={`btn btn-sm w-100 rounded-2 py-1.5 px-1 fs-11 fw-semibold transition-all text-center ${
+                          className={`btn btn-sm w-100 rounded-3 py-2 px-1 fs-12 fw-semibold transition-all text-center ${
                             q2 === opt.val
-                              ? "btn-dark text-white shadow-xs border-dark"
-                              : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
+                              ? "bg-dark text-white border-dark shadow-xs"
+                              : "bg-light bg-opacity-50 text-secondary border border-light-subtle hover-bg-light"
                           }`}
                         >
                           {opt.label}
@@ -315,8 +315,8 @@ export default function CareerFinder({ onOpenCounselling }) {
 
                 {/* Step 3: Objective */}
                 <div>
-                  <div className="d-flex align-items-center gap-1.5 mb-1.5">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-10" style={{ width: "18px", height: "18px" }}>
+                  <div className="d-flex align-items-center gap-2 mb-2">
+                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
                       3
                     </span>
                     <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
@@ -334,10 +334,10 @@ export default function CareerFinder({ onOpenCounselling }) {
                         <button
                           type="button"
                           onClick={() => setQ3(opt.val)}
-                          className={`btn btn-sm w-100 rounded-2 py-1.5 px-1 fs-11 fw-semibold transition-all text-center ${
+                          className={`btn btn-sm w-100 rounded-3 py-2 px-1 fs-12 fw-semibold transition-all text-center ${
                             q3 === opt.val
-                              ? "btn-dark text-white shadow-xs border-dark"
-                              : "btn-light bg-white border border-light-subtle text-dark hover-bg-light"
+                              ? "bg-dark text-white border-dark shadow-xs"
+                              : "bg-light bg-opacity-50 text-secondary border border-light-subtle hover-bg-light"
                           }`}
                         >
                           {opt.label}
@@ -349,16 +349,16 @@ export default function CareerFinder({ onOpenCounselling }) {
               </div>
 
               {/* Minimalist Output Result Card */}
-              <div className="p-3 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2.5 shadow-2xs">
+              <div className="p-3.5 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 shadow-2xs">
                 <div>
-                  <div className="d-flex align-items-center gap-1.5 mb-0.5">
-                    <span className="badge bg-danger text-white rounded-pill px-2 py-0.5 fs-10 fw-bold">
+                  <div className="d-flex align-items-center gap-2 mb-1">
+                    <span className="badge bg-danger text-white rounded-pill px-2.5 py-1 fs-10 fw-bold me-1">
                       BEST MATCH
                     </span>
-                    <span className="fs-11 text-muted">Based on your selection</span>
+                    <span className="fs-12 text-muted">Based on your selection</span>
                   </div>
-                  <h4 className="fs-14 fw-bold miniu-text-dark mb-0.5">{recommendation.title}</h4>
-                  <p className="fs-11 text-secondary mb-0">{recommendation.desc}</p>
+                  <h4 className="fs-15 fw-bold miniu-text-dark mb-0.5">{recommendation.title}</h4>
+                  <p className="fs-12 text-secondary mb-0">{recommendation.desc}</p>
                 </div>
 
                 <div className="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">

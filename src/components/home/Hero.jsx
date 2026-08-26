@@ -17,7 +17,7 @@ export default function Hero({ onOpenCounselling }) {
           <div className="col-12 col-lg-10 col-xl-9 text-start">
             {/* Small Kicker (Deep Black) */}
             <span className="d-block fs-12 fs-sm-13 hero-dark-kicker text-uppercase mb-2 mb-sm-3">
-              MiniU EdTech Institute • Coimbatore
+              MiniU EdTech Institute — Coimbatore
             </span>
 
             {/* Main Display Headline (Droid Logo Font on two lines) */}
@@ -43,9 +43,9 @@ export default function Hero({ onOpenCounselling }) {
                 type="button"
                 onClick={onOpenCounselling}
                 className="p-0 border-0 bg-transparent fw-bold fs-13 fs-sm-14 ms-1 d-inline-flex align-items-center cursor-pointer text-decoration-none"
-                style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none", color: "#ff0135" }}
+                style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none", color: "#0f172a" }}
               >
-                <span style={{ color: "#ff0135" }}>View Batches →</span>
+                <span style={{ color: "#0f172a" }}>View Batches →</span>
               </button>
             </div>
 
