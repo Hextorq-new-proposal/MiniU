@@ -95,21 +95,21 @@ export default function CareerPaths() {
         <div className="row g-4 reveal-stagger-group">
           {FEATURED_PROGRAMS.map((program, idx) => (
             <div key={idx} className="col-lg-4 col-md-6 reveal-card">
-              <div className="miniu-card p-4 justify-content-between">
+              <div className="miniu-card p-4 justify-content-between h-100">
                 <div>
                   {/* Category icon & label */}
-                  <div className="d-flex align-items-center justify-content-between mb-3">
-                    <span className="d-inline-flex align-items-center gap-2 fs-12 text-muted fw-semibold text-uppercase">
-                      <i className={`${program.categoryIcon} text-danger`} />
+                  <div className="d-flex align-items-center justify-content-between mb-3 pb-1">
+                    <span className="d-inline-flex align-items-center gap-2 fs-12 text-muted fw-bold text-uppercase">
+                      <i className={`${program.categoryIcon} text-danger fs-14`} />
                       {program.category}
                     </span>
-                    <span className="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2 py-1 fs-11 fw-semibold">
+                    <span className="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2.5 py-1 fs-11 fw-bold">
                       Placement Support
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="fs-20 fw-bold miniu-text-dark mb-2">
+                  <h3 className="fs-20 fw-bold miniu-text-dark mb-2 line-height-tight">
                     <Link
                       to={program.path}
                       className="miniu-text-dark text-decoration-none"
@@ -119,36 +119,37 @@ export default function CareerPaths() {
                   </h3>
 
                   {/* Subtitle */}
-                  <p className="miniu-text-muted fs-14 mb-3 line-clamp-2">
+                  <p className="miniu-text-muted fs-14 mb-3 line-height-relaxed" style={{ minHeight: "42px" }}>
                     {program.subtitle}
                   </p>
 
                   {/* Meta Specs */}
                   <div className="d-flex align-items-center gap-2 fs-13 text-secondary mb-3 pb-3 border-bottom">
-                    <span className="d-flex align-items-center gap-1">
+                    <span className="d-flex align-items-center gap-1.5 fw-semibold text-dark">
                       <i className="fa-regular fa-clock text-danger" /> {program.duration}
                     </span>
-                    <span>•</span>
-                    <span className="d-flex align-items-center gap-1">
+                    <span className="text-muted">•</span>
+                    <span className="d-flex align-items-center gap-1.5 fw-semibold text-dark">
                       <i className="fa-regular fa-graduation-cap text-danger" /> {program.level}
                     </span>
                   </div>
 
                   {/* Skills preview */}
                   <div className="fs-12 text-muted mb-4">
-                    <span className="fw-semibold text-dark">Key Focus: </span>
-                    {program.skills}
+                    <span className="fw-bold text-dark">Key Focus: </span>
+                    <span className="text-secondary">{program.skills}</span>
                   </div>
                 </div>
 
-                {/* Footer Link */}
+                {/* Footer Link - Pure White Text with Red Button */}
                 <div>
                   <Link
                     to={program.path}
-                    className="btn btn-sm btn-outline-danger w-100 rounded-pill py-2 fw-semibold fs-13 d-flex align-items-center justify-content-center gap-1"
+                    className="btn btn-sm btn-danger text-white w-100 rounded-pill py-2.5 fw-bold fs-13 d-flex align-items-center justify-content-center gap-2 shadow-xs text-decoration-none"
+                    style={{ transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)" }}
                   >
-                    <span>View Program</span>
-                    <i className="fa-regular fa-arrow-right-long" />
+                    <span className="text-white">View Program</span>
+                    <i className="fa-regular fa-arrow-right-long text-white" />
                   </Link>
                 </div>
               </div>

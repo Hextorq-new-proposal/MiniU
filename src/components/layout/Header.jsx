@@ -55,7 +55,7 @@ export default function Header({ onOpenCounselling }) {
             <button
               type="button"
               onClick={handleCounsellingClick}
-              className="btn-miniu-reflective-red"
+              className="btn-miniu-transparent-red"
             >
               <span>Book Free Counselling</span>
               <i className="fa-regular fa-arrow-right-long" />

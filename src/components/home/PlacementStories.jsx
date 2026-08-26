@@ -100,10 +100,10 @@ export default function PlacementStories({ onOpenCounselling }) {
           <button
             type="button"
             onClick={onOpenCounselling}
-            className="btn-miniu-primary py-2 px-4 fs-14"
+            className="btn-miniu-primary py-2 px-4 fs-14 text-white"
           >
-            <span>Book Free Career Counselling</span>
-            <i className="fa-regular fa-arrow-right-long" />
+            <span className="text-white">Book Free Career Counselling</span>
+            <i className="fa-regular fa-arrow-right-long text-white" />
           </button>
         </div>
       </div>

@@ -226,6 +226,39 @@ html.lenis, html.lenis body {
   background-color: var(--miniu-red-subtle);
 }
 
+/* Transparent Glass CTA Buttons (Background is transparent so animated WebGL canvas reflects through) */
+.btn-miniu-transparent-red {
+  background: transparent !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid #ff0135 !important;
+  color: #ff0135 !important;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 9px 22px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--miniu-transition);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(255, 1, 53, 0.1);
+}
+
+.btn-miniu-transparent-red:hover {
+  background: #ff0135 !important;
+  color: #ffffff !important;
+  border-color: #ff0135 !important;
+  box-shadow: 0 6px 20px rgba(255, 1, 53, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-miniu-transparent-red i,
+.btn-miniu-transparent-red svg {
+  color: inherit !important;
+}
+
 /* Reflective Glass CTA Buttons (Reflects underlying animated WebGL canvas) */
 .btn-miniu-reflective-red {
   background: rgba(255, 1, 53, 0.88);

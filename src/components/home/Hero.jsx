@@ -15,21 +15,6 @@ export default function Hero({ onOpenCounselling }) {
       <div className="container py-4 py-sm-5 py-lg-6 position-relative" style={{ zIndex: 10 }}>
         <div className="row">
           <div className="col-12 col-lg-10 col-xl-9 text-start">
-            {/* Interactive Admissions Open Pill */}
-            <div className="mb-3 mb-sm-4">
-              <button
-                type="button"
-                onClick={onOpenCounselling}
-                className="btn btn-sm d-inline-flex flex-wrap align-items-center gap-2 px-3 py-1.5 rounded-pill bg-white border border-light-subtle shadow-xs text-decoration-none transition-all hover-translate-y text-start"
-              >
-                <span className="live-pulse-dot flex-shrink-0" />
-                <span className="fs-12 fs-sm-13 fw-bold text-dark">
-                  Admissions Open: Classroom (Coimbatore) &amp; Live Online
-                </span>
-                <span className="fs-11 fs-sm-12 text-danger fw-bold ms-sm-1">View Batches →</span>
-              </button>
-            </div>
-
             {/* Small Kicker (Deep Black) */}
             <span className="d-block fs-12 fs-sm-13 hero-dark-kicker text-uppercase mb-2 mb-sm-3">
               MiniU EdTech Institute • Coimbatore
@@ -47,13 +32,26 @@ export default function Hero({ onOpenCounselling }) {
             </div>
 
             {/* Supporting Value Proposition (Deep Black) */}
-            <p className="fs-16 fs-sm-18 fs-md-19 hero-dark-para mb-4 mb-sm-5 max-w-650">
+            <p className="fs-16 fs-sm-18 fs-md-19 hero-dark-para mb-3 max-w-650">
               Industry-focused courses, practical projects, expert mentors and placement support to help you become job-ready in high-demand enterprise domains.
             </p>
 
-            {/* Action Buttons with WebGL Reflective Glass Effects */}
+            {/* Admissions Open - Plain Text below paragraph */}
+            <div className="d-flex flex-wrap align-items-center gap-2 mb-4 fs-13 fs-sm-14 fw-bold text-dark">
+              <span className="live-pulse-dot flex-shrink-0" />
+              <span>Admissions Open: Classroom (Coimbatore) &amp; Live Online</span>
+              <button
+                type="button"
+                onClick={onOpenCounselling}
+                className="btn btn-link p-0 text-danger fw-bold text-decoration-none fs-13 fs-sm-14 ms-1"
+              >
+                View Batches →
+              </button>
+            </div>
+
+            {/* Action Buttons with Transparent Background to reflect WebGL animation */}
             <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3 mb-4 mb-sm-5">
-              <Link to="/courses" className="btn-miniu-reflective-red fs-15 fs-sm-16 py-3 px-4 px-sm-5 justify-content-center">
+              <Link to="/courses" className="btn-miniu-transparent-red fs-15 fs-sm-16 py-3 px-4 px-sm-5 justify-content-center">
                 <span>Explore Courses</span>
                 <i className="fa-regular fa-arrow-right-long" />
               </Link>

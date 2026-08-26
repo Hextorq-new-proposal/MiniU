@@ -6,7 +6,13 @@ const CATEGORY_DISCOVERY = [
     id: "sap",
     title: "SAP Modules",
     desc: "Enterprise ERP systems & functional consultant roles",
-    icon: "fa-regular fa-database",
+    iconSvg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+        <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+      </svg>
+    ),
     recommended: [
       { name: "SAP FICO (Finance & Controlling)", path: "/courses/sap-fico", tag: "Most In-Demand" },
       { name: "SAP ABAP (Advanced Programming)", path: "/courses/sap-abap", tag: "High Tech Demand" },
@@ -17,7 +23,12 @@ const CATEGORY_DISCOVERY = [
     id: "data",
     title: "Business & Data",
     desc: "Transform raw numbers into strategic business insights",
-    icon: "fa-regular fa-chart-mixed",
+    iconSvg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 3v18h18" />
+        <path d="m19 9-5 5-4-4-3 3" />
+      </svg>
+    ),
     recommended: [
       { name: "Business Analytics (Power BI & SQL)", path: "/courses/business-analytics", tag: "Top Rated" },
       { name: "Data Science & Machine Learning", path: "/courses/data-science", tag: "AI & ML" }
@@ -27,7 +38,12 @@ const CATEGORY_DISCOVERY = [
     id: "dev",
     title: "Software Development",
     desc: "Build modern web platforms, APIs, and scalable apps",
-    icon: "fa-regular fa-code",
+    iconSvg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
     recommended: [
       { name: "Full Stack Web Development (MERN)", path: "/courses/full-stack-web-development", tag: "Job-Ready Track" }
     ]
@@ -36,7 +52,14 @@ const CATEGORY_DISCOVERY = [
     id: "finance",
     title: "Finance & Accounts",
     desc: "Practical corporate accounting, taxation, and financial reporting",
-    icon: "fa-regular fa-coins",
+    iconSvg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="8" cy="8" r="6" />
+        <path d="M18.09 10.37A6 6 0 1 1 10.34 18" />
+        <path d="M7 6h1v4" />
+        <path d="m16.71 13.88.7.71-2.82 2.82" />
+      </svg>
+    ),
     recommended: [
       { name: "SAP FICO Financial Accounting", path: "/courses/sap-fico", tag: "Finance Pro" }
     ]
@@ -45,7 +68,14 @@ const CATEGORY_DISCOVERY = [
     id: "design",
     title: "UI/UX & Design",
     desc: "User research, wireframing, and Figma product prototyping",
-    icon: "fa-regular fa-pen-nib",
+    iconSvg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m12 19 7-7 3 3-7 7-3-3z" />
+        <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+        <path d="m2 2 7.586 7.586" />
+        <circle cx="11" cy="11" r="2" />
+      </svg>
+    ),
     recommended: [
       { name: "UI/UX Design Masterclass (Figma)", path: "/courses/uiux-design", tag: "Creative Track" }
     ]
@@ -54,7 +84,11 @@ const CATEGORY_DISCOVERY = [
     id: "cloud",
     title: "Cloud & DevOps",
     desc: "Automate infrastructure, CI/CD pipelines, and cloud containers",
-    icon: "fa-regular fa-cloud",
+    iconSvg: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+      </svg>
+    ),
     recommended: [
       { name: "DevOps & Cloud Automation (Docker, K8s)", path: "/courses/devops", tag: "Cloud Essential" }
     ]
@@ -94,7 +128,7 @@ export default function CareerFinder({ onOpenCounselling }) {
           </p>
         </div>
 
-        {/* 6 Category Selection Grid */}
+        {/* 6 Category Selection Grid with Pure Black SVG Icons */}
         <div className="row g-3 mb-4 reveal-stagger-group">
           {CATEGORY_DISCOVERY.map((cat) => {
             const isSelected = selectedCategory.id === cat.id
@@ -106,12 +140,10 @@ export default function CareerFinder({ onOpenCounselling }) {
                 >
                   <div className="d-flex align-items-center gap-3">
                     <div
-                      className={`rounded-circle d-flex align-items-center justify-content-center ${
-                        isSelected ? "bg-danger text-white" : "bg-light text-secondary"
-                      }`}
-                      style={{ width: "40px", height: "40px", minWidth: "40px" }}
+                      className="rounded-circle d-flex align-items-center justify-content-center bg-light border shadow-2xs"
+                      style={{ width: "42px", height: "42px", minWidth: "42px" }}
                     >
-                      <i className={cat.icon} />
+                      {cat.iconSvg}
                     </div>
                     <div>
                       <h6 className="fs-15 fw-bold mb-0 miniu-text-dark">{cat.title}</h6>
@@ -160,38 +192,38 @@ export default function CareerFinder({ onOpenCounselling }) {
           </div>
         </div>
 
-        {/* 3-Question Mini Interactive Career Finder */}
-        <div className="p-4 p-md-5 rounded-4 bg-white border shadow-sm">
+        {/* 3-Question Mini Interactive Career Finder - Tightened Spacing & Shorter Width */}
+        <div className="p-4 p-md-4 rounded-4 bg-white border shadow-sm mx-auto" style={{ maxWidth: "980px" }}>
           <div className="row g-4 align-items-center">
             <div className="col-lg-5">
               <span className="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
                 30-Second Matchmaker
               </span>
-              <h3 className="fs-24 fw-bold miniu-text-dark mb-2">Find Your Ideal Career Track</h3>
-              <p className="miniu-text-muted fs-14 mb-3">
+              <h3 className="fs-22 fw-bold miniu-text-dark mb-2">Find Your Ideal Career Track</h3>
+              <p className="miniu-text-muted fs-13 mb-3 line-height-relaxed">
                 Answer 3 quick questions and get tailored program recommendations curated for your current background.
               </p>
 
-              <div className="d-flex align-items-center gap-2 text-muted fs-13">
+              <div className="d-flex align-items-center gap-2 text-muted fs-12">
                 <i className="fa-regular fa-shield-check text-success" />
                 <span>No registration required to see recommendation</span>
               </div>
             </div>
 
             <div className="col-lg-7">
-              <div className="p-4 miniu-bg-slate rounded-4 border">
+              <div className="p-3.5 p-md-4 miniu-bg-slate rounded-4 border">
                 {/* Q1 */}
-                <div className="mb-3">
-                  <label className="form-label fs-13 fw-bold miniu-text-dark mb-1">
+                <div className="mb-2.5">
+                  <label className="form-label fs-12 fw-bold miniu-text-dark mb-1">
                     1. What describes you best?
                   </label>
-                  <div className="d-flex flex-wrap gap-2">
+                  <div className="d-flex flex-wrap gap-1.5">
                     {["Student", "Graduate", "Working Professional", "Career Switcher"].map((opt) => (
                       <button
                         key={opt}
                         type="button"
                         onClick={() => setQ1(opt)}
-                        className={`btn btn-sm rounded-pill px-3 py-1 fs-12 fw-semibold transition-all ${
+                        className={`btn btn-sm rounded-pill px-2.5 py-1 fs-11 fw-semibold transition-all ${
                           q1 === opt ? "btn-danger text-white shadow-xs" : "btn-outline-secondary bg-white text-dark"
                         }`}
                       >
@@ -202,17 +234,17 @@ export default function CareerFinder({ onOpenCounselling }) {
                 </div>
 
                 {/* Q2 */}
-                <div className="mb-3">
-                  <label className="form-label fs-13 fw-bold miniu-text-dark mb-1">
+                <div className="mb-2.5">
+                  <label className="form-label fs-12 fw-bold miniu-text-dark mb-1">
                     2. What domain do you enjoy?
                   </label>
-                  <div className="d-flex flex-wrap gap-2">
+                  <div className="d-flex flex-wrap gap-1.5">
                     {["Enterprise ERP", "Data & Analytics", "Coding & Web", "Design & Creativity"].map((opt) => (
                       <button
                         key={opt}
                         type="button"
                         onClick={() => setQ2(opt)}
-                        className={`btn btn-sm rounded-pill px-3 py-1 fs-12 fw-semibold transition-all ${
+                        className={`btn btn-sm rounded-pill px-2.5 py-1 fs-11 fw-semibold transition-all ${
                           q2 === opt ? "btn-danger text-white shadow-xs" : "btn-outline-secondary bg-white text-dark"
                         }`}
                       >
@@ -223,17 +255,17 @@ export default function CareerFinder({ onOpenCounselling }) {
                 </div>
 
                 {/* Q3 */}
-                <div className="mb-4">
-                  <label className="form-label fs-13 fw-bold miniu-text-dark mb-1">
+                <div className="mb-3">
+                  <label className="form-label fs-12 fw-bold miniu-text-dark mb-1">
                     3. What is your immediate goal?
                   </label>
-                  <div className="d-flex flex-wrap gap-2">
+                  <div className="d-flex flex-wrap gap-1.5">
                     {["Get a Job", "Upgrade Skills", "Switch Career", "Freelance"].map((opt) => (
                       <button
                         key={opt}
                         type="button"
                         onClick={() => setQ3(opt)}
-                        className={`btn btn-sm rounded-pill px-3 py-1 fs-12 fw-semibold transition-all ${
+                        className={`btn btn-sm rounded-pill px-2.5 py-1 fs-11 fw-semibold transition-all ${
                           q3 === opt ? "btn-danger text-white shadow-xs" : "btn-outline-secondary bg-white text-dark"
                         }`}
                       >
@@ -244,23 +276,23 @@ export default function CareerFinder({ onOpenCounselling }) {
                 </div>
 
                 {/* Result Pill */}
-                <div className="p-3 bg-white rounded-3 border border-danger-subtle d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
+                <div className="p-3 bg-white rounded-3 border border-danger-subtle d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2.5">
                   <div>
                     <span className="fs-11 text-uppercase text-muted fw-bold d-block">Your Recommended Path:</span>
-                    <strong className="fs-15 miniu-text-dark">{recommendation.title}</strong>
+                    <strong className="fs-14 miniu-text-dark">{recommendation.title}</strong>
                   </div>
 
                   <div className="d-flex align-items-center gap-2">
                     <Link
                       to={recommendation.path}
-                      className="btn btn-sm btn-danger rounded-pill px-3 py-2 fw-semibold fs-13"
+                      className="btn btn-sm btn-danger text-white rounded-pill px-3 py-1.5 fw-bold fs-12"
                     >
                       Explore Course →
                     </Link>
                     <button
                       type="button"
                       onClick={onOpenCounselling}
-                      className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 fs-13"
+                      className="btn btn-sm btn-outline-secondary rounded-pill px-2.5 py-1.5 fs-12"
                     >
                       Ask Advisor
                     </button>
