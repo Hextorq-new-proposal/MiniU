@@ -1,0 +1,333 @@
+/* MiniU Modern Landing Page Styles & Motion System */
+
+:root {
+  --miniu-red: #ff0135;
+  --miniu-red-hover: #e0002e;
+  --miniu-red-subtle: #fff1f3;
+  --miniu-red-border: #ffd1d8;
+  --miniu-dark: #0f172a;
+  --miniu-secondary: #334155;
+  --miniu-muted: #64748b;
+  --miniu-border: #e2e8f0;
+  --miniu-bg-white: #ffffff;
+  --miniu-bg-slate: #f8fafc;
+  --miniu-bg-tint: #faf9f6;
+  --miniu-card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --miniu-card-hover-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.09);
+  --miniu-transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base resets & typography */
+.miniu-font-display {
+  font-family: var(--spartan, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  letter-spacing: -0.02em;
+}
+
+.miniu-text-dark {
+  color: var(--miniu-dark) !important;
+}
+
+.miniu-text-muted {
+  color: var(--miniu-muted) !important;
+}
+
+.miniu-text-red {
+  color: var(--miniu-red) !important;
+}
+
+.miniu-bg-white {
+  background-color: var(--miniu-bg-white) !important;
+}
+
+.miniu-bg-slate {
+  background-color: var(--miniu-bg-slate) !important;
+}
+
+.miniu-bg-tint {
+  background-color: var(--miniu-bg-tint) !important;
+}
+
+/* Compact modern Header */
+.miniu-header {
+  height: 76px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--miniu-border);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  transition: var(--miniu-transition);
+}
+
+@media (max-width: 991px) {
+  .miniu-header {
+    height: 64px;
+  }
+}
+
+.miniu-nav-link {
+  color: var(--miniu-secondary);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: var(--miniu-transition);
+}
+
+.miniu-nav-link:hover {
+  color: var(--miniu-red);
+  background-color: var(--miniu-red-subtle);
+}
+
+/* Primary Button with micro-interaction */
+.btn-miniu-primary {
+  background-color: var(--miniu-red);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  border: 1px solid var(--miniu-red);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(255, 1, 53, 0.25);
+  transition: var(--miniu-transition);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-miniu-primary:hover {
+  background-color: var(--miniu-red-hover);
+  border-color: var(--miniu-red-hover);
+  box-shadow: 0 6px 20px rgba(255, 1, 53, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-miniu-primary i,
+.btn-miniu-primary svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-miniu-primary:hover i,
+.btn-miniu-primary:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-miniu-outline {
+  background-color: transparent;
+  color: var(--miniu-dark) !important;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  border: 1px solid var(--miniu-border);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--miniu-transition);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-miniu-outline:hover {
+  border-color: var(--miniu-dark);
+  background-color: var(--miniu-bg-slate);
+  transform: translateY(-2px);
+}
+
+/* Clean Cards System */
+.miniu-card {
+  background: #ffffff;
+  border: 1px solid var(--miniu-border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--miniu-card-shadow);
+  transition: var(--miniu-transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.miniu-card:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: var(--miniu-card-hover-shadow);
+}
+
+/* Interactive Category Pills / Buttons */
+.miniu-category-card {
+  background: #ffffff;
+  border: 1px solid var(--miniu-border);
+  border-radius: 14px;
+  padding: 18px 20px;
+  transition: var(--miniu-transition);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--miniu-dark);
+}
+
+.miniu-category-card:hover,
+.miniu-category-card.active {
+  border-color: var(--miniu-red);
+  background-color: var(--miniu-red-subtle);
+  transform: translateY(-3px);
+  box-shadow: var(--miniu-card-shadow);
+}
+
+.miniu-category-card .arrow-icon {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: var(--miniu-transition);
+  color: var(--miniu-red);
+}
+
+.miniu-category-card:hover .arrow-icon,
+.miniu-category-card.active .arrow-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hero UI Mockup Card */
+.hero-mockup-card {
+  background: #ffffff;
+  border: 1px solid var(--miniu-border);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12);
+  padding: 24px;
+  position: relative;
+}
+
+.hero-progress-bar {
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #f1f5f9;
+  overflow: hidden;
+}
+
+.hero-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #ff0135, #ff4b70);
+  transition: width 1s ease-in-out;
+}
+
+/* Pulse animation for live badge */
+@keyframes pulse-live {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-live 2s infinite ease-in-out;
+}
+
+/* Subtle Counter Styling */
+.miniu-stat-number {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--miniu-dark);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 768px) {
+  .miniu-stat-number {
+    font-size: 32px;
+  }
+}
+
+/* Trust strip partner marquee/grid */
+.partner-logo-item {
+  font-weight: 700;
+  font-size: 18px;
+  color: #94a3b8;
+  letter-spacing: -0.01em;
+  transition: var(--miniu-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.partner-logo-item:hover {
+  color: var(--miniu-dark);
+}
+
+/* Step timeline */
+.miniu-step-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: var(--miniu-red-subtle);
+  color: var(--miniu-red);
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--miniu-red-border);
+}
+
+/* FAQ Accordion Styling */
+.miniu-faq-item {
+  border: 1px solid var(--miniu-border);
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: var(--miniu-transition);
+}
+
+.miniu-faq-item.open {
+  border-color: #cbd5e1;
+  box-shadow: var(--miniu-card-shadow);
+}
+
+.miniu-faq-btn {
+  width: 100%;
+  padding: 18px 24px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--miniu-dark);
+  cursor: pointer;
+}
+
+.miniu-faq-content {
+  padding: 0 24px 20px 24px;
+  color: var(--miniu-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Sticky mobile action bar */
+.miniu-mobile-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid var(--miniu-border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  padding: 10px 16px;
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

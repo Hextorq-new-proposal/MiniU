@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dist/
+Disallow: /scratch/
+
+Sitemap: https://miniu.info/sitemap.xml

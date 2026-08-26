@@ -1,0 +1,128 @@
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import SEOHead from "../components/common/SEOHead"
+import CourseCatalog from "../components/courses/CourseCatalog"
+import SalaryCalculator from "../components/interactive/SalaryCalculator"
+import LeadModal from "../components/modals/LeadModal"
+import StickyActionBar from "../components/common/StickyActionBar"
+
+export default function Course({ initialCategory = "all" }) {
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalType, setModalType] = useState("demo")
+  const [activeCourse, setActiveCourse] = useState(null)
+
+  const handleEnquire = (course) => {
+    setActiveCourse(course)
+    setModalType("demo")
+    setModalOpen(true)
+  }
+
+  const catalogSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Job Oriented Professional Training Courses at MiniU Coimbatore",
+    "description": "Comprehensive professional courses in SAP Modules, Business Analytics, Full Stack Development, Data Science, and UI/UX Design.",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "SAP ABAP Training in Coimbatore"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "SAP FICO Training in Coimbatore"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Business Analytics Course in Coimbatore"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Data Science & Machine Learning Course in Coimbatore"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Full Stack Web Development Course in Coimbatore"
+      }
+    ]
+  }
+
+  return (
+    <>
+      <SEOHead
+        title="Job Oriented Courses in Coimbatore with 100% Placement | MiniU EdTech"
+        description="Explore top SAP modules (ABAP, FICO, MM, SD, HANA), Business Analytics, Data Science, Full Stack Web Development, and DevOps courses in Coimbatore at MiniU."
+        keywords="sap courses coimbatore, it training courses coimbatore, full stack development rs puram, data science institute coimbatore, placement guaranteed courses"
+        canonicalUrl="https://miniu.info/courses"
+        schema={catalogSchema}
+      />
+
+      <Header />
+
+      <main className="bg-light pb-5">
+        {/* Banner Section */}
+        <section className="bg-white border-bottom py-5">
+          <div className="container text-center max-w-800 mx-auto">
+            <nav className="d-flex justify-content-center mb-3">
+              <ol className="breadcrumb fs-13 mb-0">
+                <li className="breadcrumb-item">
+                  <Link to="/" className="text-muted text-decoration-none">Home</Link>
+                </li>
+                <li className="breadcrumb-item active text-danger fw-semibold" aria-current="page">
+                  Courses
+                </li>
+              </ol>
+            </nav>
+
+            <span className="badge bg-danger-subtle text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
+              Career-Focused Industry Curriculum
+            </span>
+            <h1 className="fs-36 fw-bold text-dark mb-3">
+              Explore Job-Oriented Training Programs
+            </h1>
+            <p className="text-muted fs-16 mb-0">
+              Master in-demand skills from certified corporate trainers. Access 24/7 dedicated servers, complete real-time capstone projects, and get 100% placement support in top MNCs.
+            </p>
+          </div>
+        </section>
+
+        {/* Interactive Course Catalog with Live Search & Filter */}
+        <section className="py-4">
+          <CourseCatalog
+            initialCategory={initialCategory}
+            onEnquire={handleEnquire}
+          />
+        </section>
+
+        {/* Interactive Salary & Career ROI Calculator */}
+        <section className="py-5">
+          <div className="container">
+            <SalaryCalculator onOpenDemoModal={handleEnquire} />
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+
+      {/* Sticky Mobile Action Bar */}
+      <StickyActionBar
+        courseTitle="MiniU Programs"
+        onOpenDemoModal={() => handleEnquire(null)}
+      />
+
+      {/* Lead Capture Modal */}
+      <LeadModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        course={activeCourse}
+        type={modalType}
+      />
+    </>
+  )
+}
