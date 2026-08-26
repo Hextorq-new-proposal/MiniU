@@ -157,14 +157,19 @@ html.lenis, html.lenis body {
   display: inline-block !important;
 }
 
-/* Bold Modern Tech Display Typography for Hero Headline */
+/* Droid Logo Typography exclusively for Hero Headline */
+.droid-logo-text {
+  font-family: 'DroidLogoFont', sans-serif !important;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+}
+
+/* Bold Display Typography for Hero Headline */
 .miniu-hero-title {
-  font-family: "Plus Jakarta Sans", "Space Grotesk", "Droid Sans", -apple-system, sans-serif;
-  font-weight: 800;
   font-size: clamp(2.5rem, 5.5vw, 4.4rem);
   line-height: 1.08;
-  letter-spacing: -0.035em;
-  color: #0f172a;
+  letter-spacing: -0.02em;
+  color: #000000;
 }
 
 .miniu-hero-title .highlight-line {
@@ -175,9 +180,39 @@ html.lenis, html.lenis body {
   display: block;
 }
 
+/* Pitch Dark High-Contrast Hero Typography */
+.hero-dark-kicker {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  letter-spacing: 2px;
+}
+
+.hero-dark-domain {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.5px;
+}
+
+.hero-dark-domain .dot-sep {
+  color: #ff0135;
+  font-weight: 900;
+  margin: 0 4px;
+}
+
+.hero-dark-para {
+  color: #000000 !important;
+  font-weight: 500 !important;
+  line-height: 1.7;
+}
+
+.hero-dark-checklist {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
 .miniu-nav-link {
-  color: var(--miniu-secondary);
-  font-weight: 500;
+  color: #0f172a;
+  font-weight: 600;
   font-size: 15px;
   text-decoration: none;
   padding: 8px 14px;
@@ -189,6 +224,61 @@ html.lenis, html.lenis body {
 .miniu-nav-link.active {
   color: var(--miniu-red);
   background-color: var(--miniu-red-subtle);
+}
+
+/* Reflective Glass CTA Buttons (Reflects underlying animated WebGL canvas) */
+.btn-miniu-reflective-red {
+  background: rgba(255, 1, 53, 0.88);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 8px 30px rgba(255, 1, 53, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 11px 26px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--miniu-transition);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-miniu-reflective-red:hover {
+  background: rgba(255, 1, 53, 1);
+  box-shadow: 0 12px 36px rgba(255, 1, 53, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  border-color: #ffffff;
+}
+
+.btn-miniu-glass-outline {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #000000 !important;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 11px 24px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(15, 23, 42, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--miniu-transition);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-miniu-glass-outline:hover {
+  border-color: #000000;
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* Primary Button with micro-interaction */

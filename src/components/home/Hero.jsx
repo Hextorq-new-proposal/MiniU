@@ -23,59 +23,59 @@ export default function Hero({ onOpenCounselling }) {
                 className="btn btn-sm d-inline-flex flex-wrap align-items-center gap-2 px-3 py-1.5 rounded-pill bg-white border border-light-subtle shadow-xs text-decoration-none transition-all hover-translate-y text-start"
               >
                 <span className="live-pulse-dot flex-shrink-0" />
-                <span className="fs-12 fs-sm-13 fw-semibold text-dark">
+                <span className="fs-12 fs-sm-13 fw-bold text-dark">
                   Admissions Open: Classroom (Coimbatore) &amp; Live Online
                 </span>
                 <span className="fs-11 fs-sm-12 text-danger fw-bold ms-sm-1">View Batches →</span>
               </button>
             </div>
 
-            {/* Small Kicker */}
-            <span className="d-block fs-12 fs-sm-13 fw-bold text-dark text-uppercase letter-spacing-2 mb-2 mb-sm-3 opacity-75">
+            {/* Small Kicker (Deep Black) */}
+            <span className="d-block fs-12 fs-sm-13 hero-dark-kicker text-uppercase mb-2 mb-sm-3">
               MiniU EdTech Institute • Coimbatore
             </span>
 
-            {/* Main Display Headline */}
+            {/* Main Display Headline (Droid Logo Font on two lines) */}
             <h1 className="miniu-hero-title mb-3">
-              <span className="d-block">Build the skills.</span>
-              <span className="highlight-line d-block">Build the career.</span>
+              <span className="droid-logo-text d-block text-dark">Build the skills.</span>
+              <span className="droid-logo-text highlight-line d-block">Build the career.</span>
             </h1>
 
-            {/* Domain Specificity Subtitle */}
-            <div className="fs-12 fs-sm-14 fw-bold text-danger mb-3 mb-sm-4 text-uppercase letter-spacing-1">
-              SAP • Business &amp; Data • Development • Finance • Design
+            {/* Domain Specificity Subtitle (Deep High-Contrast Black) */}
+            <div className="fs-13 fs-sm-14 hero-dark-domain mb-3 mb-sm-4 text-uppercase">
+              SAP <span className="dot-sep">•</span> BUSINESS &amp; DATA <span className="dot-sep">•</span> DEVELOPMENT <span className="dot-sep">•</span> FINANCE <span className="dot-sep">•</span> DESIGN
             </div>
 
-            {/* Supporting Value Proposition */}
-            <p className="fs-16 fs-sm-18 fs-md-19 text-secondary mb-4 mb-sm-5 max-w-650 line-height-relaxed fw-normal">
+            {/* Supporting Value Proposition (Deep Black) */}
+            <p className="fs-16 fs-sm-18 fs-md-19 hero-dark-para mb-4 mb-sm-5 max-w-650">
               Industry-focused courses, practical projects, expert mentors and placement support to help you become job-ready in high-demand enterprise domains.
             </p>
 
-            {/* Action Buttons (Full width on extra small mobile, inline on tablet/desktop) */}
+            {/* Action Buttons with WebGL Reflective Glass Effects */}
             <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3 mb-4 mb-sm-5">
-              <Link to="/courses" className="btn-miniu-primary fs-15 fs-sm-16 py-2.5 py-sm-3 px-4 px-sm-5 shadow-sm justify-content-center">
+              <Link to="/courses" className="btn-miniu-reflective-red fs-15 fs-sm-16 py-3 px-4 px-sm-5 justify-content-center">
                 <span>Explore Courses</span>
                 <i className="fa-regular fa-arrow-right-long" />
               </Link>
               <button
                 type="button"
                 onClick={onOpenCounselling}
-                className="btn-miniu-outline fs-15 fs-sm-16 py-2.5 py-sm-3 px-4 bg-white shadow-xs justify-content-center"
+                className="btn-miniu-glass-outline fs-15 fs-sm-16 py-3 px-4 justify-content-center"
               >
                 Talk to a Course Advisor
               </button>
             </div>
 
-            {/* 3 Core Trust Checklist */}
-            <div className="d-flex flex-wrap align-items-center gap-3 gap-sm-4 text-secondary fs-13 fs-sm-14 fw-semibold pt-1 pt-sm-2">
+            {/* 3 Core Trust Checklist (Deep Dark Black) */}
+            <div className="d-flex flex-wrap align-items-center gap-3 gap-sm-4 hero-dark-checklist fs-13 fs-sm-14 pt-1 pt-sm-2">
               <span className="d-flex align-items-center gap-1.5">
-                <span className="text-success fw-bold fs-15">✓</span> Live Mentor Training
+                <span className="text-success fw-bold fs-16">✓</span> Live Mentor Training
               </span>
               <span className="d-flex align-items-center gap-1.5">
-                <span className="text-success fw-bold fs-15">✓</span> Practical Projects
+                <span className="text-success fw-bold fs-16">✓</span> Practical Projects
               </span>
               <span className="d-flex align-items-center gap-1.5">
-                <span className="text-success fw-bold fs-15">✓</span> Placement Support
+                <span className="text-success fw-bold fs-16">✓</span> Placement Support
               </span>
             </div>
           </div>
