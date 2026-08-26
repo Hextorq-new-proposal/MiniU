@@ -34,82 +34,86 @@ export default function IntroSplash({ onComplete }) {
         }
       })
 
-      // 1. Initial State on Pure White
+      // 1. Initial State on Pure White with GPU acceleration
       gsap.set(containerRef.current, { opacity: 1, backgroundColor: "#ffffff" })
-      gsap.set(glowRef.current, { opacity: 0, scale: 0.85 })
+      gsap.set(glowRef.current, { opacity: 0, scale: 0.75 })
       gsap.set(logoMarkRef.current, { opacity: 0 })
-      gsap.set(".logo-mark-char", { opacity: 0, y: 5 })
-      gsap.set(".wordmark-char", { opacity: 0, y: 5 })
-      gsap.set(badgeRef.current, { opacity: 0, scale: 0.96 })
-      gsap.set(logoWrapperRef.current, { y: 0, scale: 1 })
+      gsap.set(".logo-mark-char", { opacity: 0, y: 8, scale: 0.96, transformOrigin: "center center" })
+      gsap.set(".wordmark-char", { opacity: 0, y: 6, scale: 0.98, transformOrigin: "center center" })
+      gsap.set(badgeRef.current, { opacity: 0, scale: 0.94, transformOrigin: "945px 45px" })
+      gsap.set(logoWrapperRef.current, { y: 0, scale: 0.985 })
 
-      // Timeline sequence (~4.0 seconds total):
+      // Timeline sequence (~4.0 seconds total, buttery smooth transitions):
       
-      // 2. Extremely subtle ambient crimson glow (3-5% opacity) (0.1s - 1.2s)
+      // 2. Extremely subtle ambient crimson glow (3-5% opacity) (0.0s - 1.4s)
       tl.to(glowRef.current, {
-        opacity: 0.045,
-        scale: 1,
-        duration: 1.1,
+        opacity: 0.05,
+        scale: 1.05,
+        duration: 1.3,
         ease: "power2.out"
-      }, 0.1)
+      }, 0.05)
 
-      // 3 & 4. Reveal MiniU Logo Mark smoothly (0.2s - 1.8s)
+      // 3 & 4. Reveal MiniU Logo Mark smoothly (0.15s - 1.8s)
       tl.to(logoMarkRef.current, {
         opacity: 1,
-        duration: 0.4
-      }, 0.2)
+        duration: 0.35,
+        ease: "power1.out"
+      }, 0.15)
 
-      // Stagger logo ribbon arches with generous smooth flow
+      // Stagger logo ribbon arches with liquid organic flow
       tl.to(".logo-mark-char", {
         opacity: 1,
         y: 0,
-        duration: 0.9,
-        stagger: 0.05,
-        ease: "power3.out"
-      }, 0.3)
+        scale: 1,
+        duration: 1.0,
+        stagger: {
+          each: 0.045,
+          ease: "power1.inOut"
+        },
+        ease: "power2.out"
+      }, 0.2)
 
-      // 5. Reveal individual wordmark elements (1.2s - 2.5s, smooth 4-6px movement)
+      // 5. Reveal individual wordmark elements (1.1s - 2.4s, smooth glide)
       tl.to(".wordmark-char", {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        stagger: 0.035,
+        scale: 1,
+        duration: 0.9,
+        stagger: {
+          each: 0.028,
+          ease: "power1.inOut"
+        },
         ease: "power2.out"
-      }, 1.2)
+      }, 1.1)
 
-      // 6. Reveal "A Unit Of Prajai" badge after main wordmark (2.2s - 3.1s, scale 0.95 -> 1)
+      // 6. Reveal "A Unit Of Prajai" badge after main wordmark (1.95s - 2.85s, scale 0.94 -> 1)
       tl.to(badgeRef.current, {
         opacity: 1,
         scale: 1,
         duration: 0.85,
         ease: "power2.out"
-      }, 2.2)
+      }, 1.95)
 
-      // 7. Cinematic settle: subtle breath scale 1.008 -> 1 (2.9s - 3.45s)
+      // 7. Cinematic settle: gentle breathing expansion 0.985 -> 1.004 -> 1.0 (2.6s - 3.4s)
       tl.to(logoWrapperRef.current, {
-        scale: 1.008,
-        duration: 0.3,
-        ease: "sine.out"
-      }, 2.9)
-      tl.to(logoWrapperRef.current, {
-        scale: 1.0,
-        duration: 0.3,
+        scale: 1.006,
+        duration: 0.7,
         ease: "sine.inOut"
-      }, 3.2)
+      }, 2.6)
 
-      // 8. Transition upward by ~16px while splash container fades smoothly into homepage (3.45s - 4.0s)
+      // 8. Transition upward by ~14px while splash container fades smoothly into homepage (3.4s - 4.0s)
       tl.to(logoWrapperRef.current, {
-        y: -16,
+        y: -14,
         opacity: 0,
-        duration: 0.55,
+        duration: 0.6,
         ease: "power2.inOut"
-      }, 3.45)
+      }, 3.4)
 
       tl.to(containerRef.current, {
         opacity: 0,
-        duration: 0.55,
+        duration: 0.6,
         ease: "power2.inOut"
-      }, 3.48)
+      }, 3.42)
 
     }, containerRef)
 
