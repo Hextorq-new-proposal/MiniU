@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import ShaderBackground from "../common/ShaderBackground"
 
 export default function Hero({ onOpenCounselling }) {
   const [activeTab, setActiveTab] = useState("sap")
@@ -41,7 +42,10 @@ export default function Hero({ onOpenCounselling }) {
 
   return (
     <section className="py-5 py-lg-6 miniu-bg-white border-bottom position-relative overflow-hidden">
-      <div className="container py-3 py-md-4">
+      {/* Animated WebGL Shader Background */}
+      <ShaderBackground opacity={0.45} />
+
+      <div className="container py-3 py-md-4 position-relative" style={{ zIndex: 1 }}>
         <div className="row g-5 align-items-center">
           {/* Left Column: Headline & Value Proposition */}
           <div className="col-lg-7">
