@@ -1,5 +1,6 @@
-import React from "react"
-import ShaderBackground from "../common/ShaderBackground"
+import React, { lazy, Suspense } from "react"
+
+const ShaderBackground = lazy(() => import("../common/ShaderBackground"))
 
 export default function FinalCTA({ onOpenCounselling }) {
   const handleWhatsApp = () => {
@@ -13,8 +14,10 @@ export default function FinalCTA({ onOpenCounselling }) {
     <section className="py-5 py-lg-6 miniu-bg-white">
       <div className="container py-4">
         <div className="p-5 rounded-4 miniu-bg-slate border border-danger-subtle text-center max-w-800 mx-auto shadow-sm reveal-fade-up position-relative overflow-hidden">
-          {/* Animated WebGL Shader Glow */}
-          <ShaderBackground opacity={0.35} />
+          {/* Animated WebGL Shader Glow (Async Lazy Load) */}
+          <Suspense fallback={null}>
+            <ShaderBackground opacity={0.35} />
+          </Suspense>
 
           <div className="position-relative" style={{ zIndex: 1 }}>
             <span className="badge bg-danger text-white rounded-pill px-3 py-1 fs-12 fw-semibold mb-3">

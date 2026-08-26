@@ -1,12 +1,15 @@
-import React from "react"
+import React, { lazy, Suspense } from "react"
 import { Link } from "react-router-dom"
-import ShaderBackground from "../common/ShaderBackground"
+
+const ShaderBackground = lazy(() => import("../common/ShaderBackground"))
 
 export default function Hero({ onOpenCounselling }) {
   return (
     <section className="position-relative overflow-hidden miniu-hero-section d-flex align-items-center bg-[#EFEFEF]">
-      {/* Exact WebGL Hero Shader Stack from D:/bg/ani-bg */}
-      <ShaderBackground color="#ff0135" />
+      {/* Exact WebGL Hero Shader Stack from D:/bg/ani-bg (Async Lazy Load) */}
+      <Suspense fallback={null}>
+        <ShaderBackground color="#ff0135" />
+      </Suspense>
 
       {/* Hero Content Container */}
       <div className="container py-5 py-lg-6 position-relative" style={{ zIndex: 10 }}>
