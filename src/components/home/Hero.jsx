@@ -43,9 +43,10 @@ export default function Hero({ onOpenCounselling }) {
               <button
                 type="button"
                 onClick={onOpenCounselling}
-                className="btn btn-link p-0 text-danger fw-bold text-decoration-none fs-13 fs-sm-14 ms-1"
+                className="p-0 border-0 bg-transparent text-danger fw-bold fs-13 fs-sm-14 ms-1 d-inline-flex align-items-center cursor-pointer text-decoration-none"
+                style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none" }}
               >
-                View Batches →
+                <span>View Batches →</span>
               </button>
             </div>
 

@@ -221,12 +221,9 @@ export default function Contact() {
                   <input name="company" style={cssObj("display:none")} type="text" />
                   <div className="cf-turnstile" data-sitekey="0x4AAAAAADEQiltf7jTEF4qA" />
                 </div>
-                <button className="btn-one mt-4" type="submit">
-                  
-
-                                    Send Now
-
-                                
+                <button className="btn-miniu-primary rounded-pill px-4 py-2.5 mt-4 fs-14 fw-bold shadow-sm text-white border-0" type="submit">
+                  <span>Send Message</span>
+                  <i className="fa-regular fa-arrow-right-long text-white ms-2" />
                 </button>
               </form>
             </div>

@@ -47,45 +47,41 @@ export default function useSmoothScroll() {
     const ctx = gsap.context(() => {
       // Fade-up section headers
       gsap.utils.toArray(".reveal-fade-up").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          }
-        )
+        gsap.from(el, {
+          opacity: 0,
+          y: 24,
+          duration: 0.65,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 92%",
+            once: true,
+          },
+        })
       })
 
       // Staggered cards reveal
       gsap.utils.toArray(".reveal-stagger-group").forEach((group) => {
         const cards = group.querySelectorAll(".reveal-card")
         if (cards.length > 0) {
-          gsap.fromTo(
-            cards,
-            { opacity: 0, y: 35 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.7,
-              stagger: 0.12,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: group,
-                start: "top 80%",
-                toggleActions: "play none none none",
-              },
-            }
-          )
+          gsap.from(cards, {
+            opacity: 0,
+            y: 25,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: group,
+              start: "top 88%",
+              once: true,
+            },
+          })
         }
       })
+
+      setTimeout(() => {
+        ScrollTrigger.refresh()
+      }, 300)
     })
 
     return () => {
