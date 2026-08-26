@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="col-lg-4 col-md-6">
             <Link to="/" className="d-inline-block mb-3">
-              <img src="/assets/images/miniu/logo.png" alt="MiniU EdTech" height="36" />
+              <img src="/assets/logo/miniu-logo.svg" alt="MiniU EdTech" height="36" style={{ height: "36px", width: "auto" }} />
             </Link>
             <p className="miniu-text-muted fs-14 mb-3 max-w-350">
               MiniU is a job-oriented professional training institute in Coimbatore offering practical programs in SAP, Business Analytics, Full Stack Web Development, and UI/UX Design.

@@ -18,7 +18,7 @@ export default function Header({ onOpenCounselling }) {
           {/* Logo */}
           <Link to="/" className="d-flex align-items-center text-decoration-none me-4 me-xl-5">
             <img
-              src="/assets/images/miniu/logo.png"
+              src="/assets/logo/miniu-logo.svg"
               alt="MiniU EdTech"
               className="miniu-header-logo d-inline-block align-middle"
               style={{ height: "38px", width: "auto", maxHeight: "38px" }}
@@ -89,7 +89,7 @@ export default function Header({ onOpenCounselling }) {
             <div>
               <div className="d-flex align-items-center justify-content-between pb-3 border-bottom mb-3">
                 <img
-                  src="/assets/images/miniu/logo.png"
+                  src="/assets/logo/miniu-logo.svg"
                   alt="MiniU"
                   className="miniu-header-logo"
                   style={{ height: "32px", width: "auto", maxHeight: "32px" }}
