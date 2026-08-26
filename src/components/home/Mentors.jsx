@@ -33,7 +33,7 @@ export default function Mentors() {
     <section className="py-5 py-lg-6 miniu-bg-slate border-bottom">
       <div className="container py-3">
         {/* Section Header */}
-        <div className="text-center max-w-700 mx-auto mb-5">
+        <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
           <span className="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
             Expert Faculty
           </span>
@@ -46,9 +46,9 @@ export default function Mentors() {
         </div>
 
         {/* 3 Mentor Cards Grid */}
-        <div className="row g-4 justify-content-center">
+        <div className="row g-4 justify-content-center reveal-stagger-group">
           {MENTORS.map((m, idx) => (
-            <div key={idx} className="col-lg-4 col-md-6">
+            <div key={idx} className="col-lg-4 col-md-6 reveal-card">
               <div className="miniu-card p-4 justify-content-between">
                 <div>
                   {/* Top Bar */}

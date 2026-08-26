@@ -11,7 +11,7 @@ export default function FinalCTA({ onOpenCounselling }) {
   return (
     <section className="py-5 py-lg-6 miniu-bg-white">
       <div className="container py-4">
-        <div className="p-5 rounded-4 miniu-bg-slate border border-danger-subtle text-center max-w-800 mx-auto shadow-sm">
+        <div className="p-5 rounded-4 miniu-bg-slate border border-danger-subtle text-center max-w-800 mx-auto shadow-sm reveal-fade-up">
           <span className="badge bg-danger text-white rounded-pill px-3 py-1 fs-12 fw-semibold mb-3">
             Start Your Journey Today
           </span>

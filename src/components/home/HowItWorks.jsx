@@ -33,7 +33,7 @@ export default function HowItWorks() {
     <section className="py-5 py-lg-6 miniu-bg-white border-bottom">
       <div className="container py-3">
         {/* Section Header */}
-        <div className="text-center max-w-700 mx-auto mb-5">
+        <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
           <span className="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
             The Journey
           </span>
@@ -46,9 +46,9 @@ export default function HowItWorks() {
         </div>
 
         {/* 5-Step Process Grid */}
-        <div className="row g-4 justify-content-center">
+        <div className="row g-4 justify-content-center reveal-stagger-group">
           {STEPS.map((item, idx) => (
-            <div key={idx} className="col-lg-4 col-md-6">
+            <div key={idx} className="col-lg-4 col-md-6 reveal-card">
               <div className="p-4 rounded-4 miniu-bg-slate border h-100 position-relative transition-all hover-translate-y">
                 <div className="d-flex align-items-center justify-content-between mb-3">
                   <div className="miniu-step-number">

@@ -12,7 +12,7 @@ const TRUSTED_COMPANIES = [
 
 export default function TrustStrip() {
   return (
-    <section className="py-4 miniu-bg-slate border-bottom">
+    <section className="py-4 miniu-bg-slate border-bottom reveal-fade-up">
       <div className="container">
         <div className="row g-3 align-items-center">
           <div className="col-lg-3 text-center text-lg-start">

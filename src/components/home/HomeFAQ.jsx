@@ -51,7 +51,7 @@ export default function HomeFAQ() {
     <section className="py-5 py-lg-6 miniu-bg-slate border-bottom">
       <div className="container py-3 max-w-900 mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-700 mx-auto mb-4">
+        <div className="text-center max-w-700 mx-auto mb-4 reveal-fade-up">
           <span className="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
             Got Questions?
           </span>

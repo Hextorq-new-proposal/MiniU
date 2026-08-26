@@ -1,4 +1,25 @@
-/* MiniU Modern Landing Page Styles & Motion System */
+/* MiniU Modern Design System & Motion Architecture */
+
+/* Lenis Smooth Scroll Integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 
 :root {
   --miniu-red: #ff0135;
@@ -51,7 +72,8 @@
 .miniu-header {
   height: 76px;
   background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--miniu-border);
   position: sticky;
   top: 0;
@@ -70,12 +92,13 @@
   font-weight: 500;
   font-size: 15px;
   text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
   transition: var(--miniu-transition);
 }
 
-.miniu-nav-link:hover {
+.miniu-nav-link:hover,
+.miniu-nav-link.active {
   color: var(--miniu-red);
   background-color: var(--miniu-red-subtle);
 }
@@ -86,13 +109,13 @@
   color: #ffffff !important;
   font-weight: 600;
   font-size: 14px;
-  padding: 10px 22px;
+  padding: 10px 24px;
   border-radius: 9999px;
   border: 1px solid var(--miniu-red);
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 14px rgba(255, 1, 53, 0.25);
+  box-shadow: 0 4px 14px rgba(255, 1, 53, 0.22);
   transition: var(--miniu-transition);
   text-decoration: none;
   cursor: pointer;
@@ -101,7 +124,7 @@
 .btn-miniu-primary:hover {
   background-color: var(--miniu-red-hover);
   border-color: var(--miniu-red-hover);
-  box-shadow: 0 6px 20px rgba(255, 1, 53, 0.35);
+  box-shadow: 0 6px 20px rgba(255, 1, 53, 0.32);
   transform: translateY(-2px);
 }
 
@@ -120,7 +143,7 @@
   color: var(--miniu-dark) !important;
   font-weight: 600;
   font-size: 14px;
-  padding: 10px 22px;
+  padding: 10px 24px;
   border-radius: 9999px;
   border: 1px solid var(--miniu-border);
   display: inline-flex;
@@ -192,14 +215,15 @@
   transform: translateX(0);
 }
 
-/* Hero UI Mockup Card */
+/* Hero Educational Preview Card */
 .hero-mockup-card {
   background: #ffffff;
   border: 1px solid var(--miniu-border);
   border-radius: 20px;
-  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.1);
   padding: 24px;
   position: relative;
+  transition: var(--miniu-transition);
 }
 
 .hero-tab-btn {
@@ -223,20 +247,6 @@
   background: #ffffff !important;
   color: var(--miniu-dark) !important;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
-}
-
-.hero-progress-bar {
-  height: 8px;
-  border-radius: 9999px;
-  background-color: #f1f5f9;
-  overflow: hidden;
-}
-
-.hero-progress-fill {
-  height: 100%;
-  border-radius: 9999px;
-  background: linear-gradient(90deg, #ff0135, #ff4b70);
-  transition: width 1s ease-in-out;
 }
 
 /* Pulse animation for live badge */
@@ -361,4 +371,10 @@
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
   color: #94a3b8 !important;
+}
+
+/* Scroll reveal utility classes */
+.reveal-fade-up,
+.reveal-card {
+  will-change: transform, opacity;
 }

@@ -28,7 +28,7 @@ export default function WhyMiniU() {
     <section className="py-5 py-lg-6 miniu-bg-white border-bottom">
       <div className="container py-3">
         {/* Section Header */}
-        <div className="text-center max-w-700 mx-auto mb-5">
+        <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
           <span className="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
             The MiniU Advantage
           </span>
@@ -41,9 +41,9 @@ export default function WhyMiniU() {
         </div>
 
         {/* 4 Pillars Grid */}
-        <div className="row g-4">
+        <div className="row g-4 reveal-stagger-group">
           {WHY_POINTS.map((point, idx) => (
-            <div key={idx} className="col-lg-3 col-sm-6">
+            <div key={idx} className="col-lg-3 col-sm-6 reveal-card">
               <div className="p-4 rounded-4 miniu-bg-slate border h-100 transition-all hover-translate-y">
                 <div
                   className="bg-white text-danger rounded-3 d-flex align-items-center justify-content-center mb-4 border shadow-xs"

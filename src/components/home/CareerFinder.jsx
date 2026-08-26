@@ -82,7 +82,7 @@ export default function CareerFinder({ onOpenCounselling }) {
     <section id="career-discovery" className="py-5 py-lg-6 miniu-bg-white border-bottom">
       <div className="container py-3">
         {/* Section Header */}
-        <div className="text-center max-w-700 mx-auto mb-5">
+        <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
           <span className="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
             Career Discovery
           </span>
@@ -95,11 +95,11 @@ export default function CareerFinder({ onOpenCounselling }) {
         </div>
 
         {/* 6 Category Selection Grid */}
-        <div className="row g-3 mb-4">
+        <div className="row g-3 mb-4 reveal-stagger-group">
           {CATEGORY_DISCOVERY.map((cat) => {
             const isSelected = selectedCategory.id === cat.id
             return (
-              <div key={cat.id} className="col-md-4 col-sm-6">
+              <div key={cat.id} className="col-md-4 col-sm-6 reveal-card">
                 <div
                   onClick={() => setSelectedCategory(cat)}
                   className={`miniu-category-card ${isSelected ? "active" : ""}`}

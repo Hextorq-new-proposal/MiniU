@@ -69,7 +69,7 @@ export default function CareerPaths() {
     <section className="py-5 py-lg-6 miniu-bg-slate border-bottom">
       <div className="container py-3">
         {/* Section Header */}
-        <div className="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-5">
+        <div className="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-5 reveal-fade-up">
           <div>
             <span className="badge bg-danger bg-opacity-10 text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
               Featured Programs
@@ -92,9 +92,9 @@ export default function CareerPaths() {
         </div>
 
         {/* Minimal Course Cards Grid */}
-        <div className="row g-4">
+        <div className="row g-4 reveal-stagger-group">
           {FEATURED_PROGRAMS.map((program, idx) => (
-            <div key={idx} className="col-lg-4 col-md-6">
+            <div key={idx} className="col-lg-4 col-md-6 reveal-card">
               <div className="miniu-card p-4 justify-content-between">
                 <div>
                   {/* Category icon & label */}

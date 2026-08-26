@@ -10,6 +10,7 @@ import BlogDetails from "./pages/BlogDetails"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
 import Terms from "./pages/Terms"
 import useInitScripts from "./hooks/useInitScripts"
+import useSmoothScroll from "./hooks/useSmoothScroll"
 
 function ScrollAndTitle() {
   const { pathname, hash } = useLocation()
@@ -72,6 +73,7 @@ function SpaLinks() {
 
 export default function App() {
   useInitScripts()
+  useSmoothScroll()
 
   return (
     <>

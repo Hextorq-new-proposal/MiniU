@@ -32,7 +32,7 @@ export default function PlacementStories({ onOpenCounselling }) {
     <section id="placement-proof" className="py-5 py-lg-6 miniu-bg-white border-bottom">
       <div className="container py-3">
         {/* Section Header */}
-        <div className="text-center max-w-700 mx-auto mb-5">
+        <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
           <span className="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
             Verified Outcomes
           </span>
@@ -45,9 +45,9 @@ export default function PlacementStories({ onOpenCounselling }) {
         </div>
 
         {/* 3 Transformation Story Cards */}
-        <div className="row g-4 mb-4">
+        <div className="row g-4 mb-4 reveal-stagger-group">
           {STORIES.map((story, idx) => (
-            <div key={idx} className="col-lg-4">
+            <div key={idx} className="col-lg-4 reveal-card">
               <div className="miniu-card p-4 justify-content-between">
                 <div>
                   {/* Top Bar: Name & Course Pill */}
