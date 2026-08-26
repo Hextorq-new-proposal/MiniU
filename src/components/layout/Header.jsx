@@ -20,8 +20,8 @@ export default function Header({ onOpenCounselling }) {
             <img
               src="/assets/images/miniu/logo.png"
               alt="MiniU EdTech"
-              height="38"
-              className="d-inline-block align-text-top"
+              className="miniu-header-logo d-inline-block align-text-top"
+              style={{ height: "38px", width: "auto", maxHeight: "38px" }}
               onError={(e) => {
                 e.target.style.display = "none"
               }}
@@ -88,7 +88,12 @@ export default function Header({ onOpenCounselling }) {
           >
             <div>
               <div className="d-flex align-items-center justify-content-between pb-3 border-bottom mb-3">
-                <img src="/assets/images/miniu/logo.png" alt="MiniU" height="32" />
+                <img
+                  src="/assets/images/miniu/logo.png"
+                  alt="MiniU"
+                  className="miniu-header-logo"
+                  style={{ height: "32px", width: "auto", maxHeight: "32px" }}
+                />
                 <button
                   type="button"
                   className="btn btn-sm btn-light rounded-circle"

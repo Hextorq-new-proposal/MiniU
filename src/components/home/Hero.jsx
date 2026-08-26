@@ -35,10 +35,10 @@ export default function Hero({ onOpenCounselling }) {
               MiniU EdTech Institute • Coimbatore
             </span>
 
-            {/* Main Display Headline (Droid Logo Font on two lines) */}
+            {/* Main Display Headline */}
             <h1 className="miniu-hero-title mb-3">
-              <span className="droid-logo-text d-block">Build the skills.</span>
-              <span className="droid-logo-text highlight-line d-block">Build the career.</span>
+              <span className="d-block">Build the skills.</span>
+              <span className="highlight-line d-block">Build the career.</span>
             </h1>
 
             {/* Domain Specificity Subtitle */}

@@ -147,19 +147,23 @@ html.lenis, html.lenis body {
   src: url("/assets/fonts/droid-heavy.woff") format("woff");
 }
 
-/* Droid Logo Typography exclusively for Hero Headline */
-.droid-logo-text {
-  font-family: "Droid Logo", "Droid", sans-serif !important;
-  letter-spacing: -0.015em;
-  font-weight: 900;
-  text-transform: none;
+/* Header Logo Constraints (Prevents giant image expansion) */
+.miniu-header-logo {
+  height: 38px !important;
+  width: auto !important;
+  max-width: 220px !important;
+  max-height: 38px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
 }
 
-/* Hero Headline Container */
+/* Bold Modern Tech Display Typography for Hero Headline */
 .miniu-hero-title {
-  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-family: "Plus Jakarta Sans", "Space Grotesk", "Droid Sans", -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5.5vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: #0f172a;
 }
 
