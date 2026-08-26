@@ -840,11 +840,11 @@ img {
 }
 
 .marquee-scroll-left {
-  animation: scrollLeft 28s linear infinite;
+  animation: scrollLeft 60s linear infinite;
 }
 
 .marquee-scroll-right {
-  animation: scrollRight 28s linear infinite;
+  animation: scrollRight 60s linear infinite;
 }
 
 .marquee-container:hover .marquee-content {
