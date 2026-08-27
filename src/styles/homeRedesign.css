@@ -217,19 +217,45 @@ html.lenis, html.lenis body {
 }
 
 .miniu-nav-link {
+  position: relative;
   color: #0f172a;
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 8px;
+  padding: 8px 12px 10px;
   transition: var(--miniu-transition);
 }
 
-.miniu-nav-link:hover,
-.miniu-nav-link.active {
+.miniu-nav-link:hover {
   color: var(--miniu-red);
-  background-color: var(--miniu-red-subtle);
+}
+
+.miniu-nav-link.active {
+  color: var(--miniu-red) !important;
+  font-weight: 700 !important;
+}
+
+.miniu-nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  right: 12px;
+  height: 2.5px;
+  background-color: var(--miniu-red);
+  border-radius: 999px;
+  animation: navUnderlineFade 0.25s ease-out;
+}
+
+@keyframes navUnderlineFade {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }
 
 /* Transparent Glass CTA Buttons (Background is transparent so animated WebGL canvas reflects through) */
@@ -1017,6 +1043,21 @@ img {
 .miniu-modal-submit:disabled {
   background: #94a3b8;
   cursor: not-allowed;
+}
+
+/* Course catalog grid — 3 cols desktop, 2 tablet, 1 mobile */
+.course-grid-responsive {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+@media (max-width: 991px) {
+  .course-grid-responsive {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 575px) {
+  .course-grid-responsive {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* Footer contact link hover effect */

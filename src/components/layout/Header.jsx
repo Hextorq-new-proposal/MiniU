@@ -1,9 +1,32 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import SpecularButton from "../common/SpecularButton"
 
 export default function Header({ onOpenCounselling }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  const goToPlacements = (e) => {
+    e.preventDefault()
+    setMobileMenuOpen(false)
+    if (pathname === "/") {
+      const el = document.querySelector("#placement-proof")
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+    } else {
+      navigate("/")
+      setTimeout(() => {
+        const el = document.querySelector("#placement-proof")
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+      }, 400)
+    }
+  }
+
+  const isHomeActive = pathname === "/"
+  const isCoursesActive = pathname.startsWith("/courses")
+  const isAboutActive = pathname.startsWith("/about")
+  const isResourcesActive = pathname.startsWith("/blog") || pathname.startsWith("/resources")
+  const isContactActive = pathname.startsWith("/contact")
 
   const handleCounsellingClick = (e) => {
     if (onOpenCounselling) {
@@ -31,22 +54,22 @@ export default function Header({ onOpenCounselling }) {
 
           {/* Desktop Navigation Menu */}
           <nav className="d-none d-lg-flex align-items-center gap-1 gap-xl-2">
-            <Link to="/" className="miniu-nav-link">
+            <Link to="/" className={`miniu-nav-link ${isHomeActive ? "active" : ""}`}>
               Home
             </Link>
-            <Link to="/courses" className="miniu-nav-link">
+            <Link to="/courses" className={`miniu-nav-link ${isCoursesActive ? "active" : ""}`}>
               Courses
             </Link>
-            <Link to="/#placement-proof" className="miniu-nav-link">
+            <a href="/#placement-proof" onClick={goToPlacements} className="miniu-nav-link">
               Placements
-            </Link>
-            <Link to="/about" className="miniu-nav-link">
+            </a>
+            <Link to="/about" className={`miniu-nav-link ${isAboutActive ? "active" : ""}`}>
               About
             </Link>
-            <Link to="/blog" className="miniu-nav-link">
+            <Link to="/blog" className={`miniu-nav-link ${isResourcesActive ? "active" : ""}`}>
               Resources
             </Link>
-            <Link to="/contact" className="miniu-nav-link">
+            <Link to="/contact" className={`miniu-nav-link ${isContactActive ? "active" : ""}`}>
               Contact Us
             </Link>
           </nav>
@@ -98,8 +121,8 @@ export default function Header({ onOpenCounselling }) {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
-            className="bg-white w-75 h-100 p-4 d-flex flex-column justify-content-between shadow-lg"
-            style={{ maxWidth: "320px" }}
+            className="position-absolute top-0 end-0 h-100 bg-white p-4 shadow-lg d-flex flex-column justify-content-between"
+            style={{ width: "280px", maxWidth: "85vw" }}
             onClick={(e) => e.stopPropagation()}
           >
             <div>
@@ -122,14 +145,14 @@ export default function Header({ onOpenCounselling }) {
               <div className="d-flex flex-column gap-2">
                 <Link
                   to="/"
-                  className="miniu-nav-link py-2"
+                  className={`miniu-nav-link py-2 ${isHomeActive ? "active" : ""}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Home
                 </Link>
                 <Link
                   to="/courses"
-                  className="miniu-nav-link py-2"
+                  className={`miniu-nav-link py-2 ${isCoursesActive ? "active" : ""}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Courses
@@ -137,27 +160,27 @@ export default function Header({ onOpenCounselling }) {
                 <a
                   href="/#placement-proof"
                   className="miniu-nav-link py-2"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={goToPlacements}
                 >
                   Placements
                 </a>
                 <Link
                   to="/about"
-                  className="miniu-nav-link py-2"
+                  className={`miniu-nav-link py-2 ${isAboutActive ? "active" : ""}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About Us
                 </Link>
                 <Link
                   to="/blog"
-                  className="miniu-nav-link py-2"
+                  className={`miniu-nav-link py-2 ${isResourcesActive ? "active" : ""}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Resources & Blog
                 </Link>
                 <Link
                   to="/contact"
-                  className="miniu-nav-link py-2"
+                  className={`miniu-nav-link py-2 ${isContactActive ? "active" : ""}`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact

@@ -1,5 +1,30 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
+
+function SocialIcon({ href, icon, label, hoverColor }) {
+  const [hov, setHov] = useState(false)
+  return (
+    <a
+      href={href} target="_blank" rel="noreferrer" aria-label={label}
+      className="text-decoration-none"
+      style={{
+        width: "38px", height: "38px", minWidth: "38px",
+        borderRadius: "50%", display: "inline-flex",
+        alignItems: "center", justifyContent: "center",
+        border: hov ? `1.5px solid ${hoverColor}` : "1.5px solid #e2e8f0",
+        background: hov ? hoverColor : "#fff",
+        color: hov ? "#fff" : "#64748b",
+        boxShadow: hov ? `0 4px 14px ${hoverColor}40` : "0 1px 4px rgba(15,23,42,0.07)",
+        transform: hov ? "translateY(-3px) scale(1.08)" : "none",
+        transition: "all 0.2s cubic-bezier(0.34,1.56,0.64,1)"
+      }}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+    >
+      <i className={`fa-brands ${icon}`} style={{ fontSize: "15px" }} />
+    </a>
+  )
+}
 
 export default function Footer() {
   return (
@@ -96,36 +121,13 @@ export default function Footer() {
               Follow our official channels for student updates, batch announcements, and career guidance.
             </p>
             <div className="d-flex align-items-center gap-2 mb-4">
-              <a
-                href="https://www.linkedin.com/company/miniuniversity/"
-                target="_blank"
-                rel="noreferrer"
-                className="d-inline-flex align-items-center justify-content-center bg-white border rounded-circle text-dark text-decoration-none shadow-2xs hover-bg-light"
-                style={{ width: "38px", height: "38px", minWidth: "38px" }}
-                aria-label="LinkedIn"
-              >
-                <i className="fa-brands fa-linkedin text-dark fs-15" />
-              </a>
-              <a
-                href="https://www.instagram.com/miniuniversity_p"
-                target="_blank"
-                rel="noreferrer"
-                className="d-inline-flex align-items-center justify-content-center bg-white border rounded-circle text-dark text-decoration-none shadow-2xs hover-bg-light"
-                style={{ width: "38px", height: "38px", minWidth: "38px" }}
-                aria-label="Instagram"
-              >
-                <i className="fa-brands fa-instagram text-dark fs-15" />
-              </a>
-              <a
-                href="https://www.facebook.com/people/MiniU/61566454693166/"
-                target="_blank"
-                rel="noreferrer"
-                className="d-inline-flex align-items-center justify-content-center bg-white border rounded-circle text-dark text-decoration-none shadow-2xs hover-bg-light"
-                style={{ width: "38px", height: "38px", minWidth: "38px" }}
-                aria-label="Facebook"
-              >
-                <i className="fa-brands fa-facebook text-dark fs-15" />
-              </a>
+              {[
+                { href: "https://www.linkedin.com/company/miniuniversity/", icon: "fa-linkedin", label: "LinkedIn", hoverColor: "#0a66c2" },
+                { href: "https://www.instagram.com/miniuniversity_p", icon: "fa-instagram", label: "Instagram", hoverColor: "#e1306c" },
+                { href: "https://www.facebook.com/people/MiniU/61566454693166/", icon: "fa-facebook", label: "Facebook", hoverColor: "#1877f2" },
+              ].map(({ href, icon, label, hoverColor }) => (
+                <SocialIcon key={label} href={href} icon={icon} label={label} hoverColor={hoverColor} />
+              ))}
             </div>
           </div>
         </div>

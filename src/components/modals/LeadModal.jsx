@@ -55,8 +55,9 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
           style={{
             width: "210px",
             minWidth: "210px",
-            background: "linear-gradient(160deg, #0f172a 0%, #1a2744 100%)",
-            color: "#fff",
+            background: "#f8fafc",
+            borderRight: "1px solid #e2e8f0",
+            color: "#0f172a",
             flexShrink: 0
           }}
         >
@@ -65,13 +66,13 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
             <img
               src="/assets/logo/miniu-logo.svg"
               alt="MiniU"
-              style={{ height: "30px", filter: "brightness(0) invert(1)", opacity: 0.95, marginBottom: "18px" }}
+              style={{ height: "30px", opacity: 0.95, marginBottom: "18px" }}
               onError={(e) => { e.target.style.display = "none" }}
             />
 
-            <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", marginBottom: "16px" }} />
+            <div style={{ borderTop: "1px solid #e2e8f0", marginBottom: "16px" }} />
 
-            <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.45)", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600, marginBottom: "12px" }}>
+            <p style={{ fontSize: "11px", color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 700, marginBottom: "12px" }}>
               {isBrochure ? "What's included" : "In your free demo"}
             </p>
 
@@ -79,30 +80,30 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
               {leftBenefits.map((b, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "9px" }}>
                   <span style={{
-                    width: "16px", height: "16px", borderRadius: "50%",
-                    background: "rgba(255,1,53,0.18)", border: "1px solid rgba(255,1,53,0.4)",
+                    width: "18px", height: "18px", borderRadius: "50%",
+                    background: "#fff1f3", border: "1px solid #ffd1d8",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0, marginTop: "1px"
                   }}>
-                    <span style={{ color: "#ff4d6d", fontSize: "8px", fontWeight: 900 }}>✓</span>
+                    <span style={{ color: "#ff0135", fontSize: "9px", fontWeight: 900 }}>✓</span>
                   </span>
-                  <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.78)", lineHeight: 1.5 }}>{b}</span>
+                  <span style={{ fontSize: "12px", color: "#334155", fontWeight: 500, lineHeight: 1.5 }}>{b}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Bottom stats */}
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "14px" }}>
+          <div style={{ borderTop: "1px solid #e2e8f0", paddingTop: "14px" }}>
             <div style={{ display: "flex", gap: "2px", marginBottom: "5px" }}>
               {[1,2,3,4,5].map(i => (
-                <span key={i} style={{ color: "#fbbf24", fontSize: "13px" }}>★</span>
+                <span key={i} style={{ color: "#f59e0b", fontSize: "13px" }}>★</span>
               ))}
             </div>
-            <p style={{ fontSize: "11.5px", color: "rgba(255,255,255,0.5)", margin: 0, lineHeight: 1.45 }}>
+            <p style={{ fontSize: "11.5px", color: "#475569", fontWeight: 600, margin: 0, lineHeight: 1.45 }}>
               4.9 / 5 — across 1,200+ reviews
             </p>
-            <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.35)", marginTop: "6px", marginBottom: 0 }}>
+            <p style={{ fontSize: "11px", color: "#64748b", marginTop: "6px", marginBottom: 0 }}>
               🔒 100% private. No spam.
             </p>
           </div>

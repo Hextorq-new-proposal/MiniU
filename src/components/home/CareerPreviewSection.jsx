@@ -177,16 +177,6 @@ export default function CareerPreviewSection({ onOpenCounselling }) {
                         borderRadius: "8px"
                       }}
                     >
-                      <span
-                        style={{
-                          width: "18px", height: "18px", borderRadius: "50%",
-                          background: "#dcfce7", display: "flex",
-                          alignItems: "center", justifyContent: "center",
-                          flexShrink: 0
-                        }}
-                      >
-                        <i className="fa-solid fa-check" style={{ fontSize: "9px", color: "#16a34a" }} />
-                      </span>
                       <span style={{ fontSize: "12.5px", fontWeight: 500, color: "#1e293b", lineHeight: 1.3 }}>
                         {topic}
                       </span>
@@ -209,9 +199,6 @@ export default function CareerPreviewSection({ onOpenCounselling }) {
                     marginTop: "auto"
                   }}
                 >
-                  <div style={{ flexShrink: 0, paddingTop: "1px" }}>
-                    <span style={{ fontSize: "16px" }}>🎯</span>
-                  </div>
                   <div>
                     <span style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.07em", color: "#ff0135", display: "block", marginBottom: "3px" }}>
                       Capstone Project

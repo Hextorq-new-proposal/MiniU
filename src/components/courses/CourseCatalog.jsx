@@ -3,20 +3,18 @@ import { COURSES, CATEGORIES } from "../../data/coursesData"
 import CourseCard from "./CourseCard"
 
 export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
-  const [searchTerm, setSearchTerm]         = useState("")
+  const [searchTerm, setSearchTerm]             = useState("")
   const [selectedCategory, setSelectedCategory] = useState(initialCategory)
-  const [selectedLevel, setSelectedLevel]   = useState("all")
+  const [selectedLevel, setSelectedLevel]       = useState("all")
 
   const filteredCourses = useMemo(() => {
     return COURSES.filter((course) => {
       const matchesCategory =
         selectedCategory === "all" ||
         course.categorySlug.toLowerCase() === selectedCategory.toLowerCase()
-
       const matchesLevel =
         selectedLevel === "all" ||
         course.level.toLowerCase().includes(selectedLevel.toLowerCase())
-
       const term = searchTerm.toLowerCase().trim()
       const matchesSearch =
         !term ||
@@ -24,96 +22,97 @@ export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
         course.shortDesc.toLowerCase().includes(term) ||
         course.category.toLowerCase().includes(term) ||
         course.targetRoles.some((r) => r.toLowerCase().includes(term))
-
       return matchesCategory && matchesLevel && matchesSearch
     })
   }, [searchTerm, selectedCategory, selectedLevel])
 
-  return (
-    <div className="container py-3">
+  const hasFilters = selectedCategory !== "all" || selectedLevel !== "all" || searchTerm
 
-      {/* ── Filter bar ───────────────────────────────── */}
-      <div
-        style={{
-          background: "#fff",
-          border: "1px solid #e2e8f0",
-          borderRadius: "16px",
-          padding: "16px 20px",
-          marginBottom: "28px",
-          boxShadow: "0 2px 12px rgba(15,23,42,0.05)"
-        }}
-      >
-        {/* Top row: search + level + count */}
-        <div style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap", marginBottom: "14px" }}>
+  return (
+    <div className="container">
+
+      {/* ─── Filter bar ──────────────────────────────────────────── */}
+      <div style={{
+        background: "#fff",
+        border: "1px solid #e2e8f0",
+        borderRadius: "16px",
+        padding: "14px 18px",
+        marginBottom: "24px",
+        boxShadow: "0 2px 12px rgba(15,23,42,0.05)"
+      }}>
+
+        {/* Row 1: Search · Level · Count — always inline */}
+        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
 
           {/* Search */}
-          <div style={{ position: "relative", flex: "1 1 260px", minWidth: "200px" }}>
-            <i
-              className="fa-regular fa-magnifying-glass"
-              style={{
-                position: "absolute", left: "13px", top: "50%",
-                transform: "translateY(-50%)", color: "#94a3b8", fontSize: "13px"
-              }}
-            />
+          <div style={{ position: "relative", flex: 1 }}>
+            <i className="fa-regular fa-magnifying-glass" style={{
+              position: "absolute", left: "13px", top: "50%",
+              transform: "translateY(-50%)", color: "#94a3b8", fontSize: "13px",
+              pointerEvents: "none"
+            }} />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search — SAP FICO, Power BI, MERN…"
+              placeholder="Search — SAP FICO, Power BI, Full Stack, MERN…"
               style={{
-                width: "100%", padding: "9px 36px 9px 34px",
+                width: "100%", padding: "10px 36px 10px 36px",
                 fontSize: "13.5px", color: "#0f172a",
-                border: "1.5px solid #e2e8f0", borderRadius: "999px",
-                outline: "none", transition: "border-color 0.2s"
+                border: "1.5px solid #e2e8f0", borderRadius: "10px",
+                outline: "none", transition: "border-color 0.2s",
+                background: "#fafafa"
               }}
-              onFocus={e => e.target.style.borderColor = "#ff0135"}
-              onBlur={e => e.target.style.borderColor = "#e2e8f0"}
+              onFocus={e  => { e.target.style.borderColor = "#ff0135"; e.target.style.background = "#fff" }}
+              onBlur={e   => { e.target.style.borderColor = "#e2e8f0"; e.target.style.background = "#fafafa" }}
             />
             {searchTerm && (
-              <button
-                type="button"
-                onClick={() => setSearchTerm("")}
-                style={{
-                  position: "absolute", right: "12px", top: "50%",
-                  transform: "translateY(-50%)", background: "none",
-                  border: "none", cursor: "pointer", color: "#94a3b8",
-                  fontSize: "13px", lineHeight: 1, padding: "2px"
-                }}
-              >
-                ✕
-              </button>
+              <button type="button" onClick={() => setSearchTerm("")} style={{
+                position: "absolute", right: "12px", top: "50%",
+                transform: "translateY(-50%)", background: "none",
+                border: "none", cursor: "pointer", color: "#94a3b8",
+                fontSize: "13px", lineHeight: 1, padding: "2px"
+              }}>✕</button>
             )}
           </div>
 
-          {/* Level select */}
-          <select
-            value={selectedLevel}
-            onChange={(e) => setSelectedLevel(e.target.value)}
-            style={{
-              padding: "9px 14px", fontSize: "13px", fontWeight: 500,
-              border: "1.5px solid #e2e8f0", borderRadius: "999px",
-              color: "#334155", background: "#fff", cursor: "pointer",
-              outline: "none", flex: "0 0 auto"
-            }}
-          >
-            <option value="all">All Levels</option>
-            <option value="beginner">Beginner</option>
-            <option value="advanced">Advanced</option>
-          </select>
+          {/* Level dropdown */}
+          <div style={{ position: "relative", flexShrink: 0 }}>
+            <select
+              value={selectedLevel}
+              onChange={(e) => setSelectedLevel(e.target.value)}
+              style={{
+                padding: "10px 36px 10px 14px", fontSize: "13px", fontWeight: 500,
+                border: "1.5px solid #e2e8f0", borderRadius: "10px",
+                color: "#334155", background: "#fafafa", cursor: "pointer",
+                outline: "none", appearance: "none", WebkitAppearance: "none",
+                minWidth: "140px"
+              }}
+            >
+              <option value="all">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="advanced">Advanced</option>
+            </select>
+            <i className="fa-solid fa-chevron-down" style={{
+              position: "absolute", right: "12px", top: "50%",
+              transform: "translateY(-50%)", fontSize: "10px", color: "#94a3b8",
+              pointerEvents: "none"
+            }} />
+          </div>
 
-          {/* Count */}
-          <span style={{
-            fontSize: "12.5px", fontWeight: 600, color: "#64748b",
-            background: "#f8fafc", border: "1px solid #e2e8f0",
-            borderRadius: "999px", padding: "6px 14px",
-            whiteSpace: "nowrap", flex: "0 0 auto"
+          {/* Course count */}
+          <div style={{
+            flexShrink: 0, padding: "8px 14px",
+            background: "#f1f5f9", border: "1px solid #e2e8f0",
+            borderRadius: "10px", textAlign: "center", whiteSpace: "nowrap"
           }}>
-            <strong style={{ color: "#0f172a" }}>{filteredCourses.length}</strong> of {COURSES.length} courses
-          </span>
+            <span style={{ fontSize: "13px", fontWeight: 700, color: "#0f172a" }}>{filteredCourses.length}</span>
+            <span style={{ fontSize: "12px", color: "#64748b" }}> / {COURSES.length} courses</span>
+          </div>
         </div>
 
-        {/* Category pills */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+        {/* Row 2: Category pills + clear */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", alignItems: "center" }}>
           {CATEGORIES.map((cat) => {
             const active = selectedCategory === cat.slug
             return (
@@ -122,12 +121,12 @@ export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
                 type="button"
                 onClick={() => setSelectedCategory(cat.slug)}
                 style={{
-                  padding: "6px 16px", fontSize: "12.5px", fontWeight: 600,
-                  borderRadius: "999px", cursor: "pointer",
+                  padding: "6px 15px", fontSize: "12.5px", fontWeight: 600,
+                  borderRadius: "8px", cursor: "pointer",
                   border: active ? "1.5px solid #ff0135" : "1.5px solid #e2e8f0",
                   background: active ? "#ff0135" : "#f8fafc",
                   color: active ? "#fff" : "#475569",
-                  transition: "all 0.18s ease"
+                  transition: "all 0.16s ease"
                 }}
               >
                 {cat.name}
@@ -135,33 +134,32 @@ export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
             )
           })}
 
-          {/* Reset */}
-          {(selectedCategory !== "all" || selectedLevel !== "all" || searchTerm) && (
+          {hasFilters && (
             <button
               type="button"
               onClick={() => { setSearchTerm(""); setSelectedCategory("all"); setSelectedLevel("all") }}
               style={{
-                padding: "6px 14px", fontSize: "12px", fontWeight: 600,
-                borderRadius: "999px", cursor: "pointer",
+                padding: "6px 13px", fontSize: "12px", fontWeight: 600,
+                borderRadius: "8px", cursor: "pointer",
                 border: "1.5px dashed #fca5a5",
                 background: "#fff1f3", color: "#ff0135",
-                transition: "all 0.18s ease"
+                marginLeft: "4px"
               }}
             >
-              ✕ Clear filters
+              ✕ Clear
             </button>
           )}
         </div>
       </div>
 
-      {/* ── Courses Grid ─────────────────────────────── */}
+      {/* ─── Course Grid — 3 cols desktop ────────────────────────── */}
       {filteredCourses.length > 0 ? (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))",
-            gap: "20px"
-          }}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "20px"
+        }}
+          className="course-grid-responsive"
         >
           {filteredCourses.map((course) => (
             <CourseCard key={course.id} course={course} onEnquire={onEnquire} />
@@ -169,12 +167,12 @@ export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
         </div>
       ) : (
         <div style={{
-          textAlign: "center", padding: "60px 24px",
+          textAlign: "center", padding: "64px 24px",
           background: "#fff", borderRadius: "16px", border: "1px solid #e2e8f0"
         }}>
-          <div style={{ fontSize: "42px", marginBottom: "14px" }}>🔍</div>
+          <div style={{ fontSize: "40px", marginBottom: "12px" }}>🔍</div>
           <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#0f172a", marginBottom: "8px" }}>
-            No courses match your search
+            No courses found
           </h4>
           <p style={{ fontSize: "13.5px", color: "#64748b", marginBottom: "20px" }}>
             Try different keywords or clear the filters to see all programs.
@@ -184,7 +182,7 @@ export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
             onClick={() => { setSearchTerm(""); setSelectedCategory("all"); setSelectedLevel("all") }}
             style={{
               background: "#ff0135", color: "#fff", border: "none",
-              borderRadius: "999px", padding: "10px 28px",
+              borderRadius: "8px", padding: "10px 28px",
               fontSize: "14px", fontWeight: 700, cursor: "pointer"
             }}
           >

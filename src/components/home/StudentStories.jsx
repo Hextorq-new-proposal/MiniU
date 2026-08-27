@@ -114,14 +114,12 @@ export default function StudentStories() {
                   <div
                     key={idx}
                     onClick={() => setActiveStory(idx)}
-                    className={`p-3.5 rounded-3 border transition-all cursor-pointer ${
-                      isActive
-                        ? "bg-white border-dark-subtle shadow-sm"
-                        : "bg-light bg-opacity-75 border-light-subtle opacity-75 hover-opacity-100"
-                    }`}
+                    className="rounded-3 cursor-pointer"
                     style={{
-                      borderLeft: isActive ? "3.5px solid #0f172a" : "1px solid #e2e8f0",
-                      transform: isActive ? "translateX(4px)" : "none",
+                      padding: "12px 14px",
+                      background: isActive ? "#fff" : "#f8fafc",
+                      border: "1px solid #e8ecf0",
+                      opacity: isActive ? 1 : 0.65,
                       transition: "all 0.25s ease"
                     }}
                   >

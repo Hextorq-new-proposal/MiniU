@@ -63,35 +63,59 @@ export default function Course({ initialCategory = "all" }) {
 
       <Header onOpenCounselling={() => handleEnquire(null)} />
 
-      <main className="bg-light pb-5">
-        {/* Banner Section */}
-        <section className="bg-white border-bottom py-5">
-          <div className="container text-center max-w-800 mx-auto">
-            <div className="d-flex align-items-center justify-content-center gap-2 fs-13 mb-3 text-muted">
-              <Link to="/" className="text-muted text-decoration-none hover-text-danger">Home</Link>
-              <span className="text-secondary opacity-50">/</span>
-              <span className="text-danger fw-semibold">Courses</span>
-            </div>
+      <main style={{ background: "#ffffff" }}>
 
-            <span className="badge bg-danger-subtle text-danger rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
-              Career-Focused Industry Curriculum
-            </span>
-            <h1 className="fs-36 fw-bold text-dark mb-3">
-              Explore Job-Oriented Training Programs
-            </h1>
-            <p className="text-muted fs-16 mb-0">
-              Master in-demand skills from certified corporate trainers. Access 24/7 dedicated servers, complete real-time capstone projects, and get placement support in top companies.
-            </p>
+        {/* ── Hero Header ───────────────────────────── */}
+        <section style={{ background: "#ffffff", borderBottom: "1px solid #f1f5f9", padding: "52px 0 44px" }}>
+          <div className="container">
+            <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
+
+              {/* Pill badge */}
+              <span style={{
+                display: "inline-block", fontSize: "11px", fontWeight: 700,
+                textTransform: "uppercase", letterSpacing: "0.08em",
+                color: "#ff0135", background: "#fff1f3",
+                border: "1px solid #ffd1d8",
+                padding: "4px 14px", borderRadius: "999px", marginBottom: "16px"
+              }}>
+                Career-Focused Industry Curriculum
+              </span>
+
+              <h1 style={{ fontSize: "clamp(26px, 4vw, 38px)", fontWeight: 800, color: "#0f172a", lineHeight: 1.2, margin: "0 0 12px" }}>
+                Job-Oriented Training Programs
+              </h1>
+              <p style={{ fontSize: "15px", color: "#64748b", lineHeight: 1.6, margin: "0 0 32px" }}>
+                Learn from working industry experts, build real projects, and get placement support in top companies.
+              </p>
+
+              {/* Stats row */}
+              <div style={{ display: "flex", justifyContent: "center", gap: "0", flexWrap: "wrap" }}>
+                {[
+                  { num: "11+",    label: "Programs" },
+                  { num: "100%",   label: "Placement Support" },
+                  { num: "1,200+", label: "Alumni Placed" },
+                ].map((s, i) => (
+                  <div key={i} style={{
+                    padding: "0 28px",
+                    borderRight: i < 2 ? "1px solid #e2e8f0" : "none"
+                  }}>
+                    <div style={{ fontSize: "22px", fontWeight: 800, color: "#ff0135" }}>{s.num}</div>
+                    <div style={{ fontSize: "12px", color: "#64748b", fontWeight: 600, marginTop: "2px" }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Interactive Course Catalog with Live Search & Filter */}
-        <section className="py-4">
+        {/* ── Course Catalog ─────────────────────────── */}
+        <section style={{ padding: "32px 0 48px" }}>
           <CourseCatalog
             initialCategory={initialCategory}
             onEnquire={handleEnquire}
           />
         </section>
+
       </main>
 
       <Footer />

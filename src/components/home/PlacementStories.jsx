@@ -47,76 +47,68 @@ export default function PlacementStories({ onOpenCounselling }) {
         </div>
 
         {/* 3 Transformation Story Cards */}
-        <div className="row g-4 align-items-stretch mb-4 reveal-stagger-group">
+        <div className="row g-4 mb-4 reveal-stagger-group align-items-stretch">
           {STORIES.map((story, idx) => (
             <div key={idx} className="col-lg-4 d-flex reveal-card">
               <div
-                className="border border-light-subtle rounded-4 bg-white w-100 d-flex flex-column justify-content-between p-4 shadow-sm transition-all hover-shadow-lg"
-                style={{
-                  position: "relative",
-                  overflow: "hidden"
-                }}
+                className="border rounded-3 bg-white w-100 d-flex flex-column"
+                style={{ padding: "20px", boxShadow: "0 1px 8px rgba(15,23,42,0.05)" }}
               >
-                {/* Top subtle gradient accent line */}
-                <div
-                  className="position-absolute top-0 start-0 w-100"
-                  style={{
-                    height: "3px",
-                    background: "linear-gradient(90deg, #ff0135 0%, #ff5f03 100%)"
-                  }}
-                />
 
-                <div>
-                  {/* Top row: Avatar + Name / Course + Company Badge */}
-                  <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
-                    <div className="d-flex align-items-center gap-2.5">
-                      <div
-                        className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-13 shadow-2xs flex-shrink-0"
-                        style={{
-                          width: "38px",
-                          height: "38px",
-                          background: "linear-gradient(135deg, #0f172a 0%, #334155 100%)"
-                        }}
-                      >
-                        {story.name.split(" ").map(n => n[0]).join("")}
-                      </div>
-                      <div>
-                        <h4 className="fw-bold fs-15 text-dark mb-0">{story.name}</h4>
-                        <span className="fs-12 text-muted">{story.course}</span>
-                      </div>
-                    </div>
-                    <div className="bg-light border border-light-subtle rounded-pill px-2.5 py-1 d-inline-flex align-items-center gap-1.5 flex-shrink-0">
-                      <span className="fs-10 text-muted fw-bold text-uppercase">Placed @</span>
-                      <CompanyLogo name={story.company} height={16} />
-                    </div>
+                {/* Top Row: Name/Course + Company Badge */}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
+                  <div>
+                    <p style={{ fontSize: 15, fontWeight: 700, color: "#0f172a", margin: 0 }}>{story.name}</p>
+                    <span style={{ fontSize: 11, color: "#94a3b8" }}>{story.course}</span>
                   </div>
-
-                  {/* Transformation Pathway Box */}
-                  <div className="p-2.5 bg-light bg-opacity-75 rounded-3 mb-3 border border-light-subtle">
-                    <div className="d-flex align-items-center gap-2 mb-1 fs-12">
-                      <span className="badge bg-secondary-subtle text-secondary px-2 py-0.5 fs-10 fw-bold">Before</span>
-                      <span className="text-muted fs-12">{story.beforeRole}</span>
-                    </div>
-                    <div className="d-flex align-items-center gap-2 fs-12">
-                      <span className="badge bg-success text-white px-2 py-0.5 fs-10 fw-bold">After</span>
-                      <strong className="text-dark fs-12">{story.afterRole}</strong>
-                    </div>
+                  <div style={{
+                    border: "1px solid #e2e8f0",
+                    borderRadius: 999,
+                    padding: "2px 10px",
+                    fontSize: 9,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 4,
+                    flexShrink: 0
+                  }}>
+                    <span style={{ fontWeight: 600, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.04em" }}>PLACED @</span>
+                    <CompanyLogo name={story.company} height={14} />
                   </div>
-
-                  {/* Student Quote */}
-                  <p className="fst-italic fs-13 text-secondary mb-3 line-height-relaxed" style={{ minHeight: "64px" }}>
-                    “{story.quote}”
-                  </p>
                 </div>
+
+                {/* Divider */}
+                <div style={{ borderTop: "1px solid #f1f5f9", margin: "12px 0" }} />
+
+                {/* Before → After */}
+                <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+                  <span style={{ fontSize: 10, fontWeight: 600, color: "#94a3b8", textTransform: "uppercase" }}>Before</span>
+                  <span style={{ fontSize: 12.5, color: "#475569" }}>{story.beforeRole}</span>
+                  <span style={{ color: "#cbd5e1", fontSize: 13 }}>→</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: "#16a34a", textTransform: "uppercase" }}>After</span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: "#0f172a" }}>{story.afterRole}</span>
+                </div>
+
+                {/* Divider */}
+                <div style={{ borderTop: "1px solid #f1f5f9", margin: "12px 0" }} />
+
+                {/* Quote */}
+                <p style={{ fontSize: 12.5, color: "#64748b", fontStyle: "italic", lineHeight: 1.55, margin: 0 }}>
+                  "{story.quote}"
+                </p>
 
                 {/* Footer */}
-                <div className="border-top pt-3 mt-auto d-flex align-items-center justify-content-between">
-                  <div className="d-flex align-items-center gap-1.5 fs-12 text-success fw-semibold">
-                    <i className="fa-solid fa-circle-check text-success fs-13" />
-                    <span>Verified Placement</span>
-                  </div>
-                  <CompanyLogo name={story.company} height={18} />
+                <div style={{
+                  marginTop: "auto",
+                  paddingTop: 12,
+                  borderTop: "1px solid #f1f5f9",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center"
+                }}>
+                  <span style={{ fontSize: 11, color: "#16a34a", fontWeight: 600 }}>✅ Verified Placement</span>
+                  <CompanyLogo name={story.company} height={16} />
                 </div>
+
               </div>
             </div>
           ))}

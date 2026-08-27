@@ -36,27 +36,40 @@ export default function SyllabusAccordion({ syllabus = [], courseTitle, onDownlo
           </p>
         </div>
 
-        <div className="d-flex align-items-center gap-2">
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
           <button
             type="button"
             onClick={expandAll}
-            className="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1 fs-12"
+            style={{
+              padding: "6px 14px", fontSize: "12px", fontWeight: 600,
+              border: "1.5px solid #e2e8f0", borderRadius: "8px",
+              background: "#f8fafc", color: "#334155", cursor: "pointer"
+            }}
           >
             Expand All
           </button>
           <button
             type="button"
             onClick={collapseAll}
-            className="btn btn-outline-secondary btn-sm rounded-pill px-3 py-1 fs-12"
+            style={{
+              padding: "6px 14px", fontSize: "12px", fontWeight: 600,
+              border: "1.5px solid #e2e8f0", borderRadius: "8px",
+              background: "#f8fafc", color: "#334155", cursor: "pointer"
+            }}
           >
             Collapse All
           </button>
           <button
             type="button"
             onClick={onDownloadSyllabus}
-            className="btn btn-danger btn-sm rounded-pill px-3 py-1 fs-12 fw-semibold d-flex align-items-center gap-1 shadow-sm"
+            style={{
+              padding: "6px 16px", fontSize: "12px", fontWeight: 700,
+              border: "none", borderRadius: "8px",
+              background: "#ff0135", color: "#fff", cursor: "pointer",
+              display: "flex", alignItems: "center", gap: "6px"
+            }}
           >
-            <i className="fa-solid fa-file-pdf" /> Download PDF
+            <i className="fa-solid fa-arrow-down-to-line" style={{ fontSize: "11px" }} /> Download PDF
           </button>
         </div>
       </div>
