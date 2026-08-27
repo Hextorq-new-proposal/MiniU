@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
 const CATEGORY_DISCOVERY = [
@@ -226,15 +226,12 @@ export default function CareerFinder({ onOpenCounselling }) {
             </p>
             <div className="d-flex flex-column gap-2.5 text-dark fs-13 fw-semibold">
               <div className="d-flex align-items-center gap-2">
-                <i className="fa-solid fa-circle-check text-success fs-14" />
                 <span>100% Free &amp; Instant Recommendation</span>
               </div>
               <div className="d-flex align-items-center gap-2">
-                <i className="fa-solid fa-circle-check text-success fs-14" />
                 <span>Tailored for Freshers &amp; Switchers</span>
               </div>
               <div className="d-flex align-items-center gap-2">
-                <i className="fa-solid fa-circle-check text-success fs-14" />
                 <span>Direct Counselor &amp; Syllabus Match</span>
               </div>
             </div>
