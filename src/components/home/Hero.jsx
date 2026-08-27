@@ -23,10 +23,10 @@ export default function Hero({ onOpenCounselling }) {
             {/* Main Display Headline */}
             <h1 className="miniu-hero-title mb-3">
               <span className="d-block text-dark">
-                <span style={{ fontFamily: "'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif", fontWeight: 800 }}>B</span><span className="droid-logo-text">uild the Skills.</span>
+                <span style={{ fontFamily: "'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif", fontWeight: 800 }}>B</span><span className="droid-logo-text">uild The Skills.</span>
               </span>
               <span className="highlight-line d-block">
-                <span style={{ fontFamily: "'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif", fontWeight: 800 }}>B</span><span className="droid-logo-text">uild the Career.</span>
+                <span style={{ fontFamily: "'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif", fontWeight: 800 }}>B</span><span className="droid-logo-text">uild The Career.</span>
               </span>
             </h1>
 
