@@ -53,23 +53,25 @@ export default function Hero({ onOpenCounselling }) {
               </button>
             </div>
 
-            {/* Action Buttons with Transparent Background to reflect WebGL animation */}
+            {/* Action Buttons with Identical Height & Glowing Outline Beam on Hover */}
             <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3 mb-4 mb-sm-5">
               <Link
                 to="/courses"
-                className="btn-miniu-transparent-red fs-15 fs-sm-16 py-3 px-4 px-sm-5 justify-content-center"
-                style={{ color: "#000000", borderColor: "#000000" }}
+                className="hero-glow-btn"
               >
-                <span style={{ color: "#000000" }}>Explore Courses</span>
-                <i className="fa-regular fa-arrow-right-long" style={{ color: "#000000" }} />
+                <span className="hero-glow-btn-inner">
+                  <span>Explore Courses</span>
+                  <i className="fa-regular fa-arrow-right-long" />
+                </span>
               </Link>
               <button
                 type="button"
                 onClick={onOpenCounselling}
-                className="btn-miniu-glass-outline fs-15 fs-sm-16 py-3 px-4 justify-content-center"
-                style={{ background: "transparent", color: "#000000", border: "1.5px solid #000000" }}
+                className="hero-glow-btn"
               >
-                Talk to a Course Advisor
+                <span className="hero-glow-btn-inner">
+                  <span>Talk to a Course Advisor</span>
+                </span>
               </button>
             </div>
 
