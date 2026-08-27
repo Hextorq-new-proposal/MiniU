@@ -181,9 +181,14 @@ export default function CareerFinder({ onOpenCounselling }) {
               <span className="fs-12 text-uppercase fw-bold text-danger letter-spacing-1">Recommended for you in</span>
               <h4 className="fs-18 fw-bold miniu-text-dark mb-0">{selectedCategory.title}</h4>
             </div>
-            <Link to="/courses" className="btn btn-sm btn-outline-dark rounded-pill px-3 py-1.5 fs-13 fw-semibold">
-              View all programs in catalog →
-            </Link>
+            <LiquidButton
+              to="/courses"
+              variant="red-inverted"
+              style={{ padding: "8px 20px", fontSize: "13px" }}
+            >
+              <span>View all programs in catalog</span>
+              <i className="fa-regular fa-arrow-right-long" />
+            </LiquidButton>
           </div>
 
           <div className="row g-3">
@@ -196,14 +201,13 @@ export default function CareerFinder({ onOpenCounselling }) {
                     </span>
                     <h5 className="fs-14 fw-bold miniu-text-dark mb-2">{item.name}</h5>
                   </div>
-                  <LiquidButton
+                  <Link
                     to={item.path}
-                    variant="red-inverted"
-                    style={{ padding: "7px 18px", fontSize: "12px", marginTop: "12px", width: "fit-content" }}
+                    className="text-danger fw-semibold fs-13 text-decoration-none d-inline-flex align-items-center gap-1.5 mt-2 hover-text-danger"
                   >
                     <span>View Program</span>
                     <i className="fa-regular fa-arrow-right-long" />
-                  </LiquidButton>
+                  </Link>
                 </div>
               </div>
             ))}
