@@ -242,16 +242,16 @@ export default function CareerFinder({ onOpenCounselling }) {
 
           {/* Right Column: Compact Questionnaire Box */}
           <div className="col-lg-8">
-            <div className="bg-white border border-light-subtle rounded-4 p-3 shadow-sm">
+            <div className="career-match-card">
               {/* Interactive Steps Form */}
-              <div className="d-flex flex-column gap-3.5 mb-3 pb-1">
+              <div className="career-match-steps">
                 {/* Step 1: Background */}
-                <div>
-                  <div className="d-flex align-items-center gap-2 mb-2">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
+                <div className="career-match-step">
+                  <div className="career-match-step-heading">
+                    <span className="career-match-number">
                       1
                     </span>
-                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
+                    <span className="career-match-question">
                       What describes your current background?
                     </span>
                   </div>
@@ -280,12 +280,12 @@ export default function CareerFinder({ onOpenCounselling }) {
                 </div>
 
                 {/* Step 2: Domain */}
-                <div>
-                  <div className="d-flex align-items-center gap-2 mb-2">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
+                <div className="career-match-step">
+                  <div className="career-match-step-heading">
+                    <span className="career-match-number">
                       2
                     </span>
-                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
+                    <span className="career-match-question">
                       Which domain are you passionate about?
                     </span>
                   </div>
@@ -314,12 +314,12 @@ export default function CareerFinder({ onOpenCounselling }) {
                 </div>
 
                 {/* Step 3: Objective */}
-                <div>
-                  <div className="d-flex align-items-center gap-2 mb-2">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
+                <div className="career-match-step">
+                  <div className="career-match-step-heading">
+                    <span className="career-match-number">
                       3
                     </span>
-                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
+                    <span className="career-match-question">
                       What is your primary objective?
                     </span>
                   </div>
@@ -349,10 +349,10 @@ export default function CareerFinder({ onOpenCounselling }) {
               </div>
 
               {/* Minimalist Output Result Card */}
-              <div className="p-3 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 shadow-2xs">
+              <div className="career-match-result">
                 <div>
                   <div className="d-flex align-items-center gap-2 mb-1">
-                    <span className="badge bg-danger text-white rounded-pill px-2.5 py-1 fs-10 fw-bold me-1">
+                    <span className="career-match-label">
                       BEST MATCH
                     </span>
                     <span className="fs-12 text-muted">Based on your selection</span>
@@ -364,14 +364,14 @@ export default function CareerFinder({ onOpenCounselling }) {
                 <div className="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
                   <Link
                     to={recommendation.path}
-                    className="btn btn-sm btn-danger text-white rounded-pill px-3 py-1.5 fw-bold fs-12 shadow-xs text-decoration-none"
+                    className="career-match-explore"
                   >
                     <span>Explore →</span>
                   </Link>
                   <button
                     type="button"
                     onClick={onOpenCounselling}
-                    className="btn btn-sm btn-outline-dark text-dark bg-white rounded-pill px-3 py-1.5 fw-bold fs-12 shadow-2xs"
+                    className="career-match-advisor"
                   >
                     <span>Ask Advisor</span>
                   </button>
