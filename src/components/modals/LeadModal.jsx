@@ -27,9 +27,19 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
       return undefined
     }
 
+    // Stop Lenis smooth scroll and lock body/html overflow
+    window.lenis?.stop()
+    const originalBodyOverflow = document.body.style.overflow
+    const originalHtmlOverflow = document.documentElement.style.overflow
+    document.body.style.overflow = "hidden"
+    document.documentElement.style.overflow = "hidden"
     document.documentElement.classList.add("lenis-stopped")
     document.body.classList.add("miniu-modal-open")
+
     return () => {
+      window.lenis?.start()
+      document.body.style.overflow = originalBodyOverflow
+      document.documentElement.style.overflow = originalHtmlOverflow
       document.documentElement.classList.remove("lenis-stopped")
       document.body.classList.remove("miniu-modal-open")
     }
@@ -61,13 +71,24 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
   return (
     <div
       className="miniu-modal-backdrop position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
-      style={{ background: "rgba(8, 14, 28, 0.72)", backdropFilter: "blur(6px)", zIndex: 9999, padding: "16px" }}
+      style={{
+        background: "rgba(8, 14, 28, 0.72)",
+        backdropFilter: "blur(6px)",
+        WebkitBackdropFilter: "blur(6px)",
+        zIndex: 9999,
+        padding: "16px",
+        touchAction: "none"
+      }}
       onClick={onClose}
+      onWheel={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
     >
       <div
         className="miniu-modal-card d-flex w-100"
         style={{ maxWidth: "640px", borderRadius: "20px", background: "#fff", boxShadow: "0 32px 80px rgba(0,0,0,0.28)" }}
         onClick={(e) => e.stopPropagation()}
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
       >
 
         {/* ── LEFT TRUST PANEL ─────────────────────────────────── */}

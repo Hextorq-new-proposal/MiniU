@@ -21,6 +21,8 @@ export default function useSmoothScroll() {
       touchMultiplier: 1.5,
     })
 
+    window.lenis = lenis
+
     // Connect Lenis to GSAP ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update)
 
@@ -116,6 +118,7 @@ export default function useSmoothScroll() {
     })
 
     return () => {
+      window.lenis = null
       ctx.revert()
       gsap.ticker.remove(tickerCallback)
       lenis.destroy()
