@@ -9,6 +9,7 @@ import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Blog from "./pages/Blog"
 import BlogDetails from "./pages/BlogDetails"
+import Placements from "./pages/Placements"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
 import Terms from "./pages/Terms"
 import useInitScripts from "./hooks/useInitScripts"
@@ -94,6 +95,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog-details" element={<BlogDetails />} />
+        <Route path="/placements" element={<Placements />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
 

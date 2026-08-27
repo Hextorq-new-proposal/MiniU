@@ -1,30 +1,15 @@
 import React, { useState } from "react"
-import { Link, useNavigate, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import SpecularButton from "../common/SpecularButton"
 
 export default function Header({ onOpenCounselling }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const navigate = useNavigate()
   const { pathname } = useLocation()
-
-  const goToPlacements = (e) => {
-    e.preventDefault()
-    setMobileMenuOpen(false)
-    if (pathname === "/") {
-      const el = document.querySelector("#placement-proof")
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
-    } else {
-      navigate("/")
-      setTimeout(() => {
-        const el = document.querySelector("#placement-proof")
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
-      }, 400)
-    }
-  }
 
   const isHomeActive = pathname === "/"
   const isCoursesActive = pathname.startsWith("/courses")
   const isAboutActive = pathname.startsWith("/about")
+  const isPlacementsActive = pathname.startsWith("/placements")
   const isResourcesActive = pathname.startsWith("/blog") || pathname.startsWith("/resources")
   const isContactActive = pathname.startsWith("/contact")
 
@@ -60,9 +45,9 @@ export default function Header({ onOpenCounselling }) {
             <Link to="/courses" className={`miniu-nav-link ${isCoursesActive ? "active" : ""}`}>
               Courses
             </Link>
-            <a href="/#placement-proof" onClick={goToPlacements} className="miniu-nav-link">
+            <Link to={pathname === "/" ? "/#placement-proof" : "/placements"} className={`miniu-nav-link ${isPlacementsActive ? "active" : ""}`}>
               Placements
-            </a>
+            </Link>
             <Link to="/about" className={`miniu-nav-link ${isAboutActive ? "active" : ""}`}>
               About
             </Link>
@@ -157,13 +142,13 @@ export default function Header({ onOpenCounselling }) {
                 >
                   Courses
                 </Link>
-                <a
-                  href="/#placement-proof"
-                  className="miniu-nav-link py-2"
-                  onClick={goToPlacements}
+                <Link
+                  to={pathname === "/" ? "/#placement-proof" : "/placements"}
+                  className={`miniu-nav-link py-2 ${isPlacementsActive ? "active" : ""}`}
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Placements
-                </a>
+                </Link>
                 <Link
                   to="/about"
                   className={`miniu-nav-link py-2 ${isAboutActive ? "active" : ""}`}

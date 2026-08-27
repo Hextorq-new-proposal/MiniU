@@ -98,6 +98,18 @@ export default function useSmoothScroll() {
         }
       })
 
+      // Give page-level sections a consistent entrance when a page does not opt into a custom reveal.
+      gsap.utils.toArray("main > section:not(.miniu-hero-section)").forEach((section) => {
+        if (section.classList.contains("reveal-fade-up") || section.querySelector(".reveal-fade-up")) return
+        gsap.from(section, {
+          opacity: 0,
+          y: 18,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: { trigger: section, start: "top 94%", once: true }
+        })
+      })
+
       setTimeout(() => {
         ScrollTrigger.refresh()
       }, 300)

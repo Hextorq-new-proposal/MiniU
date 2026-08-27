@@ -280,7 +280,7 @@ export default function Contact() {
 
               {/* Right Column: "Get In Touch" Contact Form */}
               <div className="col-lg-7">
-                <div className="miniu-contact-form-card">
+                <div className="miniu-contact-form-card h-100">
                   <div className="mb-4">
                     <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill bg-danger bg-opacity-10 text-danger fs-12 fw-bold text-uppercase mb-2">
                       Contact Us
@@ -402,7 +402,7 @@ export default function Contact() {
                           <button
                             type="submit"
                             disabled={status.submitting}
-                            className="btn-miniu-primary rounded-pill px-5 py-3 fs-15 fw-bold text-white border-0 shadow-sm d-inline-flex align-items-center gap-2"
+                            className="btn-miniu-primary miniu-contact-primary rounded-pill px-5 py-3 fs-15 fw-bold text-white border-0 shadow-sm d-inline-flex align-items-center gap-2"
                           >
                             {status.submitting ? (
                               <>

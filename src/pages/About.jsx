@@ -423,6 +423,7 @@ export default function About() {
                 <div className="d-flex gap-3 flex-wrap">
                   <button
                     type="button"
+                    className="miniu-about-primary"
                     onClick={() => handleOpenModal("demo")}
                     style={{
                       background: "#ff0135", color: "#ffffff",
@@ -508,6 +509,7 @@ export default function About() {
               <div className="d-flex justify-content-center gap-3 flex-wrap">
                 <button
                   type="button"
+                  className="miniu-about-primary"
                   onClick={() => handleOpenModal("demo")}
                   style={{
                     background: "#ff0135", color: "#ffffff",

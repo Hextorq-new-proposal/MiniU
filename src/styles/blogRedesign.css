@@ -1,0 +1,114 @@
+.miniu-blog-page {
+  background: #f7f8fa;
+  color: #111827;
+}
+
+.miniu-blog-hero {
+  background: #111827;
+  color: #fff;
+  padding: 82px 0 76px;
+}
+
+.miniu-blog-hero .miniu-eyebrow,
+.miniu-placement-hero .miniu-eyebrow {
+  color: #ff4966;
+}
+
+.miniu-blog-hero h1,
+.miniu-placement-hero h1 {
+  color: #fff !important;
+  max-width: 720px;
+  margin: 14px 0 14px;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.miniu-blog-hero p,
+.miniu-placement-hero p {
+  max-width: 600px;
+  margin: 0;
+  color: #aab4c4;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.minui-blog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, .7fr);
+  gap: 56px;
+  padding: 72px 0 104px;
+}
+
+.miniu-blog-list { display: grid; gap: 28px; }
+.miniu-blog-card {
+  display: grid;
+  grid-template-columns: 42% 1fr;
+  min-height: 260px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.miniu-blog-card:hover { transform: translateY(-5px); box-shadow: 0 20px 45px rgba(17,24,39,.1); }
+.miniu-blog-card img { width: 100%; height: 100%; min-height: 260px; object-fit: cover; }
+.miniu-blog-card-content { padding: 30px; display: flex; flex-direction: column; align-items: flex-start; }
+.miniu-blog-meta, .miniu-eyebrow { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.miniu-blog-meta { color: #ff0135; }
+.miniu-blog-card h2 { margin: 12px 0; font-size: 1.5rem; line-height: 1.2; letter-spacing: -.025em; }
+.miniu-blog-card p { color: #64748b; line-height: 1.7; margin: 0 0 22px; }
+.miniu-blog-read { margin-top: auto; color: #111827; font-weight: 800; text-decoration: none; }
+.miniu-blog-read:hover { color: #ff0135; }
+.miniu-blog-sidebar { position: sticky; top: 100px; align-self: start; }
+.miniu-blog-sidebar h2 { margin: 0 0 18px; font-size: 1.1rem; }
+.miniu-blog-search { display: flex; border-bottom: 1px solid #111827; margin-bottom: 48px; }
+.miniu-blog-search input { flex: 1; border: 0; background: transparent; padding: 12px 0; outline: 0; }
+.miniu-blog-search button { border: 0; background: transparent; color: #ff0135; }
+.miniu-blog-categories { display: grid; gap: 15px; margin: 0 0 48px; padding: 0; list-style: none; }
+.miniu-blog-categories a { display: flex; justify-content: space-between; color: #64748b; text-decoration: none; }
+.miniu-blog-categories a:hover { color: #ff0135; }
+.miniu-blog-recent { display: grid; gap: 16px; }
+.miniu-blog-recent a { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; color: #111827; text-decoration: none; font-weight: 700; line-height: 1.35; }
+.miniu-blog-recent img { width: 64px; height: 64px; object-fit: cover; }
+
+.miniu-placement-hero { background: #111827; color: #fff; padding: 90px 0 72px; }
+.miniu-placement-stats { display: flex; gap: 48px; margin-top: 48px; }
+.miniu-placement-stat { display: grid; gap: 5px; border-left: 1px solid #344054; padding-left: 18px; }
+.miniu-placement-stat strong { font-size: 1.8rem; }
+.miniu-placement-stat span { color: #aab4c4; font-size: .82rem; }
+
+.miniu-mode-picker { position: relative; }
+.miniu-mode-trigger { width: 100%; display: flex; align-items: center; justify-content: space-between; text-align: left; cursor: pointer; }
+.miniu-mode-trigger i { color: #94a3b8; transition: transform .25s ease; }
+.miniu-mode-picker.is-open .miniu-mode-trigger { border-color: #ff0135; box-shadow: 0 0 0 3px rgba(255,1,53,.1); }
+.miniu-mode-picker.is-open .miniu-mode-trigger i { transform: rotate(180deg); }
+.miniu-mode-menu { position: absolute; z-index: 4; left: 0; right: 0; top: calc(100% + 7px); padding: 6px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 16px 35px rgba(15,23,42,.15); opacity: 0; transform: translateY(-8px) scale(.98); pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+.miniu-mode-picker.is-open .miniu-mode-menu { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.miniu-mode-menu button { width: 100%; display: flex; justify-content: space-between; border: 0; border-radius: 8px; padding: 11px 10px; background: transparent; color: #334155; text-align: left; cursor: pointer; }
+.miniu-mode-menu button:hover, .miniu-mode-menu button.is-selected { background: #fff1f3; color: #ff0135; }
+
+.miniu-modal-backdrop { overflow-y: auto; }
+.miniu-modal-card { max-height: calc(100vh - 32px); }
+.miniu-modal-open { overflow: hidden !important; }
+
+@media (max-width: 575px) {
+  .miniu-modal-card { max-height: calc(100vh - 20px); }
+  .miniu-mode-menu { max-height: 190px; overflow-y: auto; }
+}
+
+/* Keep high-contrast labels on red CTAs despite legacy button rules. */
+.miniu-about-primary,
+.miniu-about-primary span,
+.miniu-about-primary i,
+.miniu-contact-primary,
+.miniu-contact-primary span,
+.miniu-contact-primary i { color: #fff !important; }
+
+@media (max-width: 767px) {
+  .miniu-blog-hero { padding: 60px 0; }
+  .minui-blog-layout { grid-template-columns: 1fr; padding: 48px 0 72px; gap: 48px; }
+  .miniu-blog-card { grid-template-columns: 1fr; }
+  .miniu-blog-card img { height: 220px; min-height: 0; }
+  .miniu-blog-sidebar { position: static; }
+  .miniu-placement-stats { gap: 20px; flex-wrap: wrap; }
+}

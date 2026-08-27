@@ -73,16 +73,14 @@ export default function CourseCard({ course, onEnquire }) {
       {/* ── Card body ─────────────────────────────────────────── */}
       <div style={{ padding: "14px 16px 16px", display: "flex", flexDirection: "column", flexGrow: 1 }}>
 
-        {/* Row 1: category pill + enrolled */}
         {/* Category + enrolled */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "6px" }}>
           <span style={{
             fontSize: "10px", fontWeight: 700, textTransform: "uppercase",
             letterSpacing: "0.06em", color: col.text,
-            background: col.bg, padding: "2px 9px", borderRadius: "999px",
-            display: "inline-flex", alignItems: "center", gap: "4px"
+            display: "inline-flex", alignItems: "center", gap: "6px"
           }}>
-            <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: col.dot }} />
+            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: col.dot }} />
             {course.category}
           </span>
           <span style={{ fontSize: "11px", color: "#94a3b8" }}>
@@ -90,16 +88,15 @@ export default function CourseCard({ course, onEnquire }) {
           </span>
         </div>
 
-        {/* Badge (moved from image — clean pill under category) */}
+        {/* Course highlight */}
         {course.badge && (
           <span style={{
             display: "inline-block", alignSelf: "flex-start",
             fontSize: "10px", fontWeight: 700, color: "#ff0135",
-            background: "#fff1f3", border: "1px solid #ffd1d8",
-            padding: "2px 9px", borderRadius: "999px",
+            borderLeft: "2px solid #ff0135", paddingLeft: "8px",
             marginBottom: "6px"
           }}>
-            ⚡ {course.badge}
+            {course.badge}
           </span>
         )}
 
@@ -128,7 +125,6 @@ export default function CourseCard({ course, onEnquire }) {
         {/* Salary */}
         {course.salaryRange && (
           <div style={{ display: "flex", alignItems: "center", gap: "5px", marginBottom: "10px" }}>
-            <span style={{ fontSize: "12px" }}>💰</span>
             <span style={{ fontSize: "12px", fontWeight: 700, color: "#16a34a" }}>
               {course.salaryRange}
             </span>

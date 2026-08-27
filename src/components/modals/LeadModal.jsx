@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import "../../styles/blogRedesign.css"
 
 const FIELD = ({ label, required, children }) => (
   <div>
@@ -13,6 +14,26 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", mode: "Classroom (Coimbatore - RS Puram)" })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [modeOpen, setModeOpen] = useState(false)
+  const modes = [
+    ["Classroom (Coimbatore - RS Puram)", "Classroom — Coimbatore (RS Puram)"],
+    ["Live Interactive Online (Weekend)", "Live Online — Weekend Batch"],
+    ["Live Interactive Online (Weekday)", "Live Online — Weekday Fast-Track"]
+  ]
+
+  useEffect(() => {
+    if (!isOpen) {
+      setModeOpen(false)
+      return undefined
+    }
+
+    document.documentElement.classList.add("lenis-stopped")
+    document.body.classList.add("miniu-modal-open")
+    return () => {
+      document.documentElement.classList.remove("lenis-stopped")
+      document.body.classList.remove("miniu-modal-open")
+    }
+  }, [isOpen])
 
   if (!isOpen) return null
 
@@ -44,7 +65,7 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
       onClick={onClose}
     >
       <div
-        className="miniu-modal-card d-flex overflow-hidden w-100"
+        className="miniu-modal-card d-flex w-100"
         style={{ maxWidth: "640px", borderRadius: "20px", background: "#fff", boxShadow: "0 32px 80px rgba(0,0,0,0.28)" }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -234,21 +255,19 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
                 </div>
 
                 <FIELD label="Preferred Training Mode">
-                  <div style={{ position: "relative" }}>
-                    <select
-                      name="mode" value={formData.mode} onChange={handleChange}
-                      className="miniu-modal-input"
-                      style={{ cursor: "pointer", paddingRight: "36px", appearance: "none", WebkitAppearance: "none" }}
-                    >
-                      <option value="Classroom (Coimbatore - RS Puram)">Classroom — Coimbatore (RS Puram)</option>
-                      <option value="Live Interactive Online (Weekend)">Live Online — Weekend Batch</option>
-                      <option value="Live Interactive Online (Weekday)">Live Online — Weekday Fast-Track</option>
-                    </select>
-                    <i className="fa-solid fa-chevron-down" style={{
-                      position: "absolute", right: "13px", top: "50%",
-                      transform: "translateY(-50%)", fontSize: "11px",
-                      color: "#94a3b8", pointerEvents: "none"
-                    }} />
+                  <div className={`miniu-mode-picker ${modeOpen ? "is-open" : ""}`}>
+                    <button type="button" className="miniu-modal-input miniu-mode-trigger" onClick={() => setModeOpen(!modeOpen)} aria-expanded={modeOpen}>
+                      {modes.find(([value]) => value === formData.mode)?.[1]}
+                      <i className="fa-solid fa-chevron-down" />
+                    </button>
+                    <div className="miniu-mode-menu">
+                      {modes.map(([value, label]) => (
+                        <button key={value} type="button" className={formData.mode === value ? "is-selected" : ""} onClick={() => { setFormData({ ...formData, mode: value }); setModeOpen(false) }}>
+                          <span>{label}</span>
+                          {formData.mode === value && <i className="fa-solid fa-check" />}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </FIELD>
 

@@ -1,291 +1,66 @@
 import Header from "../components/layout/Header"
 import Footer from "../components/layout/Footer"
-import { cssObj } from "../lib/cssObj"
+import SEOHead from "../components/common/SEOHead"
+import "../styles/blogRedesign.css"
+
+const posts = [
+  { image: "assets/images/blog/blog-standard-image1.jpg", title: "Best SAP Course in Coimbatore with Placement Support", category: "SAP training", excerpt: "A practical guide to choosing SAP FICO, MM, and SD training that connects classroom learning with real projects and career support." },
+  { image: "assets/images/blog/blog-standard-image2.jpg", title: "Top IT Courses for High Salary Jobs in 2025", category: "Career growth", excerpt: "Explore the skills employers are hiring for across full stack development, data science, digital marketing, and cloud computing." },
+  { image: "assets/images/blog/blog-standard-image3.jpg", title: "Data Science Career Guide for Beginners", category: "Data science", excerpt: "Start with a clear learning path covering Python, machine learning, analytics projects, and the first steps toward your new role." }
+]
+
+const categories = [["SAP Training", 5], ["Full Stack Development", 3], ["Data Science", 4], ["Digital Marketing", 2], ["Finance & Accounting", 3]]
+const recentPosts = [
+  ["assets/images/blog/blog-recent-image1.png", "SAP Career Opportunities in 2025"],
+  ["assets/images/blog/blog-recent-image2.png", "Best Software Courses for Jobs"],
+  ["assets/images/blog/blog-recent-image3.png", "Digital Marketing Career Growth"]
+]
 
 export default function Blog() {
   return (
-    <>
+    <div className="miniu-blog-page">
+      <SEOHead title="MiniU Blog | SAP, IT and Career Growth" description="Practical insights on SAP training, IT courses, data science, and career growth from MiniU." canonicalUrl="https://miniu.info/blog" />
       <Header />
       <main>
-    <section className="banner-inner-area sub-bg bg-image" data-background="assets/images/bg/banner-inner-bg.png">
-      <div className="container">
-        <div className="banner-inner__content">
-          <h1>
-            MiniU Blog
-          </h1>
-          <ul>
-            <li>
-              <a href="index.html">
-                Home
-              </a>
-            </li>
-            <li>
-              <i className="fa-regular fa-angle-right" />
-            </li>
-            <li>
-              Blog
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    <section className="pt-80 pb-40 text-center">
-      <div className="container">
-        <h2>
-          Latest SAP, IT &amp; Career Growth Blogs
-        </h2>
-        <p>
-          
-
-                Explore expert insights on SAP training, software courses, data science, digital marketing,
-
-                and job-oriented skills to boost your career with MiniU.
-
-            
-        </p>
-      </div>
-    </section>
-    <section className="blog-standard-area pb-120">
-      <div className="container">
-        <div className="row g-4">
-          <div className="col-lg-8">
-            <div className="blog__item p-4 mb-30">
-              <a className="blog__image d-block" href="blog-details.html">
-                <img alt="Best SAP Course in Coimbatore MiniU" loading="lazy" src="assets/images/blog/blog-standard-image1.jpg" />
-              </a>
-              <div className="blog__content">
-                <h3>
-                  <a href="blog-details.html">
-                    
-
-                                    Best SAP Course in Coimbatore with Placement Support
-
-                                
-                  </a>
-                </h3>
-                <p className="mt-20">
-                  
-
-                                Looking for the best SAP training institute in Coimbatore? MiniU offers SAP FICO, SAP MM,
-
-                                and SAP SD courses with real-time projects and 100% placement support. Learn from industry
-
-                                experts and build a successful SAP career.
-
-                            
-                </p>
-                <a className="read-more-btn" href="blog-details.html">
-                  
-
-                                Read More 
-                  <i className="fa-regular fa-arrow-right-long" />
-                </a>
-              </div>
-            </div>
-            <div className="blog__item p-4 mb-30">
-              <a className="blog__image d-block" href="blog-details.html">
-                <img alt="Top IT Courses for Jobs 2025" loading="lazy" src="assets/images/blog/blog-standard-image2.jpg" />
-              </a>
-              <div className="blog__content">
-                <h3>
-                  <a href="blog-details.html">
-                    
-
-                                    Top IT Courses for High Salary Jobs in 2025
-
-                                
-                  </a>
-                </h3>
-                <p className="mt-20">
-                  
-
-                                Discover the most in-demand IT courses like Full Stack Development, Data Science,
-
-                                Digital Marketing, and Cloud Computing. Learn how these courses can help you secure
-
-                                high-paying jobs in 2025.
-
-                            
-                </p>
-                <a className="read-more-btn" href="blog-details.html">
-                  
-
-                                Read More 
-                  <i className="fa-regular fa-arrow-right-long" />
-                </a>
-              </div>
-            </div>
-            <div className="blog__item p-4">
-              <a className="blog__image d-block" href="blog-details.html">
-                <img alt="Data Science Course Career Guide" loading="lazy" src="assets/images/blog/blog-standard-image3.jpg" />
-              </a>
-              <div className="blog__content">
-                <h3>
-                  <a href="blog-details.html">
-                    
-
-                                    Data Science Career Guide for Beginners
-
-                                
-                  </a>
-                </h3>
-                <p className="mt-20">
-                  
-
-                                Start your journey in data science with MiniU. Learn Python, Machine Learning,
-
-                                and real-world analytics projects. Understand salary trends and career opportunities
-
-                                in the growing data science field.
-
-                            
-                </p>
-                <a className="read-more-btn" href="blog-details.html">
-                  
-
-                                Read More 
-                  <i className="fa-regular fa-arrow-right-long" />
-                </a>
-              </div>
-            </div>
+        <section className="miniu-blog-hero">
+          <div className="container">
+            <div className="miniu-eyebrow">The MiniU journal</div>
+            <h1>Ideas for your next career move.</h1>
+            <p>Useful perspectives on learning, hiring, and building a career in today&apos;s technology landscape.</p>
           </div>
-          <div className="col-lg-4">
-            <div className="item search mb-4">
-              <h3>
-                Search
-              </h3>
-              <div className="input-wrp">
-                <input placeholder="Search blogs..." type="text" />
-                <button>
-                  <i className="fa-regular fa-magnifying-glass" />
-                </button>
-              </div>
-            </div>
-            <div className="item category mb-4">
-              <h3>
-                Categories
-              </h3>
-              <ul>
-                <li>
-                  <a href="#">
-                    <span>
-                      SAP Training
-                    </span>
-                    <span>
-                      (5)
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span>
-                      Full Stack Development
-                    </span>
-                    <span>
-                      (3)
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span>
-                      Data Science
-                    </span>
-                    <span>
-                      (4)
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span>
-                      Digital Marketing
-                    </span>
-                    <span>
-                      (2)
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span>
-                      Finance &amp; Accounting
-                    </span>
-                    <span>
-                      (3)
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="item resent-post mb-4">
-              <h3>
-                Recent Posts
-              </h3>
-              <ul>
-                <li>
-                  <img alt="SAP Career Guide" src="assets/images/blog/blog-recent-image1.png" />
-                  <div>
-                    <h5>
-                      <a href="#">
-                        SAP Career Opportunities in 2025
-                      </a>
-                    </h5>
-                  </div>
-                </li>
-                <li>
-                  <img alt="IT Courses" src="assets/images/blog/blog-recent-image2.png" />
-                  <div>
-                    <h5>
-                      <a href="#">
-                        Best Software Courses for Jobs
-                      </a>
-                    </h5>
-                  </div>
-                </li>
-                <li>
-                  <img alt="Digital Marketing" src="assets/images/blog/blog-recent-image3.png" />
-                  <div>
-                    <h5>
-                      <a href="#">
-                        Digital Marketing Career Growth
-                      </a>
-                    </h5>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="item">
-              <h3>
-                Tags
-              </h3>
-              <div className="tags">
-                <a href="#">
-                  SAP
-                </a>
-                <a href="#">
-                  IT Courses
-                </a>
-                <a href="#">
-                  Data Science
-                </a>
-                <a href="#">
-                  Full Stack
-                </a>
-                <a href="#">
-                  Marketing
-                </a>
-                <a href="#">
-                  Career
-                </a>
-              </div>
-            </div>
+        </section>
+        <section className="container minui-blog-layout">
+          <div className="miniu-blog-list reveal-stagger-group">
+            {posts.map((post) => (
+              <article className="miniu-blog-card reveal-card" key={post.title}>
+                <a href="/blog-details" aria-label={`Read ${post.title}`}><img src={post.image} alt="" loading="lazy" /></a>
+                <div className="miniu-blog-card-content">
+                  <span className="miniu-blog-meta">{post.category}</span>
+                  <h2><a href="/blog-details" className="text-reset text-decoration-none">{post.title}</a></h2>
+                  <p>{post.excerpt}</p>
+                  <a className="miniu-blog-read" href="/blog-details">Read article <span aria-hidden="true">→</span></a>
+                </div>
+              </article>
+            ))}
           </div>
-        </div>
-      </div>
-    </section>
+          <aside className="miniu-blog-sidebar reveal-fade-up">
+            <h2>Search the journal</h2>
+            <form className="miniu-blog-search" onSubmit={(event) => event.preventDefault()}>
+              <input type="search" placeholder="Search articles" aria-label="Search articles" />
+              <button type="submit" aria-label="Search"><i className="fa-regular fa-magnifying-glass" /></button>
+            </form>
+            <h2>Topics</h2>
+            <ul className="miniu-blog-categories">
+              {categories.map(([name, count]) => <li key={name}><a href="#topics"><span>{name}</span><span>{count}</span></a></li>)}
+            </ul>
+            <h2>Recent articles</h2>
+            <div className="miniu-blog-recent">
+              {recentPosts.map(([image, title]) => <a href="/blog-details" key={title}><img src={image} alt="" loading="lazy" /><span>{title}</span></a>)}
+            </div>
+          </aside>
+        </section>
       </main>
       <Footer />
-    </>
+    </div>
   )
 }
