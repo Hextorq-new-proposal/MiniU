@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import LiquidButton from "../ui/LiquidButton"
 
 export default function Header({ onOpenCounselling }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -70,14 +71,13 @@ export default function Header({ onOpenCounselling }) {
 
           {/* Right Action */}
           <div className="d-none d-lg-flex align-items-center gap-3">
-            <button
-              type="button"
+            <LiquidButton
               onClick={handleCounsellingClick}
-              className="btn-miniu-transparent-red"
+              variant="red"
             >
               <span>Book Free Counselling</span>
               <i className="fa-regular fa-arrow-right-long" />
-            </button>
+            </LiquidButton>
           </div>
 
           {/* Mobile Hamburger Button */}
