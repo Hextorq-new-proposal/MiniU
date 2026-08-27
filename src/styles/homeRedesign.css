@@ -159,9 +159,15 @@ html.lenis, html.lenis body {
 
 /* Droid Logo Typography exclusively for Hero Headline */
 .droid-logo-text {
-  font-family: 'DroidLogoFont', sans-serif !important;
+  font-family: 'DroidLogoFont', var(--miniu-font-display), sans-serif;
   letter-spacing: 0.01em;
   font-weight: 700;
+}
+
+.droid-cap-b {
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  display: inline-block !important;
 }
 
 /* Bold Display Typography for Hero Headline */
@@ -385,9 +391,8 @@ html.lenis, html.lenis body {
 }
 
 .miniu-card:hover {
-  transform: translateY(-4px);
   border-color: #cbd5e1;
-  box-shadow: var(--miniu-card-hover-shadow);
+  box-shadow: var(--miniu-card-shadow);
 }
 
 /* Interactive Category Pills / Buttons */
@@ -823,10 +828,11 @@ img {
   display: flex;
   overflow: hidden;
   user-select: none;
-  gap: 28px;
+  gap: 32px;
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  margin: 14px 0;
+  margin: 34px 0;
+  padding: 6px 0;
 }
 
 .marquee-content {
@@ -924,6 +930,119 @@ img {
   .marquee-content {
     gap: 16px;
   }
+}
+
+/* ============================================================
+   Lead Modal Animations
+   ============================================================ */
+@keyframes minuBackdrop {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes minuModalPop {
+  0%   { opacity: 0; transform: scale(0.88) translateY(28px); }
+  65%  { transform: scale(1.02) translateY(-3px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes minuSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes minuSuccessPop {
+  0%   { opacity: 0; transform: scale(0.5); }
+  70%  { transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.miniu-modal-backdrop {
+  animation: minuBackdrop 0.2s ease forwards;
+}
+
+.miniu-modal-card {
+  animation: minuModalPop 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.miniu-modal-spinner {
+  animation: minuSpin 0.7s linear infinite;
+}
+
+.miniu-modal-success-icon {
+  animation: minuSuccessPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.miniu-modal-input {
+  width: 100%;
+  padding: 9px 13px;
+  font-size: 14px;
+  color: #0f172a;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.miniu-modal-input:focus {
+  border-color: #ff0135 !important;
+  box-shadow: 0 0 0 3px rgba(255, 1, 53, 0.1) !important;
+}
+
+.miniu-modal-submit {
+  width: 100%;
+  padding: 12px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #ff0135;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.12s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.miniu-modal-submit:hover:not(:disabled) {
+  background: #e0002e;
+  transform: translateY(-1px);
+}
+
+.miniu-modal-submit:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Footer contact link hover effect */
+.footer-contact-link {
+  color: #64748b;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin: -4px -12px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+}
+
+.footer-contact-link:hover {
+  color: #ff0135 !important;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  transform: translateX(5px);
+}
+
+.footer-contact-link i {
+  transition: transform 0.22s ease, color 0.22s ease;
+}
+
+.footer-contact-link:hover i {
+  transform: scale(1.2);
+  color: #ff0135;
 }
 
 

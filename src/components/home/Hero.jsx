@@ -20,10 +20,14 @@ export default function Hero({ onOpenCounselling }) {
               MiniU EdTech Institute — Coimbatore
             </span>
 
-            {/* Main Display Headline (Droid Logo Font on two lines) */}
+            {/* Main Display Headline */}
             <h1 className="miniu-hero-title mb-3">
-              <span className="droid-logo-text d-block text-dark">Build the skills.</span>
-              <span className="droid-logo-text highlight-line d-block">Build the career.</span>
+              <span className="d-block text-dark">
+                <span style={{ fontFamily: "'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif", fontWeight: 800 }}>B</span><span className="droid-logo-text">uild the Skills.</span>
+              </span>
+              <span className="highlight-line d-block">
+                <span style={{ fontFamily: "'Space Grotesk', 'Plus Jakarta Sans', system-ui, sans-serif", fontWeight: 800 }}>B</span><span className="droid-logo-text">uild the Career.</span>
+              </span>
             </h1>
 
             {/* Domain Specificity Subtitle (Deep High-Contrast Black) */}
@@ -36,29 +40,34 @@ export default function Hero({ onOpenCounselling }) {
               Industry-focused courses, practical projects, expert mentors and placement support to help you become job-ready in high-demand enterprise domains.
             </p>
 
-            {/* Admissions Open - Plain Text below paragraph */}
-            <div className="d-flex flex-wrap align-items-center gap-2 mb-4 fs-13 fs-sm-14 fw-bold text-dark">
-              <span>Admissions Open: Classroom (Coimbatore) &amp; Live Online</span>
+            {/* Admissions Open - Pure Black Text */}
+            <div className="d-flex flex-wrap align-items-center gap-2 mb-4 fs-13 fs-sm-14 fw-bold" style={{ color: "#000000" }}>
+              <span style={{ color: "#000000" }}>Admissions Open: Classroom (Coimbatore) &amp; Live Online</span>
               <button
                 type="button"
                 onClick={onOpenCounselling}
                 className="p-0 border-0 bg-transparent fw-bold fs-13 fs-sm-14 ms-1 d-inline-flex align-items-center cursor-pointer text-decoration-none"
-                style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none", color: "#0f172a" }}
+                style={{ background: "transparent", border: "none", boxShadow: "none", outline: "none" }}
               >
-                <span style={{ color: "#0f172a" }}>View Batches →</span>
+                <span style={{ color: "#ff0135", fontWeight: "bold" }}>View Batches →</span>
               </button>
             </div>
 
             {/* Action Buttons with Transparent Background to reflect WebGL animation */}
             <div className="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-3 mb-4 mb-sm-5">
-              <Link to="/courses" className="btn-miniu-transparent-red fs-15 fs-sm-16 py-3 px-4 px-sm-5 justify-content-center">
-                <span>Explore Courses</span>
-                <i className="fa-regular fa-arrow-right-long" />
+              <Link
+                to="/courses"
+                className="btn-miniu-transparent-red fs-15 fs-sm-16 py-3 px-4 px-sm-5 justify-content-center"
+                style={{ color: "#000000", borderColor: "#000000" }}
+              >
+                <span style={{ color: "#000000" }}>Explore Courses</span>
+                <i className="fa-regular fa-arrow-right-long" style={{ color: "#000000" }} />
               </Link>
               <button
                 type="button"
                 onClick={onOpenCounselling}
                 className="btn-miniu-glass-outline fs-15 fs-sm-16 py-3 px-4 justify-content-center"
+                style={{ background: "transparent", color: "#000000", border: "1.5px solid #000000" }}
               >
                 Talk to a Course Advisor
               </button>

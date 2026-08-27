@@ -3,24 +3,20 @@ import { COURSES, CATEGORIES } from "../../data/coursesData"
 import CourseCard from "./CourseCard"
 
 export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm]         = useState("")
   const [selectedCategory, setSelectedCategory] = useState(initialCategory)
-  const [selectedLevel, setSelectedLevel] = useState("all")
+  const [selectedLevel, setSelectedLevel]   = useState("all")
 
-  // Filter courses based on search term, category, and level
   const filteredCourses = useMemo(() => {
     return COURSES.filter((course) => {
-      // Category filter
       const matchesCategory =
         selectedCategory === "all" ||
         course.categorySlug.toLowerCase() === selectedCategory.toLowerCase()
 
-      // Level filter
       const matchesLevel =
         selectedLevel === "all" ||
         course.level.toLowerCase().includes(selectedLevel.toLowerCase())
 
-      // Search term filter
       const term = searchTerm.toLowerCase().trim()
       const matchesSearch =
         !term ||
@@ -34,101 +30,169 @@ export default function CourseCatalog({ onEnquire, initialCategory = "all" }) {
   }, [searchTerm, selectedCategory, selectedLevel])
 
   return (
-    <div className="container py-4">
-      {/* Search & Filter Bar */}
-      <div className="bg-white rounded-4 border p-4 shadow-sm mb-5">
-        <div className="row g-3 align-items-center">
-          {/* Search Input */}
-          <div className="col-lg-6">
-            <div className="position-relative">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search courses (e.g., SAP FICO, ABAP, Power BI, Python, MERN)..."
-                className="form-control rounded-pill ps-4 pe-5 py-2 fs-14 border-light-subtle shadow-xs"
-              />
-              {searchTerm && (
-                <button
-                  type="button"
-                  onClick={() => setSearchTerm("")}
-                  className="position-absolute end-0 top-50 translate-middle-y me-3 btn btn-sm btn-link text-muted p-0 text-decoration-none"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
+    <div className="container py-3">
+
+      {/* ── Filter bar ───────────────────────────────── */}
+      <div
+        style={{
+          background: "#fff",
+          border: "1px solid #e2e8f0",
+          borderRadius: "16px",
+          padding: "16px 20px",
+          marginBottom: "28px",
+          boxShadow: "0 2px 12px rgba(15,23,42,0.05)"
+        }}
+      >
+        {/* Top row: search + level + count */}
+        <div style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap", marginBottom: "14px" }}>
+
+          {/* Search */}
+          <div style={{ position: "relative", flex: "1 1 260px", minWidth: "200px" }}>
+            <i
+              className="fa-regular fa-magnifying-glass"
+              style={{
+                position: "absolute", left: "13px", top: "50%",
+                transform: "translateY(-50%)", color: "#94a3b8", fontSize: "13px"
+              }}
+            />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search — SAP FICO, Power BI, MERN…"
+              style={{
+                width: "100%", padding: "9px 36px 9px 34px",
+                fontSize: "13.5px", color: "#0f172a",
+                border: "1.5px solid #e2e8f0", borderRadius: "999px",
+                outline: "none", transition: "border-color 0.2s"
+              }}
+              onFocus={e => e.target.style.borderColor = "#ff0135"}
+              onBlur={e => e.target.style.borderColor = "#e2e8f0"}
+            />
+            {searchTerm && (
+              <button
+                type="button"
+                onClick={() => setSearchTerm("")}
+                style={{
+                  position: "absolute", right: "12px", top: "50%",
+                  transform: "translateY(-50%)", background: "none",
+                  border: "none", cursor: "pointer", color: "#94a3b8",
+                  fontSize: "13px", lineHeight: 1, padding: "2px"
+                }}
+              >
+                ✕
+              </button>
+            )}
           </div>
 
-          {/* Level Selector */}
-          <div className="col-lg-3 col-sm-6">
-            <select
-              value={selectedLevel}
-              onChange={(e) => setSelectedLevel(e.target.value)}
-              className="form-select rounded-pill py-2 fs-14 border-light-subtle shadow-xs"
-            >
-              <option value="all">All Difficulty Levels</option>
-              <option value="beginner">Beginner Friendly</option>
-              <option value="advanced">Advanced / Professional</option>
-            </select>
-          </div>
+          {/* Level select */}
+          <select
+            value={selectedLevel}
+            onChange={(e) => setSelectedLevel(e.target.value)}
+            style={{
+              padding: "9px 14px", fontSize: "13px", fontWeight: 500,
+              border: "1.5px solid #e2e8f0", borderRadius: "999px",
+              color: "#334155", background: "#fff", cursor: "pointer",
+              outline: "none", flex: "0 0 auto"
+            }}
+          >
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="advanced">Advanced</option>
+          </select>
 
-          {/* Results Count Badge */}
-          <div className="col-lg-3 col-sm-6 text-sm-end">
-            <span className="badge bg-light text-dark border px-3 py-2 rounded-pill fs-13 fw-semibold">
-              Showing <strong>{filteredCourses.length}</strong> of {COURSES.length} Courses
-            </span>
-          </div>
+          {/* Count */}
+          <span style={{
+            fontSize: "12.5px", fontWeight: 600, color: "#64748b",
+            background: "#f8fafc", border: "1px solid #e2e8f0",
+            borderRadius: "999px", padding: "6px 14px",
+            whiteSpace: "nowrap", flex: "0 0 auto"
+          }}>
+            <strong style={{ color: "#0f172a" }}>{filteredCourses.length}</strong> of {COURSES.length} courses
+          </span>
         </div>
 
-        {/* Category Pills */}
-        <div className="d-flex flex-wrap gap-2 mt-4 pt-3 border-top">
-          {CATEGORIES.map((cat) => (
+        {/* Category pills */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+          {CATEGORIES.map((cat) => {
+            const active = selectedCategory === cat.slug
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setSelectedCategory(cat.slug)}
+                style={{
+                  padding: "6px 16px", fontSize: "12.5px", fontWeight: 600,
+                  borderRadius: "999px", cursor: "pointer",
+                  border: active ? "1.5px solid #ff0135" : "1.5px solid #e2e8f0",
+                  background: active ? "#ff0135" : "#f8fafc",
+                  color: active ? "#fff" : "#475569",
+                  transition: "all 0.18s ease"
+                }}
+              >
+                {cat.name}
+              </button>
+            )
+          })}
+
+          {/* Reset */}
+          {(selectedCategory !== "all" || selectedLevel !== "all" || searchTerm) && (
             <button
-              key={cat.id}
               type="button"
-              onClick={() => setSelectedCategory(cat.slug)}
-              className={`btn btn-sm rounded-pill px-3 py-2 fs-13 fw-semibold transition-all ${
-                selectedCategory === cat.slug
-                  ? "btn-danger shadow-sm text-white"
-                  : "btn-outline-secondary bg-white text-dark"
-              }`}
+              onClick={() => { setSearchTerm(""); setSelectedCategory("all"); setSelectedLevel("all") }}
+              style={{
+                padding: "6px 14px", fontSize: "12px", fontWeight: 600,
+                borderRadius: "999px", cursor: "pointer",
+                border: "1.5px dashed #fca5a5",
+                background: "#fff1f3", color: "#ff0135",
+                transition: "all 0.18s ease"
+              }}
             >
-              {cat.name}
+              ✕ Clear filters
             </button>
-          ))}
+          )}
         </div>
       </div>
 
-      {/* Courses Grid */}
+      {/* ── Courses Grid ─────────────────────────────── */}
       {filteredCourses.length > 0 ? (
-        <div className="row g-4">
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(270px, 1fr))",
+            gap: "20px"
+          }}
+        >
           {filteredCourses.map((course) => (
-            <div key={course.id} className="col-xl-4 col-md-6">
-              <CourseCard course={course} onEnquire={onEnquire} />
-            </div>
+            <CourseCard key={course.id} course={course} onEnquire={onEnquire} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-5 bg-white rounded-4 border p-5">
-          <div className="fs-48 text-muted mb-3">🔍</div>
-          <h4 className="fs-20 fw-bold text-dark mb-2">No matching courses found</h4>
-          <p className="text-muted fs-14 mb-4">
-            Try adjusting your search keywords or clearing filters to see all available programs.
+        <div style={{
+          textAlign: "center", padding: "60px 24px",
+          background: "#fff", borderRadius: "16px", border: "1px solid #e2e8f0"
+        }}>
+          <div style={{ fontSize: "42px", marginBottom: "14px" }}>🔍</div>
+          <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#0f172a", marginBottom: "8px" }}>
+            No courses match your search
+          </h4>
+          <p style={{ fontSize: "13.5px", color: "#64748b", marginBottom: "20px" }}>
+            Try different keywords or clear the filters to see all programs.
           </p>
           <button
             type="button"
-            onClick={() => {
-              setSearchTerm("")
-              setSelectedCategory("all")
-              setSelectedLevel("all")
+            onClick={() => { setSearchTerm(""); setSelectedCategory("all"); setSelectedLevel("all") }}
+            style={{
+              background: "#ff0135", color: "#fff", border: "none",
+              borderRadius: "999px", padding: "10px 28px",
+              fontSize: "14px", fontWeight: 700, cursor: "pointer"
             }}
-            className="btn btn-danger rounded-pill px-4 py-2 fw-semibold shadow-sm fs-14"
           >
-            Reset All Filters
+            Reset Filters
           </button>
         </div>
       )}
+
     </div>
   )
 }

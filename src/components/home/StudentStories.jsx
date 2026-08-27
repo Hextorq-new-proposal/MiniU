@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { CompanyLogo } from "../common/CompanyLogos"
 
 const TESTIMONIALS_LIST = [
@@ -31,24 +31,35 @@ const TESTIMONIALS_LIST = [
 export default function StudentStories() {
   const [activeStory, setActiveStory] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef(null)
 
-  // Auto-scroll testimonials every 3.5 seconds
+  // Only auto-scroll when section is visible in viewport
   useEffect(() => {
-    if (isPaused) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  // Auto-scroll every 2 seconds when section is visible in viewport
+  useEffect(() => {
+    if (!isVisible) return
     const timer = setInterval(() => {
       setActiveStory((prev) => (prev + 1) % TESTIMONIALS_LIST.length)
-    }, 3500)
+    }, 2000)
     return () => clearInterval(timer)
-  }, [isPaused])
+  }, [isVisible])
 
   const current = TESTIMONIALS_LIST[activeStory]
 
   return (
     <section className="py-5 py-lg-6 miniu-bg-white border-bottom">
       <div
+        ref={sectionRef}
         className="container py-3"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
       >
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
@@ -94,7 +105,7 @@ export default function StudentStories() {
             </div>
           </div>
 
-          {/* Right Column: Switcher cards with progress indicators */}
+          {/* Right Column: Switcher cards with clean minimalist active state */}
           <div className="col-lg-5">
             <div className="d-flex flex-column gap-3">
               {TESTIMONIALS_LIST.map((item, idx) => {
@@ -105,18 +116,18 @@ export default function StudentStories() {
                     onClick={() => setActiveStory(idx)}
                     className={`p-3.5 rounded-3 border transition-all cursor-pointer ${
                       isActive
-                        ? "bg-white border-danger shadow-sm border-2"
-                        : "bg-light border-light-subtle opacity-75 hover-opacity-100"
+                        ? "bg-white border-dark-subtle shadow-sm"
+                        : "bg-light bg-opacity-75 border-light-subtle opacity-75 hover-opacity-100"
                     }`}
+                    style={{
+                      borderLeft: isActive ? "3.5px solid #0f172a" : "1px solid #e2e8f0",
+                      transform: isActive ? "translateX(4px)" : "none",
+                      transition: "all 0.25s ease"
+                    }}
                   >
                     <div className="d-flex align-items-center justify-content-between mb-1.5">
                       <div className="d-flex align-items-center gap-2">
                         <h5 className="fs-15 fw-bold miniu-text-dark mb-0">{item.name}</h5>
-                        {isActive && (
-                          <span className="badge bg-danger text-white rounded-pill px-2 py-0.5 fs-10 fw-bold">
-                            Active
-                          </span>
-                        )}
                       </div>
                       <span className="badge bg-light text-muted border px-2 py-0.5 fs-11">
                         {item.course}

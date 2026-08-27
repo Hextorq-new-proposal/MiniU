@@ -32,6 +32,7 @@ export default function PlacementStories({ onOpenCounselling }) {
   return (
     <section id="placement-proof" className="py-5 py-lg-6 miniu-bg-white border-bottom">
       <div className="container py-3">
+
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
           <span className="badge bg-success bg-opacity-10 text-success rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
@@ -46,16 +47,43 @@ export default function PlacementStories({ onOpenCounselling }) {
         </div>
 
         {/* 3 Transformation Story Cards */}
-        <div className="row g-4 mb-4 reveal-stagger-group align-items-stretch">
+        <div className="row g-4 align-items-stretch mb-4 reveal-stagger-group">
           {STORIES.map((story, idx) => (
-            <div key={idx} className="col-lg-4 reveal-card d-flex">
-              <div className="miniu-card p-4 w-100 bg-white border border-light-subtle rounded-4 shadow-sm hover-shadow-lg transition-all d-flex flex-column justify-content-between h-100">
+            <div key={idx} className="col-lg-4 d-flex reveal-card">
+              <div
+                className="border border-light-subtle rounded-4 bg-white w-100 d-flex flex-column justify-content-between p-4 shadow-sm transition-all hover-shadow-lg"
+                style={{
+                  position: "relative",
+                  overflow: "hidden"
+                }}
+              >
+                {/* Top subtle gradient accent line */}
+                <div
+                  className="position-absolute top-0 start-0 w-100"
+                  style={{
+                    height: "3px",
+                    background: "linear-gradient(90deg, #ff0135 0%, #ff5f03 100%)"
+                  }}
+                />
+
                 <div>
-                  {/* Top Bar: Name & Company Logo Pill */}
+                  {/* Top row: Avatar + Name / Course + Company Badge */}
                   <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
-                    <div>
-                      <h4 className="fs-16 fw-bold miniu-text-dark mb-0">{story.name}</h4>
-                      <span className="fs-12 text-muted">{story.course}</span>
+                    <div className="d-flex align-items-center gap-2.5">
+                      <div
+                        className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-13 shadow-2xs flex-shrink-0"
+                        style={{
+                          width: "38px",
+                          height: "38px",
+                          background: "linear-gradient(135deg, #0f172a 0%, #334155 100%)"
+                        }}
+                      >
+                        {story.name.split(" ").map(n => n[0]).join("")}
+                      </div>
+                      <div>
+                        <h4 className="fw-bold fs-15 text-dark mb-0">{story.name}</h4>
+                        <span className="fs-12 text-muted">{story.course}</span>
+                      </div>
                     </div>
                     <div className="bg-light border border-light-subtle rounded-pill px-2.5 py-1 d-inline-flex align-items-center gap-1.5 flex-shrink-0">
                       <span className="fs-10 text-muted fw-bold text-uppercase">Placed @</span>
@@ -63,32 +91,31 @@ export default function PlacementStories({ onOpenCounselling }) {
                     </div>
                   </div>
 
-                  {/* Before / After Flow */}
+                  {/* Transformation Pathway Box */}
                   <div className="p-2.5 bg-light bg-opacity-75 rounded-3 mb-3 border border-light-subtle">
-                    <div className="d-flex align-items-center gap-2 mb-1.5 fs-13">
+                    <div className="d-flex align-items-center gap-2 mb-1 fs-12">
                       <span className="badge bg-secondary-subtle text-secondary px-2 py-0.5 fs-10 fw-bold">Before</span>
                       <span className="text-muted fs-12">{story.beforeRole}</span>
                     </div>
-                    <div className="d-flex align-items-center gap-2 fs-13">
+                    <div className="d-flex align-items-center gap-2 fs-12">
                       <span className="badge bg-success text-white px-2 py-0.5 fs-10 fw-bold">After</span>
-                      <strong className="miniu-text-dark fs-13">{story.afterRole}</strong>
+                      <strong className="text-dark fs-12">{story.afterRole}</strong>
                     </div>
                   </div>
 
                   {/* Student Quote */}
-                  <p className="text-secondary fs-13 fst-italic mb-3 line-height-relaxed" style={{ minHeight: "64px" }}>
+                  <p className="fst-italic fs-13 text-secondary mb-3 line-height-relaxed" style={{ minHeight: "64px" }}>
                     “{story.quote}”
                   </p>
                 </div>
 
-                <div className="pt-3 border-top mt-auto d-flex align-items-center justify-content-between">
-                  <span className="fs-12 text-muted d-inline-flex align-items-center gap-1.5">
-                    <i className="fa-solid fa-circle-check text-success fs-12" />
+                {/* Footer */}
+                <div className="border-top pt-3 mt-auto d-flex align-items-center justify-content-between">
+                  <div className="d-flex align-items-center gap-1.5 fs-12 text-success fw-semibold">
+                    <i className="fa-solid fa-circle-check text-success fs-13" />
                     <span>Verified Placement</span>
-                  </span>
-                  <div className="d-flex align-items-center">
-                    <CompanyLogo name={story.company} height={18} />
                   </div>
+                  <CompanyLogo name={story.company} height={18} />
                 </div>
               </div>
             </div>
@@ -110,6 +137,7 @@ export default function PlacementStories({ onOpenCounselling }) {
             <i className="fa-regular fa-arrow-right-long text-white" />
           </button>
         </div>
+
       </div>
     </section>
   )

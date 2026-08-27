@@ -1,5 +1,4 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from "react"
 
 const MENTORS = [
   {
@@ -44,9 +43,12 @@ const MENTORS = [
 ]
 
 export default function Mentors() {
+  const [hovered, setHovered] = useState(null)
+
   return (
     <section className="py-5 py-lg-6 miniu-bg-slate border-bottom">
       <div className="container py-3">
+
         {/* Section Header */}
         <div className="text-center max-w-700 mx-auto mb-5 reveal-fade-up">
           <span className="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 fs-12 fw-bold mb-2">
@@ -60,116 +62,164 @@ export default function Mentors() {
           </p>
         </div>
 
-        {/* 3 Modern Professional Mentor Cards */}
+        {/* Mentor Cards */}
         <div className="row g-4 justify-content-center reveal-stagger-group align-items-stretch">
           {MENTORS.map((m, idx) => (
             <div key={idx} className="col-lg-4 col-md-6 reveal-card d-flex">
-              <div className="miniu-card bg-white border border-light-subtle rounded-4 p-4 shadow-sm hover-shadow-lg transition-all d-flex flex-column justify-content-between w-100 position-relative overflow-hidden h-100">
-                {/* Top Subtle Red Accent Line */}
+              <div
+                className="bg-white border rounded-4 overflow-hidden d-flex flex-column w-100"
+                style={{
+                  boxShadow: hovered === idx
+                    ? "0 20px 48px rgba(0,0,0,0.15)"
+                    : "0 2px 14px rgba(0,0,0,0.07)",
+                  transform: hovered === idx ? "translateY(-6px)" : "none",
+                  transition: "all 0.3s ease",
+                  cursor: "default"
+                }}
+                onMouseEnter={() => setHovered(idx)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                {/* Dark Gradient Header */}
                 <div
-                  className="position-absolute top-0 start-0 w-100"
                   style={{
-                    height: "3.5px",
-                    background: "linear-gradient(90deg, #ff0135 0%, #ff527b 100%)"
+                    height: "80px",
+                    background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+                    flexShrink: 0
                   }}
                 />
 
-                <div>
-                  {/* Centered Large Profile Photo (96px) */}
-                  <div className="d-flex justify-content-center mb-3 mt-2">
-                    <div className="position-relative">
-                      {m.avatar ? (
-                        <img
-                          src={m.avatar}
-                          alt={m.name}
-                          className="rounded-circle object-fit-cover shadow-sm border border-3 border-white"
-                          style={{ width: "96px", height: "96px" }}
-                        />
-                      ) : (
-                        <div
-                          className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-24 shadow-sm border border-3 border-white"
-                          style={{
-                            width: "96px",
-                            height: "96px",
-                            background: "linear-gradient(135deg, #0f172a 0%, #334155 100%)"
-                          }}
-                        >
-                          {m.initials}
-                        </div>
-                      )}
-                      {/* Active Status Dot */}
-                      <span
-                        className="position-absolute border border-2 border-white rounded-circle bg-success"
-                        style={{ width: "16px", height: "16px", bottom: "4px", right: "4px" }}
-                        title="Active Faculty Mentor"
+                {/* Avatar — sits half inside header, half below */}
+                <div className="d-flex justify-content-center">
+                  <div className="position-relative" style={{ marginTop: "-48px" }}>
+                    {m.avatar ? (
+                      <img
+                        src={m.avatar}
+                        alt={m.name}
+                        className="rounded-circle object-fit-cover shadow"
+                        style={{
+                          width: "96px",
+                          height: "96px",
+                          border: "3px solid #ffffff"
+                        }}
                       />
-                    </div>
+                    ) : (
+                      <div
+                        className="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white shadow"
+                        style={{
+                          width: "96px",
+                          height: "96px",
+                          fontSize: "22px",
+                          border: "3px solid #ffffff",
+                          background: "linear-gradient(135deg, #0f172a 0%, #334155 100%)"
+                        }}
+                      >
+                        {m.initials}
+                      </div>
+                    )}
+                    {/* Active green dot */}
+                    <span
+                      className="position-absolute bg-success rounded-circle"
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        bottom: "4px",
+                        right: "4px",
+                        border: "2px solid #ffffff"
+                      }}
+                      title="Active Faculty Mentor"
+                    />
+                  </div>
+                </div>
+
+                {/* Inner Content */}
+                <div className="px-4 pb-4 pt-2 d-flex flex-column flex-grow-1">
+
+                  {/* Name */}
+                  <div className="text-center mt-2 mb-1">
+                    <span className="fw-bold text-dark" style={{ fontSize: "16px" }}>
+                      {m.name}
+                    </span>
                   </div>
 
-                  {/* Name & Role */}
-                  <div className="text-center mb-3">
-                    <div className="d-flex align-items-center justify-content-center gap-1.5 mb-1">
-                      <h4 className="fs-17 fw-bold miniu-text-dark mb-0">{m.name}</h4>
-                      <i className="fa-solid fa-circle-check text-primary fs-13" title="Verified Corporate Mentor" />
-                    </div>
-                    <span className="fs-13 text-danger fw-bold d-block mb-1.5">{m.role}</span>
-                    <span className="badge bg-light text-secondary border border-light-subtle px-3 py-1 fs-11 fw-semibold rounded-pill">
-                      <i className="fa-regular fa-briefcase text-muted me-1.5" />
+                  {/* Experience chip */}
+                  <div className="text-center mb-1">
+                    <span
+                      className="bg-light border rounded-pill text-muted px-3 py-1 d-inline-block"
+                      style={{ fontSize: "11px" }}
+                    >
                       {m.experience}
                     </span>
                   </div>
 
-                  {/* Highlights Strip */}
-                  <div className="d-flex align-items-center justify-content-center gap-4 p-2 bg-light bg-opacity-75 rounded-3 mb-3 border border-light-subtle w-100">
-                    <div className="d-flex align-items-center gap-1.5 fs-12 fw-bold text-dark">
-                      <i className="fa-solid fa-graduation-cap text-danger fs-13" />
-                      <span>{m.studentsMentored}</span>
-                    </div>
-                    <div className="d-flex align-items-center gap-1 fs-12 fw-bold text-dark">
-                      <i className="fa-solid fa-star text-warning fs-12" />
-                      <span>{m.rating} Rating</span>
-                    </div>
+                  {/* Role */}
+                  <span
+                    className="text-danger fw-semibold text-center d-block mb-2"
+                    style={{ fontSize: "13px" }}
+                  >
+                    {m.role}
+                  </span>
+
+                  {/* Stats row */}
+                  <div
+                    className="d-flex justify-content-center gap-4 fw-semibold text-dark mb-3"
+                    style={{ fontSize: "12px" }}
+                  >
+                    <span>
+                      <i className="fa-solid fa-graduation-cap text-danger me-1" />
+                      {m.studentsMentored}
+                    </span>
+                    <span>
+                      <i className="fa-solid fa-star text-warning me-1" />
+                      {m.rating} Rating
+                    </span>
                   </div>
 
                   {/* Bio */}
-                  <p className="miniu-text-muted fs-13 mb-3 line-height-relaxed text-start" style={{ minHeight: "56px" }}>
+                  <p
+                    className="text-muted text-start mb-3"
+                    style={{ fontSize: "13px", lineHeight: 1.6 }}
+                  >
                     {m.bio}
                   </p>
 
-                  {/* Key Expertise Chips */}
-                  <div className="mb-3 text-start">
-                    <span className="d-block fs-10 fw-bold text-uppercase text-muted letter-spacing-1 mb-1.5">
-                      Hands-On Tech Stack:
-                    </span>
-                    <div className="d-flex flex-wrap gap-1.5">
-                      {m.expertise.map((exp, eIdx) => (
-                        <span
-                          key={eIdx}
-                          className="badge bg-white text-dark border border-light-subtle px-2.5 py-1 fs-11 fw-medium rounded-pill shadow-2xs d-inline-flex align-items-center gap-1"
-                        >
-                          <i className="fa-solid fa-check text-success fs-9" />
-                          {exp}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Expertise chips */}
+                  <div className="d-flex flex-wrap gap-2 mb-3">
+                    {m.expertise.map((exp, eIdx) => (
+                      <span
+                        key={eIdx}
+                        className="bg-light border text-dark rounded-pill px-2 py-1"
+                        style={{ fontSize: "11px" }}
+                      >
+                        <i className="fa-solid fa-check text-success me-1" />
+                        {exp}
+                      </span>
+                    ))}
                   </div>
-                </div>
 
-                {/* Card Footer */}
-                <div className="pt-3 border-top mt-auto w-100 d-flex align-items-center justify-content-between">
-                  <div className="text-start">
-                    <span className="fs-9 text-uppercase text-muted fw-bold d-block">Program Lead:</span>
-                    <span className="fs-12 fw-bold text-dark">{m.coursesTaught}</span>
+                  {/* Footer */}
+                  <div className="border-top pt-3 mt-auto d-flex align-items-center justify-content-between">
+                    <div>
+                      <span className="text-muted d-block" style={{ fontSize: "11px" }}>
+                        Program:
+                      </span>
+                      <span className="fw-semibold text-dark" style={{ fontSize: "12px" }}>
+                        {m.coursesTaught}
+                      </span>
+                    </div>
+                    <button
+                      className="btn btn-sm btn-outline-danger rounded-pill px-3"
+                      style={{ fontSize: "11px" }}
+                    >
+                      Book Session
+                    </button>
                   </div>
-                  <span className="badge bg-light text-dark border border-light-subtle rounded-pill px-2.5 py-1.5 fs-11 fw-semibold d-inline-flex align-items-center gap-1">
-                    <i className="fa-regular fa-comments text-danger" />
-                    <span>1:1 Mentorship</span>
-                  </span>
+
                 </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   )

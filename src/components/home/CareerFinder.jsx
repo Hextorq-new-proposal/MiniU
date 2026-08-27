@@ -188,17 +188,22 @@ export default function CareerFinder({ onOpenCounselling }) {
 
           <div className="row g-3">
             {selectedCategory.recommended.map((item, idx) => (
-              <div key={idx} className="col-md-4">
-                <div className="p-3.5 bg-white rounded-3 border h-100 d-flex flex-column justify-content-between shadow-2xs">
-                  <div>
-                    <span className="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-2.5 py-1 fs-11 fw-semibold mb-2.5 d-inline-block">
-                      {item.tag}
-                    </span>
-                    <h5 className="fs-14 fw-bold miniu-text-dark mb-2">{item.name}</h5>
-                  </div>
+              <div key={idx} className={`${selectedCategory.recommended.length === 1 ? "col-md-6 mx-auto" : selectedCategory.recommended.length === 2 ? "col-md-6" : "col-md-4"} col-12`}>
+                <div
+                  className="bg-white rounded-3 border h-100 d-flex flex-column"
+                  style={{ padding: "14px 16px", boxShadow: "0 1px 6px rgba(15,23,42,0.05)" }}
+                >
+                  <span
+                    className="rounded-pill d-inline-block fw-semibold mb-2"
+                    style={{ fontSize: "10px", padding: "2px 10px", color: "#e0002e", background: "#fff1f3", border: "1px solid #ffd1d8", alignSelf: "flex-start" }}
+                  >
+                    {item.tag}
+                  </span>
+                  <p className="fw-semibold text-dark mb-auto" style={{ fontSize: "13px", lineHeight: 1.4 }}>{item.name}</p>
                   <Link
                     to={item.path}
-                    className="text-danger fw-semibold fs-13 text-decoration-none d-inline-flex align-items-center gap-1.5 mt-2 hover-text-danger"
+                    className="text-danger fw-semibold text-decoration-none d-inline-flex align-items-center gap-1 mt-3"
+                    style={{ fontSize: "12px" }}
                   >
                     <span>View Program</span>
                     <i className="fa-regular fa-arrow-right-long" />
@@ -210,173 +215,178 @@ export default function CareerFinder({ onOpenCounselling }) {
         </div>
 
         {/* =========================================================================
-            30-Second Minimalist Career Matchmaker (2-Column Balanced Layout)
+            Career Matchmaker — Clean Minimal Layout
             ========================================================================= */}
-        <div className="row g-4 g-lg-5 align-items-center">
-          {/* Left Column: Context & Trust */}
+        <div className="row g-4 align-items-center">
+
+          {/* Left: Heading + trust bullets */}
           <div className="col-lg-4">
-            <span className="badge bg-danger-subtle text-danger border border-danger-subtle rounded-pill px-3 py-1 fs-12 fw-bold mb-2.5 d-inline-block">
+            <span
+              className="d-inline-block rounded-pill border fw-semibold mb-2"
+              style={{ fontSize: "11px", padding: "3px 12px", color: "#e0002e", borderColor: "#ffd1d8", background: "#fff1f3" }}
+            >
               Smart Matchmaker
             </span>
-            <h3 className="fs-24 fw-bold miniu-text-dark miniu-font-display mb-3">
+            <h3 className="fw-bold miniu-text-dark miniu-font-display mb-2" style={{ fontSize: "20px", lineHeight: 1.3 }}>
               Find Your Ideal Career Track in 30 Seconds
             </h3>
-            <p className="miniu-text-muted fs-14 mb-4 line-height-relaxed">
-              Select your current background and target goals for an instant tailored curriculum and counselor recommendation.
+            <p className="text-muted mb-3" style={{ fontSize: "13px", lineHeight: 1.6 }}>
+              Pick your background and goals — we'll recommend the right program instantly.
             </p>
-            <div className="d-flex flex-column gap-2.5 text-dark fs-13 fw-semibold">
-              <div className="d-flex align-items-center gap-2">
-                <i className="fa-solid fa-circle-check text-success fs-14" />
-                <span>100% Free &amp; Instant Recommendation</span>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <i className="fa-solid fa-circle-check text-success fs-14" />
-                <span>Tailored for Freshers &amp; Switchers</span>
-              </div>
-              <div className="d-flex align-items-center gap-2">
-                <i className="fa-solid fa-circle-check text-success fs-14" />
-                <span>Direct Counselor &amp; Syllabus Match</span>
-              </div>
+            <div className="d-flex flex-column gap-2">
+              {["100% Free & Instant", "Works for Freshers & Switchers", "Matched Syllabus + Counselor"].map((t) => (
+                <div key={t} className="d-flex align-items-center gap-2">
+                  <i className="fa-solid fa-circle-check text-success" style={{ fontSize: "12px" }} />
+                  <span className="text-dark" style={{ fontSize: "12.5px" }}>{t}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Column: Compact Questionnaire Box */}
+          {/* Right: Clean Pill-Chip Quiz */}
           <div className="col-lg-8">
-            <div className="bg-white border border-light-subtle rounded-4 p-4 shadow-sm">
-              {/* Interactive Steps Form */}
-              <div className="d-flex flex-column gap-3.5 mb-3 pb-1">
-                {/* Step 1: Background */}
-                <div>
-                  <div className="d-flex align-items-center gap-2 mb-2">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
-                      1
-                    </span>
-                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
-                      What describes your current background?
-                    </span>
-                  </div>
-                  <div className="row g-2">
-                    {[
-                      { label: "College Student", val: "Student" },
-                      { label: "Recent Graduate", val: "Graduate" },
-                      { label: "Working Pro", val: "Working Professional" },
-                      { label: "Career Switcher", val: "Career Switcher" }
-                    ].map((opt) => (
-                      <div key={opt.val} className="col-6 col-sm-3">
-                        <button
-                          type="button"
-                          onClick={() => setQ1(opt.val)}
-                          className={`btn btn-sm w-100 rounded-3 py-2 px-1 fs-12 fw-semibold transition-all text-center ${
-                            q1 === opt.val
-                              ? "bg-dark text-white border-dark shadow-xs"
-                              : "bg-light bg-opacity-50 text-secondary border border-light-subtle hover-bg-light"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+            <div className="bg-white border rounded-4" style={{ padding: "24px 28px", boxShadow: "0 2px 12px rgba(15,23,42,0.06)" }}>
 
-                {/* Step 2: Domain */}
-                <div>
-                  <div className="d-flex align-items-center gap-2 mb-2">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
-                      2
-                    </span>
-                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
-                      Which domain are you passionate about?
-                    </span>
-                  </div>
-                  <div className="row g-2">
-                    {[
-                      { label: "Enterprise (SAP)", val: "Enterprise ERP" },
-                      { label: "Data Analytics", val: "Data & Analytics" },
-                      { label: "Full Stack Web", val: "Coding & Web" },
-                      { label: "UI/UX Design", val: "Design & Creativity" }
-                    ].map((opt) => (
-                      <div key={opt.val} className="col-6 col-sm-3">
-                        <button
-                          type="button"
-                          onClick={() => setQ2(opt.val)}
-                          className={`btn btn-sm w-100 rounded-3 py-2 px-1 fs-12 fw-semibold transition-all text-center ${
-                            q2 === opt.val
-                              ? "bg-dark text-white border-dark shadow-xs"
-                              : "bg-light bg-opacity-50 text-secondary border border-light-subtle hover-bg-light"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Step 3: Objective */}
-                <div>
-                  <div className="d-flex align-items-center gap-2 mb-2">
-                    <span className="badge bg-dark text-white rounded-circle p-0 d-inline-flex align-items-center justify-content-center fs-11 fw-bold flex-shrink-0" style={{ width: "20px", height: "20px" }}>
-                      3
-                    </span>
-                    <span className="fs-12 fw-bold text-dark text-uppercase letter-spacing-1">
-                      What is your primary objective?
-                    </span>
-                  </div>
-                  <div className="row g-2">
-                    {[
-                      { label: "Job Placement", val: "Job Placement" },
-                      { label: "Upskilling", val: "Upgrade Skills" },
-                      { label: "Domain Switch", val: "Switch Career" },
-                      { label: "Freelance", val: "Freelance" }
-                    ].map((opt) => (
-                      <div key={opt.val} className="col-6 col-sm-3">
-                        <button
-                          type="button"
-                          onClick={() => setQ3(opt.val)}
-                          className={`btn btn-sm w-100 rounded-3 py-2 px-1 fs-12 fw-semibold transition-all text-center ${
-                            q3 === opt.val
-                              ? "bg-dark text-white border-dark shadow-xs"
-                              : "bg-light bg-opacity-50 text-secondary border border-light-subtle hover-bg-light"
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      </div>
-                    ))}
-                  </div>
+              {/* Step 1 */}
+              <div className="mb-3">
+                <p className="fs-10 fw-bold text-muted text-uppercase mb-2" style={{ letterSpacing: "0.07em" }}>
+                  01 &nbsp;·&nbsp; Your Background
+                </p>
+                <div className="d-flex flex-wrap gap-2">
+                  {[
+                    { label: "College Student", val: "Student" },
+                    { label: "Recent Graduate", val: "Graduate" },
+                    { label: "Working Professional", val: "Working Professional" },
+                    { label: "Career Switcher", val: "Career Switcher" }
+                  ].map((opt) => (
+                    <button
+                      key={opt.val}
+                      type="button"
+                      onClick={() => setQ1(opt.val)}
+                      className="border rounded-pill fw-medium transition-all"
+                      style={{
+                        fontSize: "12.5px",
+                        padding: "5px 14px",
+                        background: q1 === opt.val ? "#0f172a" : "#f8fafc",
+                        color: q1 === opt.val ? "#ffffff" : "#64748b",
+                        borderColor: q1 === opt.val ? "#0f172a" : "#e2e8f0",
+                        cursor: "pointer",
+                        lineHeight: 1.4
+                      }}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* Minimalist Output Result Card */}
-              <div className="p-3.5 rounded-3 bg-light border border-light-subtle d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 shadow-2xs">
-                <div>
-                  <div className="d-flex align-items-center gap-2 mb-1">
-                    <span className="badge bg-danger text-white rounded-pill px-2.5 py-1 fs-10 fw-bold me-1">
-                      BEST MATCH
-                    </span>
-                    <span className="fs-12 text-muted">Based on your selection</span>
-                  </div>
-                  <h4 className="fs-15 fw-bold miniu-text-dark mb-0.5">{recommendation.title}</h4>
-                  <p className="fs-12 text-secondary mb-0">{recommendation.desc}</p>
-                </div>
+              <hr style={{ margin: "12px 0", borderColor: "#f1f5f9" }} />
 
-                <div className="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
+              {/* Step 2 */}
+              <div className="mb-3">
+                <p className="fs-10 fw-bold text-muted text-uppercase mb-2" style={{ letterSpacing: "0.07em" }}>
+                  02 &nbsp;·&nbsp; Your Domain
+                </p>
+                <div className="d-flex flex-wrap gap-2">
+                  {[
+                    { label: "Enterprise (SAP)", val: "Enterprise ERP" },
+                    { label: "Data & Analytics", val: "Data & Analytics" },
+                    { label: "Full Stack Web", val: "Coding & Web" },
+                    { label: "UI/UX Design", val: "Design & Creativity" }
+                  ].map((opt) => (
+                    <button
+                      key={opt.val}
+                      type="button"
+                      onClick={() => setQ2(opt.val)}
+                      className="border rounded-pill fw-medium transition-all"
+                      style={{
+                        fontSize: "12.5px",
+                        padding: "5px 14px",
+                        background: q2 === opt.val ? "#0f172a" : "#f8fafc",
+                        color: q2 === opt.val ? "#ffffff" : "#64748b",
+                        borderColor: q2 === opt.val ? "#0f172a" : "#e2e8f0",
+                        cursor: "pointer",
+                        lineHeight: 1.4
+                      }}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <hr style={{ margin: "12px 0", borderColor: "#f1f5f9" }} />
+
+              {/* Step 3 */}
+              <div className="mb-3">
+                <p className="fs-10 fw-bold text-muted text-uppercase mb-2" style={{ letterSpacing: "0.07em" }}>
+                  03 &nbsp;·&nbsp; Your Goal
+                </p>
+                <div className="d-flex flex-wrap gap-2">
+                  {[
+                    { label: "Get a Job", val: "Job Placement" },
+                    { label: "Upskill", val: "Upgrade Skills" },
+                    { label: "Switch Domain", val: "Switch Career" },
+                    { label: "Freelance", val: "Freelance" }
+                  ].map((opt) => (
+                    <button
+                      key={opt.val}
+                      type="button"
+                      onClick={() => setQ3(opt.val)}
+                      className="border rounded-pill fw-medium transition-all"
+                      style={{
+                        fontSize: "12.5px",
+                        padding: "5px 14px",
+                        background: q3 === opt.val ? "#0f172a" : "#f8fafc",
+                        color: q3 === opt.val ? "#ffffff" : "#64748b",
+                        borderColor: q3 === opt.val ? "#0f172a" : "#e2e8f0",
+                        cursor: "pointer",
+                        lineHeight: 1.4
+                      }}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Result */}
+              <div
+                className="rounded-3 d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3"
+                style={{ background: "#f8fafc", border: "1px solid #e2e8f0", padding: "12px 16px", marginTop: "4px" }}
+              >
+                <div style={{ minWidth: 0 }}>
+                  <div className="d-flex align-items-center gap-2 mb-1">
+                    <span
+                      className="text-white rounded-pill fw-bold"
+                      style={{ background: "#ff0135", fontSize: "9px", padding: "2px 8px", letterSpacing: "0.05em", textTransform: "uppercase" }}
+                    >
+                      Best Match
+                    </span>
+                    <span className="fs-11 text-muted">Based on your answers</span>
+                  </div>
+                  <p className="fs-14 fw-bold text-dark mb-0" style={{ lineHeight: 1.3 }}>{recommendation.title}</p>
+                  <p className="fs-12 text-muted mb-0">{recommendation.desc}</p>
+                </div>
+                <div className="d-flex gap-2 flex-shrink-0">
                   <Link
                     to={recommendation.path}
-                    className="btn btn-sm btn-danger text-white rounded-pill px-3 py-1.5 fw-bold fs-12 shadow-xs text-decoration-none"
+                    className="btn btn-danger rounded-pill fw-semibold text-decoration-none"
+                    style={{ fontSize: "12px", padding: "6px 16px" }}
                   >
-                    <span>Explore →</span>
+                    Explore →
                   </Link>
                   <button
                     type="button"
                     onClick={onOpenCounselling}
-                    className="btn btn-sm btn-outline-dark text-dark bg-white rounded-pill px-3 py-1.5 fw-bold fs-12 shadow-2xs"
+                    className="btn btn-outline-dark rounded-pill fw-semibold"
+                    style={{ fontSize: "12px", padding: "6px 16px" }}
                   >
-                    <span>Ask Advisor</span>
+                    Ask Advisor
                   </button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -55,10 +55,11 @@ export default function Header({ onOpenCounselling }) {
             <button
               type="button"
               onClick={handleCounsellingClick}
-              className="btn-miniu-transparent-red"
+              className="btn-miniu-transparent-red text-dark"
+              style={{ color: "#000000", borderColor: "#000000" }}
             >
-              <span>Book Free Counselling</span>
-              <i className="fa-regular fa-arrow-right-long" />
+              <span className="fw-bold" style={{ color: "#000000" }}>Book Free Counselling</span>
+              <i className="fa-regular fa-arrow-right-long" style={{ color: "#000000" }} />
             </button>
           </div>
 
