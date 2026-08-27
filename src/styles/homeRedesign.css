@@ -98,10 +98,17 @@ html.lenis, html.lenis body {
   position: relative;
 }
 
+.miniu-hero-section canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .miniu-hero-section {
-    min-height: auto;
-    padding-top: 30px;
+    min-height: 600px;
+    padding-top: 35px;
     padding-bottom: 50px;
   }
 }

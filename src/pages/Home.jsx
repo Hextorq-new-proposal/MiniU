@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import SEOHead from "../components/common/SEOHead"
 import Header from "../components/layout/Header"
 import Footer from "../components/layout/Footer"
-import MobileCTA from "../components/layout/MobileCTA"
 import Hero from "../components/home/Hero"
 import TrustStrip from "../components/home/TrustStrip"
 import CareerFinder from "../components/home/CareerFinder"
@@ -119,10 +118,7 @@ export default function Home() {
       {/* 16. Footer */}
       <Footer />
 
-      {/* 17. Sticky Mobile Action Bar (WhatsApp & Book Counselling) */}
-      <MobileCTA onOpenCounselling={() => handleOpenCounselling(null)} />
-
-      {/* 18. Counselling / Demo Modal */}
+      {/* 17. Counselling / Demo Modal */}
       <LeadModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}

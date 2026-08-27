@@ -24,10 +24,10 @@ export function ShaderBackground({
   return (
     <div
       className="position-absolute top-0 start-0 w-100 h-100 pointer-events-none overflow-hidden"
-      style={{ zIndex: 1, ...style }}
+      style={{ zIndex: 1, inset: 0, minHeight: "100%", width: "100%", height: "100%", ...style }}
     >
       <Suspense fallback={null}>
-        <Shader style={{ width: "100%", height: "100%" }}>
+        <Shader style={{ width: "100%", height: "100%", minHeight: "100%", display: "block" }}>
           <Swirl colorA="#ffffff" colorB="#f0f0f0" detail={1.7} />
           <ChromaFlow
             baseColor="#ffffff"
