@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './SpecularButton.css';
 
-const PAD = 20;
-
 const VERT = `#version 300 es
 in vec2 position;
 void main() {
@@ -19,12 +17,10 @@ uniform float uRadius;
 uniform float uAngle;
 uniform float uPx;
 uniform vec3 uLineColor;
-uniform vec3 uBaseColor;
 uniform float uIntensity;
 uniform float uShineSize;
 uniform float uShineFade;
 uniform float uThickness;
-uniform float uBaseWidth;
 
 out vec4 fragColor;
 
@@ -33,38 +29,29 @@ float sdRoundedRect(vec2 p, vec2 b, float r) {
   return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
 }
 
-float shapeSDF(vec2 p) { return sdRoundedRect(p, uHalfSize, uRadius); }
-
-float gaussianLine(float d, float sigma) {
-  float x = d / (sigma + 1e-6);
-  float k = mix(1.0, 1.6, smoothstep(0.0, 1.5, x));
-  return exp(-k * x * x);
-}
-
 void main() {
   vec2 p = gl_FragCoord.xy - uCenter;
-  float d = shapeSDF(p);
+  float d = sdRoundedRect(p, uHalfSize, uRadius);
   vec2 L = vec2(cos(uAngle), sin(uAngle));
 
-  // Base stroke hugging the edge for thickness
-  float base = (1.0 - smoothstep(0.0, uBaseWidth, abs(d))) * 0.45;
-
-  // Symmetric specular: the edges facing toward/away from the light both catch a streak
-  vec2 nEll = normalize(p / (uHalfSize * uHalfSize) + 1e-6);
+  // Elliptical normal for smooth continuous angular angle
+  vec2 nEll = normalize(p / (uHalfSize * uHalfSize + 1e-4));
   float phi = acos(clamp(abs(dot(nEll, L)), 0.0, 1.0));
   float rim = 1.0 - smoothstep(uShineSize - uShineFade, uShineSize + uShineFade + 1e-4, phi);
-  float line = gaussianLine(d, uThickness);
-  float edgeClamp = 1.0 - smoothstep(0.5 * uPx, 3.0 * uPx, abs(d));
-  float hi = line * rim * edgeClamp * uIntensity;
 
-  vec3 col = uBaseColor * base + uLineColor * hi;
-  float a = clamp(base + hi, 0.0, 1.0);
-  fragColor = vec4(col, a);
+  // Line stroke along the rounded border
+  float sigma = uThickness * 1.2;
+  float x = d / (sigma + 1e-6);
+  float line = exp(-1.5 * x * x);
+  float edgeClamp = 1.0 - smoothstep(0.5 * uPx, 3.5 * uPx, abs(d));
+
+  float hi = line * rim * edgeClamp * uIntensity;
+  fragColor = vec4(uLineColor, hi * 0.9);
 }
 `;
 
 function hexToRgb(hex) {
-  let c = (hex || '#000000').replace('#', '');
+  let c = (hex || '#ff0135').replace('#', '');
   if (c.length === 3) c = c.split('').map(x => x + x).join('');
   const num = parseInt(c, 16) || 0;
   return [((num >> 16) & 255) / 255, ((num >> 8) & 255) / 255, (num & 255) / 255];
@@ -73,17 +60,17 @@ function hexToRgb(hex) {
 export default function SpecularButton({
   children = 'Get Started',
   size = 'lg',
-  radius = 18,
+  radius = 24,
   tint = '#ffffff',
   tintOpacity = 0,
   blur = 0,
   textColor = '#0f172a',
-  lineColor = '#e80a0a',
-  baseColor = '#e00909',
+  lineColor = '#ff0135',
+  baseColor = '#ff0135',
   intensity = 1,
-  shineSize = 10,
-  shineFade = 40,
-  thickness = 1,
+  shineSize = 15,
+  shineFade = 45,
+  thickness = 2,
   speed = 0.35,
   followMouse = true,
   proximity = 250,
@@ -106,8 +93,8 @@ export default function SpecularButton({
     if (!gl) return;
 
     // Create program
-    const createShader = (type, src) => {
-      const s = gl.createShader(type);
+    const createShader = (t, src) => {
+      const s = gl.createShader(t);
       gl.shaderSource(s, src);
       gl.compileShader(s);
       return s;
@@ -121,11 +108,10 @@ export default function SpecularButton({
     gl.linkProgram(program);
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.warn('SpecularButton shader error:', gl.getProgramInfoLog(program));
+      console.warn('SpecularButton shader warning:', gl.getProgramInfoLog(program));
       return;
     }
 
-    // Geometry: full screen quad
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(
@@ -147,19 +133,16 @@ export default function SpecularButton({
     gl.enableVertexAttribArray(posLoc);
     gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
 
-    // Uniform locations
     const uCenterLoc = gl.getUniformLocation(program, 'uCenter');
     const uHalfSizeLoc = gl.getUniformLocation(program, 'uHalfSize');
     const uRadiusLoc = gl.getUniformLocation(program, 'uRadius');
     const uAngleLoc = gl.getUniformLocation(program, 'uAngle');
     const uPxLoc = gl.getUniformLocation(program, 'uPx');
     const uLineColorLoc = gl.getUniformLocation(program, 'uLineColor');
-    const uBaseColorLoc = gl.getUniformLocation(program, 'uBaseColor');
     const uIntensityLoc = gl.getUniformLocation(program, 'uIntensity');
     const uShineSizeLoc = gl.getUniformLocation(program, 'uShineSize');
     const uShineFadeLoc = gl.getUniformLocation(program, 'uShineFade');
     const uThicknessLoc = gl.getUniformLocation(program, 'uThickness');
-    const uBaseWidthLoc = gl.getUniformLocation(program, 'uBaseWidth');
 
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -172,8 +155,8 @@ export default function SpecularButton({
     const resize = () => {
       const rect = btn.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = Math.round((rect.width + PAD * 2) * dpr);
-      const h = Math.round((rect.height + PAD * 2) * dpr);
+      const w = Math.round(rect.width * dpr);
+      const h = Math.round(rect.height * dpr);
 
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w;
@@ -197,6 +180,7 @@ export default function SpecularButton({
 
       if (dist <= proximity) {
         isMouseNear = true;
+        // Flip dy because WebGL coordinates have bottom as 0
         targetAngle = Math.atan2(-dy, dx);
       } else {
         isMouseNear = false;
@@ -206,7 +190,6 @@ export default function SpecularButton({
     window.addEventListener('mousemove', onMouseMove, { passive: true });
 
     const lColor = hexToRgb(lineColor);
-    const bColor = hexToRgb(baseColor);
     const sRad = (shineSize * Math.PI) / 180;
     const fRad = (shineFade * Math.PI) / 180;
 
@@ -227,6 +210,7 @@ export default function SpecularButton({
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const btnW = rect.width * dpr;
       const btnH = rect.height * dpr;
+      const radPx = Math.min(radius * dpr, btnH / 2);
 
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -236,16 +220,14 @@ export default function SpecularButton({
 
       gl.uniform2f(uCenterLoc, canvas.width / 2, canvas.height / 2);
       gl.uniform2f(uHalfSizeLoc, btnW / 2, btnH / 2);
-      gl.uniform1f(uRadiusLoc, radius * dpr);
+      gl.uniform1f(uRadiusLoc, radPx);
       gl.uniform1f(uAngleLoc, angle);
       gl.uniform1f(uPxLoc, dpr);
       gl.uniform3f(uLineColorLoc, lColor[0], lColor[1], lColor[2]);
-      gl.uniform3f(uBaseColorLoc, bColor[0], bColor[1], bColor[2]);
       gl.uniform1f(uIntensityLoc, intensity);
       gl.uniform1f(uShineSizeLoc, sRad);
       gl.uniform1f(uShineFadeLoc, fRad);
       gl.uniform1f(uThicknessLoc, thickness * dpr);
-      gl.uniform1f(uBaseWidthLoc, (thickness + 1.5) * dpr);
 
       gl.drawArrays(gl.TRIANGLES, 0, 6);
 
@@ -267,7 +249,6 @@ export default function SpecularButton({
   }, [
     radius,
     lineColor,
-    baseColor,
     intensity,
     shineSize,
     shineFade,
@@ -287,11 +268,7 @@ export default function SpecularButton({
       className={`specular-button specular-button--${size} ${className}`}
       style={{
         '--sb-radius': `${radius}px`,
-        '--sb-tint': tint,
-        '--sb-tint-opacity': tintOpacity,
-        '--sb-blur': `${blur}px`,
         '--sb-text-color': textColor,
-        background: '#ffffff',
         ...style
       }}
     >
