@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import SpecularButton from "../common/SpecularButton"
 
 export default function Header({ onOpenCounselling }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -36,9 +37,9 @@ export default function Header({ onOpenCounselling }) {
             <Link to="/courses" className="miniu-nav-link">
               Courses
             </Link>
-            <a href="/#placement-proof" className="miniu-nav-link">
+            <Link to="/#placement-proof" className="miniu-nav-link">
               Placements
-            </a>
+            </Link>
             <Link to="/about" className="miniu-nav-link">
               About
             </Link>
@@ -52,15 +53,29 @@ export default function Header({ onOpenCounselling }) {
 
           {/* Right Action */}
           <div className="d-none d-lg-flex align-items-center gap-3">
-            <button
-              type="button"
+            <SpecularButton
+              size="lg"
+              radius={18}
+              tint="#ce0505"
+              tintOpacity={0}
+              blur={0}
+              textColor="#000000"
+              lineColor="#e80a0a"
+              baseColor="#e00909"
+              intensity={1}
+              shineSize={10}
+              shineFade={40}
+              thickness={1}
+              speed={0.35}
+              followMouse
+              proximity={250}
+              autoAnimate={false}
               onClick={handleCounsellingClick}
-              className="btn-miniu-transparent-red text-dark"
-              style={{ color: "#000000", borderColor: "#000000" }}
+              style={{ background: "#ffffff", padding: "9px 20px" }}
             >
-              <span className="fw-bold" style={{ color: "#000000" }}>Book Free Counselling</span>
-              <i className="fa-regular fa-arrow-right-long" style={{ color: "#000000" }} />
-            </button>
+              <span className="fw-bold" style={{ color: "#000000", fontSize: "13.5px" }}>Book Free Counselling</span>
+              <i className="fa-regular fa-arrow-right-long" style={{ color: "#000000", fontSize: "13.5px" }} />
+            </SpecularButton>
           </div>
 
           {/* Mobile Hamburger Button */}
