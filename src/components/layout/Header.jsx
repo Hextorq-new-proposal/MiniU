@@ -31,8 +31,8 @@ export default function Header({ onOpenCounselling }) {
 
   return (
     <>
-      <header className="miniu-header bg-white border-bottom position-sticky top-0 z-3">
-        <div className="container d-flex align-items-center justify-content-between py-2.5">
+      <header className="miniu-header d-flex align-items-center bg-white border-bottom position-sticky top-0 z-3">
+        <div className="container d-flex align-items-center justify-content-between h-100">
           {/* Brand Logo */}
           <Link to="/" className="d-flex align-items-center gap-2 text-decoration-none">
             <img

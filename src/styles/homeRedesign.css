@@ -271,6 +271,8 @@ html.lenis, html.lenis body {
   border-radius: 9999px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  line-height: 1.2;
   gap: 8px;
   transition: var(--miniu-transition);
   text-decoration: none;
