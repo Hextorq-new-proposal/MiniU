@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
+import LiquidButton from "../ui/LiquidButton"
 
 const CATEGORY_DISCOVERY = [
   {
@@ -144,7 +145,7 @@ export default function CareerFinder({ onOpenCounselling }) {
           </p>
         </div>
 
-        {/* 6 Category Selection Grid with Pure Black SVG Icons */}
+        {/* 6 Category Selection Grid with Pure Black SVG Icons (Click to Select) */}
         <div className="row g-3 mb-4 reveal-stagger-group">
           {CATEGORY_DISCOVERY.map((cat) => {
             const isSelected = selectedCategory.id === cat.id
@@ -152,7 +153,6 @@ export default function CareerFinder({ onOpenCounselling }) {
               <div key={cat.id} className="col-md-4 col-sm-6 reveal-card">
                 <div
                   onClick={() => setSelectedCategory(cat)}
-                  onMouseEnter={() => setSelectedCategory(cat)}
                   className={`miniu-category-card ${isSelected ? "active" : ""} cursor-pointer`}
                 >
                   <div className="d-flex align-items-center gap-3">
@@ -174,7 +174,7 @@ export default function CareerFinder({ onOpenCounselling }) {
           })}
         </div>
 
-        {/* Dynamic Recommendations Box (Updates on Hover & Click) */}
+        {/* Dynamic Recommendations Box (Updates on Click) */}
         <div className="p-3 rounded-4 miniu-bg-slate border mb-5">
           <div className="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-3">
             <div>
@@ -196,13 +196,14 @@ export default function CareerFinder({ onOpenCounselling }) {
                     </span>
                     <h5 className="fs-14 fw-bold miniu-text-dark mb-2">{item.name}</h5>
                   </div>
-                  <Link
+                  <LiquidButton
                     to={item.path}
-                    className="text-danger fw-semibold fs-13 text-decoration-none d-inline-flex align-items-center gap-1.5 mt-2 hover-text-danger"
+                    variant="red-inverted"
+                    style={{ padding: "7px 18px", fontSize: "12px", marginTop: "12px", width: "fit-content" }}
                   >
                     <span>View Program</span>
                     <i className="fa-regular fa-arrow-right-long" />
-                  </Link>
+                  </LiquidButton>
                 </div>
               </div>
             ))}
@@ -359,12 +360,13 @@ export default function CareerFinder({ onOpenCounselling }) {
                 </div>
 
                 <div className="d-flex flex-wrap align-items-center gap-2 flex-shrink-0">
-                  <Link
+                  <LiquidButton
                     to={recommendation.path}
-                    className="career-match-explore"
+                    variant="red-inverted"
+                    style={{ padding: "8px 20px", fontSize: "12.5px" }}
                   >
                     <span>Explore →</span>
-                  </Link>
+                  </LiquidButton>
                   <button
                     type="button"
                     onClick={onOpenCounselling}
