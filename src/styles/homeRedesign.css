@@ -381,6 +381,64 @@ html.lenis, html.lenis body {
   transform: translateX(4px);
 }
 
+/* Minimal career matchmaker panel */
+.career-match-card {
+  background: #fff;
+  border: 1px solid #e8edf3;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, .04);
+}
+
+.career-match-steps { display: grid; gap: 12px; margin-bottom: 14px; }
+.career-match-step + .career-match-step { padding-top: 12px; border-top: 1px solid #f1f5f9; }
+.career-match-step-heading { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+.career-match-number {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+}
+.career-match-question { color: #334155; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.career-match-card .btn { min-height: 34px; padding: 5px 4px !important; border-radius: 7px !important; line-height: 1.2; transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+.career-match-card .btn:hover { transform: translateY(-1px); }
+.career-match-card .bg-dark { background: #172033 !important; border-color: #172033 !important; }
+.career-match-card .bg-light { background: #fff !important; }
+.career-match-card .hover-bg-light:hover { background: #f8fafc !important; border-color: #cbd5e1 !important; }
+.career-match-result { display: flex; flex-direction: column; gap: 12px; padding: 13px 14px; border: 1px solid #e8edf3; border-left: 3px solid var(--miniu-red); border-radius: 9px; background: #fafbfc; }
+.career-match-label { display: inline-flex; color: var(--miniu-red); font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.career-match-result h4 { font-size: 15px; line-height: 1.3; }
+.career-match-result p { line-height: 1.5; }
+.career-match-explore, .career-match-advisor { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 7px 13px; border-radius: 7px; font-size: 12px; font-weight: 700; text-decoration: none; }
+.career-match-explore,
+.career-match-explore span,
+.career-match-explore:visited,
+.career-match-explore:focus { background: var(--miniu-red); border: 1px solid var(--miniu-red); color: #fff !important; }
+.career-match-advisor { background: #fff; border: 1px solid #d7dee8; color: #334155; }
+.career-match-explore:hover,
+.career-match-explore:hover span { background: var(--miniu-red-hover); color: #fff !important; }
+.career-match-advisor:hover { border-color: var(--miniu-red); color: var(--miniu-red); }
+
+@media (min-width: 576px) {
+  .career-match-result { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+@media (max-width: 575px) {
+  .career-match-card { padding: 14px; border-radius: 12px; }
+  .career-match-question { font-size: 11px; line-height: 1.35; }
+  .career-match-card .row { --bs-gutter-x: .5rem; --bs-gutter-y: .5rem; }
+  .career-match-result { padding: 14px; }
+  .career-match-result .d-flex { width: 100%; }
+  .career-match-explore, .career-match-advisor { flex: 1; padding-inline: 10px; }
+}
+
 .btn-miniu-outline {
   background-color: transparent;
   color: var(--miniu-dark) !important;
