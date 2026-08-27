@@ -233,15 +233,22 @@ export default function LeadModal({ isOpen, onClose, course, type = "demo" }) {
                 </div>
 
                 <FIELD label="Preferred Training Mode">
-                  <select
-                    name="mode" value={formData.mode} onChange={handleChange}
-                    className="miniu-modal-input"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <option value="Classroom (Coimbatore - RS Puram)">Classroom — Coimbatore (RS Puram)</option>
-                    <option value="Live Interactive Online (Weekend)">Live Online — Weekend Batch</option>
-                    <option value="Live Interactive Online (Weekday)">Live Online — Weekday Fast-Track</option>
-                  </select>
+                  <div style={{ position: "relative" }}>
+                    <select
+                      name="mode" value={formData.mode} onChange={handleChange}
+                      className="miniu-modal-input"
+                      style={{ cursor: "pointer", paddingRight: "36px", appearance: "none", WebkitAppearance: "none" }}
+                    >
+                      <option value="Classroom (Coimbatore - RS Puram)">Classroom — Coimbatore (RS Puram)</option>
+                      <option value="Live Interactive Online (Weekend)">Live Online — Weekend Batch</option>
+                      <option value="Live Interactive Online (Weekday)">Live Online — Weekday Fast-Track</option>
+                    </select>
+                    <i className="fa-solid fa-chevron-down" style={{
+                      position: "absolute", right: "13px", top: "50%",
+                      transform: "translateY(-50%)", fontSize: "11px",
+                      color: "#94a3b8", pointerEvents: "none"
+                    }} />
+                  </div>
                 </FIELD>
 
                 <button type="submit" disabled={loading} className="miniu-modal-submit">
