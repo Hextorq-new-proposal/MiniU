@@ -1,0 +1,53 @@
+/* Shared viewport safeguards for pages that use legacy/vendor markup. */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { max-width: 100%; overflow-x: hidden; }
+img, video, iframe { max-width: 100%; }
+button, input, textarea, select { max-width: 100%; }
+
+.reveal-fade-up,
+.reveal-card,
+.reveal-slide-left { will-change: transform, opacity; }
+
+.miniu-modal-backdrop { overscroll-behavior: contain; }
+
+@media (max-width: 1199px) {
+  .container { width: min(100% - 32px, 960px); }
+}
+
+@media (max-width: 991px) {
+  .container { width: min(100% - 28px, 720px); }
+  .miniu-header .container { width: min(100% - 28px, 960px); }
+  .miniu-nav-link { font-size: 14px; }
+}
+
+@media (max-width: 767px) {
+  .container { width: min(100% - 24px, 540px); }
+  .miniu-header-logo { max-width: 150px !important; }
+  .miniu-placement-hero,
+  .miniu-blog-hero { padding: 56px 0 48px; }
+  .miniu-placement-hero h1,
+  .miniu-blog-hero h1 { font-size: clamp(2.25rem, 12vw, 3.6rem); }
+  .miniu-placement-hero p,
+  .miniu-blog-hero p { font-size: .95rem; }
+  .miniu-placement-stat strong { font-size: 1.45rem; }
+  .miniu-contact-form-card { overflow: visible; }
+}
+
+@media (max-width: 575px) {
+  .container { width: min(100% - 20px, 420px); }
+  .miniu-header { height: 60px; }
+  .miniu-header-logo { height: 34px !important; max-height: 34px !important; }
+  .miniu-blog-card-content { padding: 22px; }
+  .miniu-blog-card h2 { font-size: 1.25rem; }
+  .miniu-contact-card { padding: 24px 18px; }
+  .miniu-contact-form-card { padding: 24px 16px; }
+  .miniu-modal-backdrop { align-items: flex-start !important; padding: 10px !important; }
+  .miniu-modal-card { width: 100%; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-fade-up,
+  .reveal-card,
+  .reveal-slide-left { transition: opacity .2s linear; }
+}
