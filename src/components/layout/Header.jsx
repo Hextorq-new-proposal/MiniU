@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { ShinyButton } from "../ui/shiny-button"
 
 export default function Header({ onOpenCounselling }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -20,12 +19,22 @@ export default function Header({ onOpenCounselling }) {
     }
   }
 
+  const goToPlacements = (e) => {
+    if (pathname === "/") {
+      e.preventDefault()
+      const el = document.getElementById("placement-proof")
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }
+
   return (
     <>
-      <header className="miniu-header d-flex align-items-center">
-        <div className="container d-flex align-items-center justify-content-between">
-          {/* Logo */}
-          <Link to="/" className="d-flex align-items-center text-decoration-none me-4 me-xl-5">
+      <header className="miniu-header bg-white border-bottom position-sticky top-0 z-3">
+        <div className="container d-flex align-items-center justify-content-between py-2.5">
+          {/* Brand Logo */}
+          <Link to="/" className="d-flex align-items-center gap-2 text-decoration-none">
             <img
               src="/assets/logo/miniu-logo.svg"
               alt="MiniU EdTech"
@@ -45,9 +54,9 @@ export default function Header({ onOpenCounselling }) {
             <Link to="/courses" className={`miniu-nav-link ${isCoursesActive ? "active" : ""}`}>
               Courses
             </Link>
-            <Link to={pathname === "/" ? "/#placement-proof" : "/placements"} className={`miniu-nav-link ${isPlacementsActive ? "active" : ""}`}>
+            <a href="/#placement-proof" onClick={goToPlacements} className={`miniu-nav-link ${isPlacementsActive ? "active" : ""}`}>
               Placements
-            </Link>
+            </a>
             <Link to="/about" className={`miniu-nav-link ${isAboutActive ? "active" : ""}`}>
               About
             </Link>
@@ -61,14 +70,14 @@ export default function Header({ onOpenCounselling }) {
 
           {/* Right Action */}
           <div className="d-none d-lg-flex align-items-center gap-3">
-            <ShinyButton
+            <button
+              type="button"
               onClick={handleCounsellingClick}
-              className="d-flex align-items-center gap-2"
-              style={{ padding: "8px 20px", fontSize: "13.5px" }}
+              className="btn-miniu-transparent-red"
             >
-              <span className="fw-bold">Book Free Counselling</span>
+              <span>Book Free Counselling</span>
               <i className="fa-regular fa-arrow-right-long" />
-            </ShinyButton>
+            </button>
           </div>
 
           {/* Mobile Hamburger Button */}

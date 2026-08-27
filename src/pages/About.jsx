@@ -6,7 +6,6 @@ import SEOHead from "../components/common/SEOHead"
 import LeadModal from "../components/modals/LeadModal"
 import StickyActionBar from "../components/common/StickyActionBar"
 import { CompanyLogo } from "../components/common/CompanyLogos"
-import SpecularButton from "../components/common/SpecularButton"
 
 const TRUSTED_COMPANIES = [
   "TCS",
